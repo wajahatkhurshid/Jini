@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Publish";
+    Layout = "";
+}
+
+<div class="container" ng-controller="published">
+
+    <section class="content">
+        <header>
+            <h1 class="main-head">Tillykke, du er færdig…</h1>
+            <p class="desc"><span ng-show="jiniData.VersionHistory == null">Salgsopsætningen er nu oprettet og godkendt.</span><span ng-hide="jiniData.VersionHistory == null">Den ny version af salgsopsætningen er godkendt.</span></p>
+        </header>
+
+        <section class="block">
+            <div class="product-confirmation">
+                <div class="product-img">
+                    <img src="{{jiniData.DigitalTitle.Cover}}" />
+                </div>
+                <div class="product-desc">
+                    <h3>{{jiniData.DigitalTitle.Title}}</h3>
+                    <p class="desc">{{jiniData.DigitalTitle.SubTitle}}</p>
+                    <p class="desc"><span ng-show="jiniData.VersionHistory == null">Salgsopsætningen er nu oprettet og godkendt.</span><span ng-hide="jiniData.VersionHistory == null">Den ny version af salgsopsætningen er godkendt.</span></p>
+                    <button id="goto-productlist" class="goto-productlist" ng-click="gobacktoDashboard()">OK</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="block confirmation-additional-info">
+            <h1><text ng-show="jiniData.VersionHistory == null">Hvornår kommer produktet på shoppen?</text><text ng-hide="VersionHistory == null">Hvornår træder mine ændringer i kraft?</text></h1>
+            <p>Du skal være opmærksom på to ting:</p>
+            <ol>
+                <li>Produkterne på webshoppen bliver opdateret én gang i døgnet (om natten). Den salgsopsætning, du netop har godkendt, slår derfor ikke igennem på webshoppen med det samme, men først efter den natlige produktopdatering.</li>
+                <li>Produkter kommer kun på webshoppen, hvis de relevante RAP-betingelser også er opfyldt. Det er altså ikke nok, at du har en godkendt salgsopsætning i Jini. Som et eksempel skal “Publicering på Internet” etc. også være markeret på produktets Stamblad i RAP.</li>
+            </ol>
+        </section>
+    </section>
+
+    <!-- <section class="sidebar">
+        <h1>Some things to keep in mind</h1>
+        <p>Lorem ispsum blah blah. Først og fremmest skal du tage stilling til, hvordan produktet overordnet skal sættes til salg på shoppen—dvs hvilke licenser der tilbydes for dette produkt.</p>
+    </section> -->
+</div>

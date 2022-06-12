@@ -1,0 +1,106 @@
+﻿
+@{
+    Layout = "";
+}
+
+<section class="content view-sales-config" style="flex: 1 1 1350px;">
+
+    <!-- START-->
+    <section class="block has-tabstrip" style="padding: 0px;">
+        <div id="headerSalesSetup" class="block--neue__header no-border">
+            <h1>Salgsopsætning</h1>
+        </div>
+        <div ng-show="!jiniData.isLDatafill">
+            <img style="margin-left: 50%;" src="~/Content/kendo/2016.1.112/Nova/loading_2x.gif" />
+        </div>
+        <div ng-show="jiniData.isLDatafill" id="view-sales-config-tabstrip">
+            <ul id="navSalesSetup">
+                <li class="k-state-active">Detaljer</li>
+                <li>HISTORIK ({{jiniData.VersionHistory.length}})</li>
+                <li ng-show="jiniData.GuaVersionHistory.length > 0">GUA HISTORIK ({{jiniData.GuaVersionHistory.length}})</li>
+            </ul>
+
+            <div class="sales-config-summary">
+                <div ui-view="VersionMessage">
+
+                </div>
+                <section class="sales-config-info">
+
+                    <div ng-if="jiniData.DigitalTitle.HasDraft ">
+                        <p class="jini-msg highlight">
+                            <svg class="icon-draft">
+                                <use xlink:href="~/Content/icons/jini.svg#icon-draft"></use>
+                            </svg> <span>Der findes en nyere version af salgsopsætningen, som ikke er godkendt</span> <span style="text-decoration: underline;" ng-click="TransitionToWizard();">Åbn kladde</span>
+                        </p>
+                    </div>
+                    <div ng-if="!jiniData.DigitalTitle.HasDraft && jiniData.SalesForm.length>=1">
+
+                        <section class="sales-config-info">
+                            <p class="jini-msg">
+                                <img src="~/Content/icons/icon-info.png" /> <span>Godkendt</span>
+                                <span>{{jiniData.VersionHistory[0].CreatedDate | date:'dd-MM-yyyy'}}</span>
+                                <span>{{::jiniData.VersionHistory[0].CreatedBy}}</span>
+                            </p>
+
+                        </section>
+                    </div>
+
+                    <div ng-if="(jiniData.SalesForm.length<1 && jiniData.AccessForm.length<1) && !jiniData.DigitalTitle.HasDraft && (jiniData.Trial.AccessForm | json) == '{}'">
+                        <p class="jini-msg warning">
+                            <svg class="icon-warning">
+                                <use xlink:href="~/Content/icons/jini.svg#icon-warning"></use>
+                            </svg> <span>Produktet har ingen salgsopsætning</span>
+                        </p>
+                    </div>
+                </section>
+                <section class="block block-toolbar">
+                    <div ng-if="jiniData.SalesForm.length>=1">
+                        <ul class="sales-config-toolbar">
+                            <li ng-show="!jiniData.DigitalTitle.HasDraft" class="create-new-version" ng-click="CreateSaleConfiguartion();"><img src="~/Content/icons/icon-plus.png" /> Ny version</li>
+                            <li ng-show="jiniData.DigitalTitle.HasDraft" class="open-version" ng-click="TransitionToWizard();"><img src="~/Content/icons/icon-plus.png" /> Ny version</li>
+                            @* <li class="preview-products"><img src="~/Content/icons/icon-preview.png" />Preview</li>*@
+                        </ul>
+                    </div>
+                    <div ng-show="jiniData.SalesForm.length<1">
+                        <ul class="sales-config-toolbar">
+                            <li class="create-new-version_" ng-click="CreateSaleConfiguartion();"><img src="~/Content/icons/icon-plus.png" /> Opret salgsopsætning</li>
+                        </ul>
+                    </div>
+                </section>
+                <div ng-if="jiniData.AccessForm.length >= 1 || (jiniData.Trial.AccessForm | json) != '{}'">
+                    @Html.Partial("~/Views/Wizard/Approve/Summary.cshtml")
+                </div>
+
+            </div>
+
+            <div class="sales-config-history">
+
+
+                <div ng-repeat="version in jiniData.VersionHistory">
+                    <h2>Version {{version.VersionNo}}</h2>
+                    <revisionhistory version="version"></revisionhistory>
+                    <br /><br />
+                </div>
+
+            </div>
+
+            <div class="sales-config-history">
+
+
+                <div ng-repeat="version in jiniData.GuaVersionHistory">
+                    <h2>Version {{version.VersionNo}}</h2>
+                    <guarevisionhistory version="version"></guarevisionhistory>
+                    <br /><br />
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--END -->
+</section>
+
+
+
+
+
+

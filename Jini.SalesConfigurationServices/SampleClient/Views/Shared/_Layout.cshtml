@@ -1,0 +1,52 @@
+﻿@using Gyldendal.Jini.SalesConfigurationServices.SampleClient.Common
+<!DOCTYPE html>
+<html ng-app="jini" ng-controller="wizard">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jini")
+    <script>
+        (function (window) {
+            window.__jiniEnv = {};
+            // Jini API url.
+            window.__jiniEnv.jiniApiUrl = '@Util.SalesConfigurationServiceUrl';
+            // Base url
+            window.__jiniEnv.baseUrl = '/';
+            
+        }(this));
+        </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("JiniService Sample Client", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Jini Services</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jini")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,5 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.LogDB\bin\Debug\Gyldendal.Jini.LogDB.dacpac
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.LogDB\bin\Debug\Gyldendal.Jini.LogDB.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.LogDB\bin\Debug\Gyldendal.Jini.LogDB.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.LogDB\obj\Debug\Gyldendal.Jini.LogDB.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.LogDB\obj\Debug\Gyldendal.Jini.LogDB.pdb

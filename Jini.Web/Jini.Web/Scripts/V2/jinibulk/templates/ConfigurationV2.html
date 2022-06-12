@@ -1,0 +1,657 @@
+﻿
+<header>
+    <style>
+        .grid-input {
+            width: 70px;
+            height: 25px;
+            text-align: center;
+        }
+
+        .k-icon.k-i-close {
+            background-position: -32px -16px;
+        }
+
+        div.k-window-content {
+            padding: 0;
+        }
+
+        button.k-button {
+            color: black;
+        }
+
+        .alignCenter {
+            text-align: center;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 11px;
+            font-weight: 400;
+            font-style: normal;
+            color: rgb(153, 153, 153);
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        ul > li > span
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        input.k-checkbox {
+            opacity: 1;
+            width: 20px;
+            -webkit-appearance: checkbox;
+        }
+
+        #u6 {
+            border-width: 0px;
+            position: absolute;
+            left: 1716px;
+            top: 129px;
+            width: 140px;
+            height: 40px;
+            display: flex;
+        }
+
+        .primary_button {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #FFFFFF;
+        }
+
+        .ax_default {
+            font-family: 'Arial normal', 'Arial', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 13px;
+            letter-spacing: normal;
+            color: #333333;
+            vertical-align: none;
+            text-align: center;
+            line-height: normal;
+            text-transform: none;
+        }
+
+        #u6_div {
+            border-width: 0px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 140px;
+            height: 40px;
+            background: inherit;
+            background-color: rgba(22, 155, 213, 1);
+            border: none;
+            border-radius: 5px;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        #u6 .text {
+            position: absolute;
+            align-self: center;
+            padding: 2px 2px 2px 2px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        #u6_text {
+            border-width: 0px;
+            word-wrap: break-word;
+            text-transform: none;
+        }
+
+
+        input.k-checkbox {
+            opacity: 1;
+            width: 15px;
+            -webkit-appearance: none;
+        }
+
+        .k-dropdown-wrap.k-state-default {
+            display: none;
+        }
+
+        .IsbnGroup {
+            background-color: #f2f2f2 !important;
+        }
+
+        .k-grid td.k-state-selected, .k-grid td.k-state-selected.k-state-focused, .k-grid tr.k-state-selected {
+            background-color: #e0f7fa !important;
+        }
+
+        .default {
+            background-color: #fff !important;
+        }
+
+
+        .k-link {
+            cursor: pointer !important;
+        }
+
+        input#btnUpload {
+            background: #999;
+            border: 1px solid #666;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            margin: 0 0 10px;
+            outline: none;
+            padding: 5px;
+        }
+
+        progress, #downloadProgress, #progUpdate {
+            float: left;
+        }
+
+        progress, #downloadProgress {
+            margin-right: 10px;
+        }
+
+        #progUpdate, #downloadProgress {
+            font: 12px Arial, Verdana, sans-serif;
+            color: #000;
+        }
+
+        .error-custom-color {
+            background: #eb000069 !important;
+        }
+
+        .k-grid-content tr td:not(.k-grid-content-sticky) {
+            border-left-width: 1px;
+        }
+
+        .k-filter-row > th:first-child, .k-grid tbody td:first-child, .k-grid tfoot td:first-child, .k-grid-header th.k-header:first-child {
+            border-left-width: 0px;
+        }
+
+
+        #bulkEditGrid .k-grid-header {
+            padding: 0 !important;
+        }
+
+        #bulkEditGrid .k-grid-content {
+            overflow-y: visible;
+        }
+
+        #bulkEditGrid colgroup > col:nth-child(10) {
+            min-width: 150px !important;
+        }
+
+        #bulkEditGrid div.k-grid-header {
+            padding-right: 0px !important;
+        }
+
+        .k-grid-header .k-grid-filter, .k-grid-header .k-header-column-menu {
+            margin-left: -5px !important;
+            margin-right: 0 !important;
+        }
+
+        .k-grid-header .k-grid-filter, .k-grid-header .k-header-column-menu {
+            float: right !important;
+        }
+
+        .k-grid-header .k-grid-filter, .k-grid-header .k-header-column-menu {
+            margin-left: -5px !important;
+            margin-right: 0 !important;
+        }
+
+        .k-grid-header .k-grid-filter, .k-grid-header .k-header-column-menu {
+            float: right !important;
+        }
+
+        #messageInfo {
+            padding: 15px;
+        }
+
+        .k-resize-handle {
+            cursor: col-resize !important;
+        }
+
+        .text-cenert {
+            text-align: center !important;
+        }
+
+        .k-confirm .k-dialog-content, .k-dialog-content {
+            padding: 20px !important;
+        }
+
+        .k-grid-norecords {
+            width: 20em;
+            height: 4em;
+            line-height: 4em;
+            vertical-align: middle;
+            margin: 0 auto;
+            border: 1px solid;
+            padding-left: 125px;
+            border-color: #d5d0d0;
+        }
+
+        body {
+            min-width: 1200px;
+            max-width: 100%;
+        }
+
+
+
+        #bulkEditGrid {
+            min-width: 1200px;
+            max-width: 100%;
+        }
+
+        .k-grid-filter.k-state-active .k-i-filter {
+            color: red;
+        }
+
+        .gray-background {
+            background: lightgray !important;
+        }
+
+        .input-error {
+            background: pink;
+        }
+
+        .btn-red {
+            border-color: #ff4350;
+        }
+
+        #confirmationDialog p {
+            margin-bottom: 0px;
+        }
+
+        .k-dialog-buttongroup.k-dialog-button-layout-stretched {
+            padding: 15px;
+        }
+
+        .gem-btn-inactive, .gem-btn-inactive:hover {
+            background: #cccccc;
+            border-color: #cccccc;
+            color: #888888;
+        }
+
+        .gem-btn-active, .gem-btn-active:hover {
+            background: #FF4350;
+            color: #FFFFFF;
+            border-color: #FF4350;
+        }
+
+        .blockMsg {
+            z-index: 1011;
+            position: fixed;
+            padding: 0px;
+            margin: 0px;
+            width: 275px;
+            top: 40%;
+            left: 35%;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            border: 3px solid rgb(170, 170, 170);
+            background-color: rgb(255, 255, 255);
+            cursor: wait;
+            min-width: 450px;
+        }
+
+        div#inputPrice, div#lblBulkPrice {
+            padding-left: 140px;
+        }
+
+        .blockUI.blockOverlay {
+            cursor: default !important;
+        }
+
+        .content.main-page {
+            padding-top: 20px;
+        }
+
+        #successAlert {
+          
+            left: 30%;
+            position: absolute;
+            top: 75px;
+            display: none;
+            background: black;
+            max-width: 700px;
+            padding: 20px;
+            padding-bottom: 0px;
+        }
+        #failedCount, #savedCount{
+            display:none;
+        }
+
+        .imgTick {
+            vertical-align: middle;
+        }
+
+        #successAlert .imgTick {
+            width: 24px;
+            height: 24px;
+        }
+
+        #successAlert p {
+            line-height: 1px;
+            width: 505px;
+            margin-bottom: 10px
+        }
+
+        #divSavedRecordNotes {
+            left: 30%;
+            position: absolute;
+            top: 75px;
+            display: none;
+            background: black;
+            max-width: 645px;
+            padding: 20px;
+            padding-bottom: 0px;
+        }
+
+
+        .margin-bottom-0 {
+            margin-bottom: 0px;
+        }
+
+        margin-top-0 {
+            margin-top: 0px;
+        }
+
+        #btnOk {
+            position: relative;
+            bottom: 6px;
+        }
+
+        #divProductCount {
+            position: absolute;
+            top: 201px;
+            left: 49px;
+        }
+
+            #divProductCount h1, #divProductCount h1 span {
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+
+        .failed-row td {
+            border-top: .5px solid red !important;
+            border-bottom: .5px solid red !important;
+            color: red;
+        }
+            .failed-row td:first-child {
+                border-left: 1px solid red !important;
+            }
+            .failed-row td:last-child {
+                border-right: 1px solid red !important;
+            }
+            .failed-row td:first-child .k-checkbox {
+                border: 1px solid red;
+            }
+
+        .failed-row .pris-u-mom, .failed-row .pris-m-mom {
+            color: red;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+<script>
+    var dialog;
+    $(document).ready(function () {
+
+
+        $('#lnkInfo').click(function () {
+            $.blockUI({ message: $('#messageInfo'), css: { width: '275px' } });
+
+            $('#messageInfo').parent().css('minWidth', '450px').css('padding', '15px !important').css('border', 'none !important');
+
+        });
+
+        $('#btnNo').click(function () {
+            $.unblockUI();
+            return false;
+        });
+
+        $(document).on('dblclick', '.k-window-title', function (e) {
+            e.preventDefault();
+            return false;
+        });
+
+        $('#btnWindowforretning').click(function () {
+            $('#mediaTypeDdl').data('kendoWindow').close();
+            $('#statusDdl').data('kendoWindow').close();
+            return false;
+        });
+
+        $('#btnWindowMaterialtype').click(function () {
+
+            $('#departmentDdl').data('kendoWindow').close();
+            $('#statusDdl').data('kendoWindow').close();
+            return false;
+        });
+
+        $('#btnWindowStatus').click(function () {
+            $('#departmentDdl').data('kendoWindow').close();
+            $('#mediaTypeDdl').data('kendoWindow').close();
+            return false;
+        });
+
+        $("#context-menu").kendoContextMenu({
+            target: "#bulkEditGrid",
+            filter: "td",
+            select: function (e) {
+                var cell = e.target;
+                console.log(cell);
+                var row = $(cell).parent()[0];
+                var grid = $("#bulkEditGrid").data("kendoGrid");
+                var itemId = e.item.id;
+                console.log(itemId);
+                //Current Cell text
+                var cellText = cell.innerText;
+                console.log(row);
+                var rowText = row.innerText;
+
+                var firstColumnCheckBox = row.cells[0].children[0].checked;
+                var prisUMoms = row.cells[8].children[0].value;
+                var prisMMoms = row.cells[9].children[0].value;
+
+                rowText = firstColumnCheckBox + rowText + prisUMoms + ' ' + prisMMoms;
+                console.log(rowText);
+                if (itemId === 'copyText') {
+                    new Clipboard('#copyText', {
+                        text: function (trigger) {
+
+                            return cellText;
+                        }
+                    });
+                };
+
+                if (itemId === 'copyRow') {
+                    new Clipboard('#copyRow', {
+                        text: function (trigger) {
+
+                            return rowText;
+                        }
+                    });
+                };
+            }
+        });
+
+        $(document).on("mousedown", "td", function (e) {
+            setTimeout(function () {
+                $("#bulkEditGrid").data("kendoGrid").saveRow();
+            })
+        });
+
+        $("#txtPercentage").keydown(function () {
+            // Save old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 100 && parseInt($(this).val()) > 0))
+                $(this).data("old", $(this).val());
+        });
+        $("#txtPercentage").keyup(function () {
+            // Check correct, else revert back to old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 100 && parseInt($(this).val()) > 0));
+            else
+                $(this).val($(this).data("old"));
+        });
+
+        $(document).on('click', '.content', function () {
+            $('#departmentDdl').data('kendoWindow').close();
+            $('#statusDdl').data('kendoWindow').close();
+            $('#mediaTypeDdl').data('kendoWindow').close();
+        });
+        $(document).on('mouseup', '#isbnhyperlink,#titlehyperlink,#releasedatehyperlink,#lastmodifiedhyperlink', function () {
+            $('#departmentDdl').data('kendoWindow').close();
+            $('#statusDdl').data('kendoWindow').close();
+            $('#mediaTypeDdl').data('kendoWindow').close();
+        });
+
+
+
+        dialog = $('#confirmationDialog');
+
+
+
+    });
+
+    function hideSavedProductAlert() {
+        $('#divSavedRecordNotes').hide();
+    }
+
+    function hideSuccessAlert() {
+        $('#divSavedRecordNotes').hide();
+        $('#successAlert').hide();
+        $('#divSavedRecordNotes').show();
+        $('#failedCount').hide();
+        $('#savedCount').hide();
+    }
+
+    var totalRecordsSaved = 0;
+    var totalRecordsFailed = 0;
+    var faildedRows = [];
+    var savedRows = [];
+    var salesConfigurationWithCount = {};
+</script>
+<section class="content main-page">
+    <div id="confirmationDialog"></div>
+    <ul id="context-menu">
+        <li id="copyRow">Kopier række som tekst</li>
+        <li id="copyText">Kopier celleindhold</li>
+
+    </ul>
+    <div id="messageInfo" style="display: none; cursor: default">
+        <h1>Du kan vælge enten at tilføje en procentsats eller et fast beløb, der vil blive lagt oveni de valgte produkter</h1>
+        <br />
+        <input type="button" id="btnNo" value="Luk" />
+    </div>
+    <div class="main-head">
+
+        <div id="successAlert" style="">
+
+            <div style="display:inline-block;color:white; width:78%; position:relative; bottom:10px;">
+               
+                    <p id="savedCount"  style=" font-size:14px;">
+                        <img class="imgTick" src="../../../img/tick-mark.png"> <span style="color:white;"><label id="lblNoOfRecordsSaved">{{totalRowSaved}}</label> salgskonfigurationer på denne side blev opdateret.</span>
+                    </p>
+                    <p id="failedCount"  style="font-size:14px;"><img class="imgTick" src="../../../img/red-alert.png"><span style="color:white;"><label id="lblNoOfRecordsSaved">{{totalRowsFailed}}</label> salgskonfigurationer blev ikke opdateret- se markerede</span></p>
+                
+            </div>
+
+            <div data-label="Ok understood button" style="display:inline-block;float:right; cursor: pointer;width:22%;padding-top:25px;">
+
+                <div id="btnOk">
+                    <p class="margin-bottom-0"><a onclick="hideSuccessAlert();"> <span style="cursor:pointer; color: #47CFE0; font-size:14px; font-weight:700">OK, DET ER FORSTÅET</span></a></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="divSavedRecordNotes" style="">
+
+            <div style="display:inline-block;color:white; width:70%; position:relative; bottom:10px;">
+                <div id="u444_text" class="text " style="line-height:15px; text-align:left;">
+                    <p style="margin-bottom:0px;"><span style="margin:0; font-size:14px;">BEMÆRK. Det er kun produkter på denne side, der blevet opdateret. For at opdatere produkter på de øvrige sider, skal du gå til hver enkelt side og opdatere produkterne der.</span></p>
+                </div>
+            </div>
+
+            <div data-label="Ok understood button" style="display:inline-block;float:right; cursor: pointer;">
+
+                <div id="btnOk">
+                    <p class="margin-bottom-0"><a onclick="hideSavedProductAlert();"> <span style="cursor:pointer; color: #47CFE0; font-size:14px; font-weight:700">OK, DET ER FORSTÅET</span></a></p>
+                </div>
+            </div>
+        </div>
+
+        <button id="btnGemAendringer" onclick="saveBulkConfiguration()" disabled="disabled" class="jini-btn-new gem-btn-inactive" style=" margin-left: auto;">Gem ændringer</button>
+        <label class="jini-save-message" id="lblSeccess" style="        display: none; margin-left: auto;color: #21CC2B;">
+            Dine ændringer er gemt
+        </label>
+    </div>
+    <div style="margin: 10px 40px;">
+
+    </div>
+    <div id="divProductCount">
+        <h1><span id="spnTotalProduct"></span> produckter  / <span id="spnTotalSalesConfigurations"></span> salgskonfigurationer</h1>
+    </div>
+    <div style="margin: 2%;">
+        <div id="dropdownFilters" style="float: left; width: 60%; margin-top: 40px; margin-bottom: 30px;">
+            <button id="btnWindowforretning" class="k-button" disabled ng-click="Windowforretning.open()">Vælg forretningsområde</button>
+
+            <div id="departmentDdl" style="max-height: 400px; overflow-y: auto;" kendo-window="Windowforretning"
+                 k-title="'Vælg forretningsområde'"
+                 k-visible="false"
+                 k-width="300"
+                 k-draggable="false"
+                 resizable="false">
+            </div>
+
+            <button id="btnWindowMaterialtype" class="k-button" disabled ng-click="Windowmaterialetype.open()" style="margin-left: 3%;">Vælg medie- og materialetype</button>
+
+            <div id="mediaTypeDdl" style="max-height: 400px; overflow-y: auto;" kendo-window="Windowmaterialetype"
+                 k-position="{ left: 278 }"
+                 k-title="'Vælg medie- og materialetype'"
+                 k-visible="false"
+                 k-width="315"
+                 k-draggable="false"
+                 resizable="false">
+            </div>
+
+            <button id="btnWindowStatus" class="k-button" disabled ng-click="Windowstatus.open()" style="margin-left: 3%;">Vælg status</button>
+
+            <div id="statusDdl" style="max-height: 400px; overflow-y: auto;" kendo-window="Windowstatus"
+                 k-position="{ left: 545 }"
+                 k-title="'Vælg status'"
+                 k-visible="false"
+                 k-width="300"
+                 k-draggable="false"
+                 resizable="false">
+            </div>
+
+        </div>
+        <div id="price-update" style="float: right; width: 40%;">
+            <div id="lblBulkPrice" style="clear: both; margin-bottom: 15px;">
+                <label class="jini-bulk-info" style="float: left; margin-right: 6px; cursor: default"><strong>Juster pris på valgte produkter</strong>(dem der er sat flueben ved)</label><a id="lnkInfo" style="cursor: pointer"><span class="" style="color: black; font-weight: bolder;">&#9432;</span></a>
+            </div>
+            <div id="inputPrice" style="clear: both;">
+                <div style="width: 50%; float: left;">
+                    <input type="number" min="1" max="100" onfocus="grayedOutInactiveTextBox('percentage')" ng-change="PriceChangedIncTax($event)" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="txtPercentage" title="Percentage must be greater than 0 and less than or equal to 100." ng-model="txtPercentage" class="k-textbox alignCenter gray-background" placeholder="Tilføj procent" ng-disabled="IsDisabled" /> %
+                </div>
+                <div style="width: 50%; float: right;">
+                    <input type="number" ng-change="$parent.PriceChanged($event)" onfocus="grayedOutInactiveTextBox('exactAmount')" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="txtPrice" ng-model="txtPrice" class="k-textbox alignCenter gray-background" placeholder="Tilføj beløb til aktuel pris" ng-disabled="IsDisabled" /> Kr.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loader" style="display: block; position: absolute; text-align: center;left: 0%;bottom: 50%;opacity: .6;z-index: 9999;top: 55%;width: 100%;">
+        <img src="../../../Content/kendo/2016.1.112/Nova/loading-image.gif" alt="Loading..." />
+    </div>
+
+    <div class="kendo-grid k-widget k-reorderable" id="bulkEditGrid" k-options="mainGridOptions" style="clear: both;">
+    </div>
+    <div id="loadernew" style="display: none; position: absolute;text-align: center;left: 0%;bottom: 50%;opacity: .6;z-index: 9999;top: 55%;width: 100%;">
+        <img src="../../../Content/kendo/2016.1.112/Nova/loading-image.gif" alt="Loading..." />
+    </div>
+
+</section>

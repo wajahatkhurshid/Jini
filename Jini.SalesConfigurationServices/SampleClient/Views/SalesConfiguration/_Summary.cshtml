@@ -1,0 +1,41 @@
+﻿@using Gyldendal.Jini.SalesConfigurationServices.Models
+<section class="block block-summary">
+    <h1>Licenser</h1>
+    <dl class="config-summary">
+        <dt>Salgsform</dt>
+        <dd><text ng-repeat="salesForm in SalesConfiguration.SalesForms">{{salesForm.DisplayName}}</text></dd>
+
+        <dt>Adg. typer</dt>
+        <dd><text ng-repeat="access in SalesConfiguration.AccessForms">{{access.DisplayName == "Andet salg" ? access.DisplayName : access.DisplayName + "adgang" }}{{$last ? '' : ', '}}</text></dd>
+
+        <dt ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'>Perioder</dt>
+        <dd ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'>
+            <text ng-repeat="period in SalesConfiguration.AccessForms[0].BillingPeriods">{{period.DisplayName}}{{$last ? '' : ', '}} </text>
+        </dd>
+    </dl>
+
+    <div ng-repeat="accessType in SalesConfiguration.AccessForms">
+        
+        <div ng-show='accessType.Code == @((int)Enums.EnumAccessForm.School)'>
+            @Html.Partial("~/Views/SalesConfiguration/ReviewSchoolLicense.cshtml")
+        </div>
+
+        <div ng-show="accessType.Code == @((int)Enums.EnumAccessForm.Class)">
+            @Html.Partial("~/Views/SalesConfiguration/ReviewClassLicense.cshtml")
+        </div>
+
+        <div ng-show='accessType.Code == @((int)Enums.EnumAccessForm.Teacher)'>
+            @Html.Partial("~/Views/SalesConfiguration/ReviewTeacherLicense.cshtml")
+        </div>
+
+        <div ng-show="accessType.Code == @((int)Enums.EnumAccessForm.SingleUser)">
+            @Html.Partial("~/Views/SalesConfiguration/ReviewSingleUserLicense.cshtml")
+        </div>    
+    
+    </div>
+
+    
+
+
+</section>
+

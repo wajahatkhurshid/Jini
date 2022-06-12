@@ -1,0 +1,16 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.Jini.Services.ApiClient.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.Jini.Services.ApiClient.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.AccessServices.Contracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.Api.CommonContracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.Api.ShopServices.Contracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Gyldendal.Common.WebUtils.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\System.Net.Http.Formatting.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\Newtonsoft.Json.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\bin\Debug\net461\System.ComponentModel.Annotations.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.csproj.AssemblyReference.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.AssemblyInfoInputs.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.AssemblyInfo.cs
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.csproj.CoreCompileInputs.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.csproj.CopyComplete
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.ApiClient\obj\Debug\net461\Gyldendal.Jini.Services.ApiClient.pdb

@@ -1,0 +1,1374 @@
+﻿@using Gyldendal.Jini.Web.Common
+@using Gyldendal.Jini.Web.Models
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Jini Products Grid";
+}
+<head>
+</head>
+<section class="content main-page">
+    <header>
+        <h1 class="main-head">
+            Digitale produkter <span><span id="countElement">0</span> produkter</span>
+            <a class="jini-btn-new" style="display: inline; float: right; min-height: 29.775px; margin-left: auto; width:150px;" target="_blank" href="/Bulk">Rediger Priser</a>
+        </h1>
+
+    </header>
+    <span id="clearCache" class="k-button hide-on-narrow" style="display: none">Clear Cache</span>
+    <!--Create and Configure Kendo Grid object-->
+    <div>
+        <div id="loader" style="display: none; position: absolute;text-align: center;left: 0%;bottom: 50%;opacity: .6;z-index: 9999;top: 50%;width: 100%;">
+            <img src="~/Content/kendo/2016.1.112/Nova/loading-image.gif" alt="Loading..." />
+        </div>
+        @(Html.Kendo().Grid<DigitalTitle>()
+                  .Name("grid")
+                  .Columns(c =>
+                  {
+                      c.Bound(p => p.DepartmentSectionName)
+                          .Title("Afdeling og redaktion")
+                          .Filterable(false)
+                          .HeaderHtmlAttributes(new Dictionary<string, object> { { "class", "k-header k-filterable k-with-icon" } })
+                          /*Header Template used to create a custom filter, in Kendo Window*/
+                          .HeaderTemplate("<a class='k-grid-filter' id='departmenthyperlink'  tabindex='-1'><span class='k-icon k-i-filter' id='departmentFilter' title='Filtrer' style='cursor: pointer;'></span></a><span class='k-link'>Afdeling og redaktion</span>");
+
+                      c.Bound(p => p.Isbn)
+                          .Title("ISBN")
+                          .Width(144)
+                          .Filterable(f => f.IgnoreCase(true)
+                              .Extra(false)
+                              .Messages(m => m.Filter("FILTRER")
+                                  .Clear("NULSTIL"))
+                              .Cell(cell => cell.Operator("contains"))
+                              .Operators(operators => operators
+                                  .ForString(str => str.Clear()
+                                      .Contains("indeholder")
+                                  )));
+
+                      c.Bound(p => p.Title).ClientTemplate("#: Title #"
+                                                           + "#if(SubTitle != null && SubTitle != ''){ # - "
+                                                           + "#:  SubTitle#"
+                                                           + "#}#")
+                          .Title("Titel og undertitel")
+                          .Filterable(f => f.IgnoreCase(true)
+                              .Extra(false)
+                              .Messages(m => m.Filter("FILTRER")
+                                  .Clear("NULSTIL"))
+                              .Cell(cell => cell.Operator("contains"))
+                              .Operators(operators => operators
+                                  .ForString(str => str.Clear()
+                                      .Contains("indeholder")
+                                  )));
+                      c.Bound(p => p.MediaMaterialName)
+                          .Title("Medie og materialetype")
+                          .Filterable(false)
+                          /*Header Template used to create a custom filter, in Kendo Window*/
+                          .HeaderTemplate("<a class='k-grid-filter' id='mediatypehyperlink' href='javascript:void(0)' tabindex='-1'><span class='k-icon k-i-filter' id='mediatypeFilter' title='Filtrer' style='cursor: pointer;'></span></a><span class='k-link'>Medie og materialetype</span>");
+
+                      c.Bound(p => p.PublishDate)
+                          .Format("{0:dd-MM-yyyy}")
+                          .Title("Udgives")
+                          .Width(117)
+                          .Filterable(false)
+                          /*Header Template used to create a custom filter, in Kendo Window*/
+                          .HeaderTemplate("<a class='k-grid-filter' id='publishdatehyperlink' href='javascript:void(0)' tabindex='-1'><span class='k-icon k-i-filter' id='publishdateFilter' title='Filtrer' style='cursor: pointer;'></span></a><span class='k-link'>Udgives</span>");
+
+                      c.Bound(p => p.LatestChangeDateInJini)
+                          .Format("{0:dd-MM-yyyy}")
+                          .Title("Ændret")
+                          .Width(117)
+                          .Filterable(false)
+                          .HeaderTemplate("<a class='k-grid-filter' id='latestChangeDateInJinihyperlink' href='javascript:void(0)' tabindex='-1'><span class='k-icon k-i-filter' id='latestChangeDateInJiniFilter' title='Filtrer' style='cursor: pointer;'></span></a><span class='k-link'>Ændret</span>");
+
+                      c.Bound(p => p.ConfigurationText).ClientTemplate("#:ConfigurationText#")
+                          .Title("Status")
+                          .Filterable(f => f.Multi(true)
+                              .Messages(m => m.Clear("NULSTIL").Filter("FILTRER")
+                                  .CheckAll("Vælg alle"))
+                              .Cell(cell => cell.ShowOperators(false)));
+                  })
+                  .AutoBind(true)
+                  .Events(e =>
+                  {
+                      e.DataBound("gridBound").FilterMenuInit("filterMenuInit");
+                      //e.Change("rowSelect");
+                  })
+                  .Sortable(s =>
+                      s.Enabled(true))
+                  .Filterable(filterable => filterable.Enabled(true)
+                  )
+                  .NoRecords("Ingen resultater fundet")
+                  .Reorderable(r => r.Columns(true))
+                  .Resizable(r => r.Columns(true))
+                  .Pageable(p => p.Enabled(true))
+                  .DataSource(dataSource => dataSource
+                      .Ajax()
+                      .PageSize(50)
+                      .ServerOperation(false)
+                      .Read(read => read.Url(Utils.JiniServiceUrl + "v1/Product/GetProducts").Type(HttpVerbs.Get))
+                      .Sort(sort =>
+                      {
+                          sort.Add(product => product.HasConfiguration).Ascending();
+                          sort.Add(product => product.PublishDate).Ascending();
+                      })
+                      .Events(e => e.Error("onGridError")
+                          .Change("dataSource_change"))
+                      .Model(model => { model.Id(product => product.Isbn); })
+                  )
+                  .Navigatable(n => n.Enabled(false))
+                  .Selectable(s => s.Enabled(true).Mode(GridSelectionMode.Multiple)))
+    </div>
+    <div id="contextmenudiv" style="display: none">
+        @(Html.Kendo().ContextMenu()
+        .Name("menu")
+        .Target("#grid")
+        .Filter("td")
+        .Orientation(ContextMenuOrientation.Vertical)
+        .Animation(animation =>
+        {
+            animation.Open(open =>
+            {
+                open.Fade(FadeDirection.In);
+                open.Duration(20);
+            });
+        })
+        .Items(items =>
+        {
+            items.Add()
+                 .Text("Kopier række som tekst");
+            items.Add()
+                 .Text("Kopier celleindhold");
+        })
+        .Events(e => e.Select("menuSelectItem"))
+        )
+    </div>
+    <!--Custom Filter Windows-->
+    <div>
+        <!--Custom Header Template for Afdeling Column in Kendo Grid uses this window as filter menu-->
+        @(Html.Kendo().Window()
+          .Name("departmentWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .HtmlAttributes(new Dictionary<string, object> { { "class", "k-filter-menu k-popup k-group k-reset k-state-border-up" }, { "style", "max-height: 400px; font-size: 14px" } })
+          .Content(@<text>
+                    <div id="departmentTreeview" style="overflow: auto"></div>
+        </text>)
+.Width(280)
+.Visible(false))
+        <!--Custom Header Template for mediaType Column in Kendo Grid uses this window as filter menu-->
+        @(Html.Kendo().Window()
+          .Name("mediaTypeWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .HtmlAttributes(new Dictionary<string, object> { { "class", "k-filter-menu k-popup k-group k-reset k-state-border-up" }, { "style", "max-height: 400px; font-size:14px" } })
+          .Content(@<text>
+                    <div id="mediaTypeTreeview" style="overflow: auto;"></div></text>)
+.Width(280)
+.Visible(false)
+        )
+        <!--Custom Header Template for latest Change Date In Jini Column in Kendo Grid uses this window as filter menu-->
+        @(Html.Kendo().Window()
+          .Name("latestChangeDateInJiniWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .Width(265)
+          .HtmlAttributes(new { style = "max-height: 400px; padding:0px 0px 0px 0px;" })
+          .Content(@<text>
+                    <div class="k-content k-filter-menu">
+                        <span style="font-size: 14px">Periode:</span>
+                        @(Html.Kendo().DatePicker()
+                                         .Name("startJiniChange")
+                                         .Value(DateTime.Now.Date)
+                                         .Max(DateTime.Now.Date)
+                                         .Events(e => e.Change("startChangeJiniChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px;" })
+                        )
+                        @(Html.Kendo().DatePicker()
+                                         .Name("endJiniChange")
+                                         .Value(DateTime.Now.Date)
+                                         .Min(DateTime.Now.Date)
+                                         .Events(e => e.Change("endChangeJiniChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px; " })
+                        )
+                        <div class="k-group k-reset">
+                            <div style="padding: 0; font-size: 14px;">
+                                <div>
+                                    <button id="latestChangeDateInJiniApply" class="k-button k-primary" type="submit" onclick="latestChangeDateInJiniFilterApplied()">FILTRER</button>
+                                    <button id="latestChangeDateInJiniClear" class="k-button" type="reset" onclick="latestChangeDateInJiniFilterCleared()">NULSTIL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </text>)
+.Width(200)
+.Visible(false)
+        )
+        <!--Custom Header Template for Udgivelsesdato Column in Kendo Grid uses this window as filter menu-->
+        @(Html.Kendo().Window()
+          .Name("publishdateWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .Width(265)
+          .HtmlAttributes(new { style = "max-height: 400px; padding:0px 0px 0px 0px;" })
+          .Content(@<text>
+                    <div class="k-content k-filter-menu">
+                        <span style="font-size: 14px">Periode:</span>
+                        @(Html.Kendo().DatePicker()
+                                         .Name("start")
+                                         .Value(DateTime.Now.Date)
+                                         .Max(DateTime.Now.Date)
+                                         .Events(e => e.Change("startChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px;" })
+                        )
+                        @(Html.Kendo().DatePicker()
+                                         .Name("end")
+                                         .Value(DateTime.Now.Date)
+                                         .Min(DateTime.Now.Date)
+                                         .Events(e => e.Change("endChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px; " })
+                        )
+                        <div class="k-group k-reset">
+                            <div style="padding: 0; font-size: 14px;">
+                                <div>
+                                    <button id="publishdateApply" class="k-button k-primary" type="submit" onclick="publishDateFilterApplied()">FILTRER</button>
+                                    <button id="publishdateClear" class="k-button" type="reset" onclick="publishDateFilterCleared()">NULSTIL</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </text>)
+.Width(200)
+.Visible(false)
+        )
+    </div>
+</section>
+<script type="text/javascript">
+
+    function copyToClipboard(value) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(value).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+    //function called on filter changed of KendoGrid
+    function dataSource_change(e) {
+        if ($("#grid").data("kendoGrid").dataSource.filter() !== undefined && $("#grid").data("kendoGrid").dataSource.filter() !== 'undefined' && window.StartupComplete === true)
+            saveFilters();
+    }
+    function menuSelectItem(e) {
+        if (e.target !== undefined && e.target !== null) {
+            var text = "";
+            // Copy Single Column
+            if ($(e.item).children(".k-link").text() == "Kopier celleindhold") {
+                text = e.target.innerText;
+            } else {
+                var tds = $(e.target).parent().find("td");
+                var len = tds.length;
+                // Copy Row
+                $.each(tds, function (index) {                // Visits every single <td> element
+                    text += $(this).text().trim();         // Copy text within the <td>
+                    if (index !== len - 1) {
+                        text += "\t"; // append Tab if not last column
+                    }
+                });
+            }
+            copyToClipboard(text);
+        }
+    }
+    // Save the selected filters
+    function saveFilters() {
+        var grid = $("#grid").data("kendoGrid");
+        var filters = grid.dataSource.filter();
+
+        $.ajax({
+            url: "/Jini/SaveFilters",
+            type: "POST",
+            data: {
+                filter: JSON.stringify(filters)
+            }
+        });
+    }
+    //Load and apply the previously selected filters
+
+    function loadFilters() {
+        var grid = $("#grid").data("kendoGrid");
+        $.ajax({
+            url: "/Jini/LoadFilters",
+            success: function (state) {
+                if (state === "No Filters") {
+                    window.StartupComplete = true;
+                    return;
+                }
+                else {
+                    var filters = JSON.parse(state);
+                    parseFilters(filters);
+
+                    grid.dataSource.filter({
+                        logic: "and",
+                        filters: filters.filters
+                    });
+
+
+
+                $("#departmentTreeview").kendoTreeView().data("kendoTreeView").expand("li:first");
+                window.StartupComplete = true;
+                }
+            },
+            failure: function () {
+            }
+        });
+    }
+
+    function parseFilters(parsedFilters) {
+        for (var index = 0; index < parsedFilters.filters.length; index++) {
+            if (!isArray(parsedFilters.filters[index]) && parsedFilters.filters[index].filters === undefined) {
+                var listFilter = { filters: []};
+                listFilter.filters.push(parsedFilters.filters[index]);
+                parsedFilters.filters[index] = listFilter;
+            }
+
+            if (parsedFilters.filters[index].filters[0].field === "MediaMaterialName") {
+                updateTreeViewWithFilters($("#mediaTypeTreeview").data("kendoTreeView"), "MediaMaterialName", "Text", parsedFilters.filters[index]);
+            }
+            else if (parsedFilters.filters[index].filters[0].field === "SectionCode") {
+                updateTreeViewWithFilters($("#departmentTreeview").data("kendoTreeView"), "SectionCode", "Id", parsedFilters.filters[index]);
+            }
+            else if (parsedFilters.filters[index].filters[0].field === "PublishDate") {
+                $("#publishdatehyperlink").addClass("k-state-active");
+
+                //publish start date
+                var publishStartDate = new Date(parsedFilters.filters[index].filters[0].value);
+
+                var parsedStartDate = parseDateToShortDate(publishStartDate);
+              
+                $("#start").kendoDatePicker({
+                    value: parsedStartDate
+                });
+
+                //publish end date
+                var publishEndDate = new Date(parsedFilters.filters[index].filters[1].value);
+
+                var parsedEndDate = parseDateToShortDate(publishEndDate);
+
+                $("#end").kendoDatePicker({
+                    value: parsedEndDate
+                });
+               
+                //Format value in filter as well.
+                parsedFilters.filters[index].filters[0].value = new Date(parsedFilters.filters[index].filters[0].value);
+                parsedFilters.filters[index].filters[1].value = new Date(parsedFilters.filters[index].filters[1].value);
+            }
+            else if (parsedFilters.filters[index].filters[0].field === "LatestChangeDateInJini") {
+                $("#latestChangeDateInJinihyperlink").addClass("k-state-active");
+
+                //modified start date
+                var modifiedStartDate = new Date(parsedFilters.filters[index].filters[0].value);
+
+                var parsedStartDate = parseDateToShortDate(modifiedStartDate);
+
+                $("#startJiniChange").kendoDatePicker({
+                    value: parsedStartDate
+                });
+
+                //modified end date
+                var modifiedEndDate = new Date(parsedFilters.filters[index].filters[1].value);
+
+                var parsedEndDate = parseDateToShortDate(modifiedEndDate);
+
+                $("#endJiniChange").kendoDatePicker({
+                    value: parsedEndDate
+                });
+
+                //Format value in filter as well.
+                parsedFilters.filters[index].filters[0].value = new Date(parsedFilters.filters[index].filters[0].value);
+                parsedFilters.filters[index].filters[1].value = new Date(parsedFilters.filters[index].filters[1].value);
+            }
+        }
+
+
+    }
+
+    function parseDateToShortDate(date) {
+
+        var formattedDate = '';
+
+        var _date = new Date(date);
+        var year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(_date);
+        var month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(_date);
+        var day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(_date);
+
+        formattedDate = day + '-' + month + '-' + year;
+
+        return formattedDate;
+
+    }
+
+    function isArray(obj) {
+        return !!obj && obj.constructor === Array;
+    }
+
+    function updateTreeViewWithFilters(treeView, field, filterProperty, parsedFilters) {
+
+        if (field === "MediaMaterialName") {
+            $("#mediatypehyperlink").addClass("k-state-active");
+        }
+        else if (field === "SectionCode") {
+            $("#departmenthyperlink").addClass("k-state-active");
+
+        }
+
+        var nodes = getTreeViewItems(treeView, true);
+
+        var hashMap = {};
+        for (var index = 0; index < parsedFilters.filters.length; index++) {
+            hashMap[parsedFilters.filters[index].value] = true ;
+        }
+
+        for (var i = 0; i < nodes.length; i++) {
+
+            if (hashMap[treeView.text(treeView.parent(treeView.findByUid(nodes[i].uid))) + " - " + nodes[i][filterProperty]] === true && field === "MediaMaterialName") {
+                nodes[i].set("checked", false);
+            }
+            else if ( field === "SectionCode") {
+                if (hashMap[nodes[i][filterProperty]] === true)
+                    nodes[i].set("checked", false);
+
+            }
+
+        }
+
+
+
+    }
+
+
+    // Show Error Message on Error in Getting Data from Url
+    function onGridError() {
+        var grid = $('#grid');
+        if ($(".k-grid-norecords-template").length === 0) {
+            grid
+                .append('<div class="k-grid-norecords" style="margin-top:40px;"><div style="Width : 30em;" class="k-grid-norecords-template"><b>Data kan ikke hentes lige nu. Prøv venligst igen senere</b></div></div>');
+        }
+    }
+
+    //Any Change on Start Date on publishdate filter will be handled by this function
+    function startChange() {
+        var endPicker = $("#end").data("kendoDatePicker"),
+            startDate = this.value();
+
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate());
+            endPicker.min(startDate);
+        }
+    }
+
+    //Any Change on Start Date on publishdate filter will be handled by this function
+    function startChangeJiniChange() {
+        var endPicker = $("#endJiniChange").data("kendoDatePicker"),
+            startDate = this.value();
+
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate());
+            endPicker.min(startDate);
+        }
+    }
+
+    function onCalenderFilterOpen(e) {
+        e.sender.dateView.div.removeClass("k-popup");
+    }
+
+    //Any Change on End Date on publishdate filter will be handled by this function
+    function endChange() {
+        var startPicker = $("#start").data("kendoDatePicker"),
+            endDate = this.value();
+
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate());
+            startPicker.max(endDate);
+        }
+    }
+
+    //Any Change on End Date on publishdate filter will be handled by this function
+    function endChangeJiniChange() {
+        var startPicker = $("#startJiniChange").data("kendoDatePicker"),
+            endDate = this.value();
+
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate());
+            startPicker.max(endDate);
+        }
+    }
+
+    //Make DatePicker Input ReadOnly
+    $(document).ready(function () {
+
+          $('.k-grid-pager').find('.k-pager-first').first().hide();
+        $('.k-grid-pager').find('ul').first().hide();
+        $('.k-grid-pager').find('.k-pager-nav').eq(1).hide()
+        $('.k-grid-pager').find('.k-pager-nav').eq(2).hide()
+        $('.k-grid-pager').find('.k-pager-nav').eq(3).hide()
+        $('.k-filter').addClass('k-i-filter').removeClass('k-filter');
+
+        var deptUrl = "/Jini/GetDepartmentsAndEditorial";
+        var mediaTypesUrl = "/Jini/GetMediaAndMaterialeTypes";
+
+        FetchAndBindTreeView("#departmentTreeview", deptUrl, departmentChecked);
+        FetchAndBindTreeView("#mediaTypeTreeview", mediaTypesUrl, mediaTypeChecked);
+
+        $("#start").attr("readonly", true);
+        $("#end").attr("readonly", true);
+
+        $("#startJiniChange").attr("readonly", true);
+        $("#endJiniChange").attr("readonly", true);
+
+        $("#start").click(function (e) {
+            if ($('#start_dateview').css('display') == 'none') {
+                $("#start").data("kendoDatePicker").open();
+                e.stopPropagation();
+            } else {
+                $("#start").data("kendoDatePicker").close();
+            }
+
+        });
+        $("#end").click(function (e) {
+            if ($('#end_dateview').css('display') == 'none') {
+                $("#end").data("kendoDatePicker").open();
+                e.stopPropagation();
+            } else {
+                $("#end").data("kendoDatePicker").close();
+            }
+        });
+
+        $("#startJiniChange").click(function (e) {
+            if ($('#startJiniChange_dateview').css('display') == 'none') {
+                $("#startJiniChange").data("kendoDatePicker").open();
+                e.stopPropagation();
+            } else {
+                $("#startJiniChange").data("kendoDatePicker").close();
+            }
+
+        });
+        $("#endJiniChange").click(function (e) {
+            if ($('#endJiniChange_dateview').css('display') == 'none') {
+                $("#endJiniChange").data("kendoDatePicker").open();
+                e.stopPropagation();
+            } else {
+                $("#endJiniChange").data("kendoDatePicker").close();
+            }
+        });
+        //load lastly selected filters when document is ready
+
+
+    });
+
+    //Event Handler for MediaType filter change
+    function mediaTypeChecked(e) {
+        var field = "MediaMaterialName";
+        createAndApplyFilters(e.sender, field, "Text", true);
+    }
+
+    //Event Handler for department change
+    function departmentChecked(e) {
+        var field = "SectionCode";
+        createAndApplyFilters(e.sender, field, "Id", false);
+    }
+
+    //Event Handler for LastJiniSync date filter clear button
+    function latestChangeDateInJiniFilterCleared() {
+        $("#latestChangeDateInJinihyperlink").removeClass("k-state-active");
+        var gridData = $("#grid").data("kendoGrid");
+        var currFilterObj = gridData.dataSource.filter();
+        var currentFilters = currFilterObj ? currFilterObj.filters : [];
+
+        currentFilters = removeCurrentFilters(currentFilters, "LatestChangeDateInJini");
+
+        gridData.dataSource.filter({
+            logic: "and",
+            filters: currentFilters
+        });
+    }
+
+    //Event handler for publish Date filter apply button
+    function latestChangeDateInJiniFilterApplied() {
+        $("#latestChangeDateInJinihyperlink").addClass("k-state-active");
+        var latestChangeDateInJini = $("#latestChangeDateInJiniWindow");
+        latestChangeDateInJini.data("kendoWindow").close();
+        var field = "LatestChangeDateInJini";
+        var endDate = $("#endJiniChange").data("kendoDatePicker")._value,
+            startDate = $("#startJiniChange").data("kendoDatePicker")._value;
+        createAndApplyDateFilters(field, startDate, endDate);
+    }
+
+    //Event Handler for publish date filter clear button
+    function publishDateFilterCleared() {
+        $("#publishdatehyperlink").removeClass("k-state-active");
+        var gridData = $("#grid").data("kendoGrid");
+        var currFilterObj = gridData.dataSource.filter();
+        var currentFilters = currFilterObj ? currFilterObj.filters : [];
+
+        currentFilters = removeCurrentFilters(currentFilters, "PublishDate");
+
+        gridData.dataSource.filter({
+            logic: "and",
+            filters: currentFilters
+        });
+    }
+
+    //Event handler for publish Date filter apply button
+    function publishDateFilterApplied() {
+        $("#publishdatehyperlink").addClass("k-state-active");
+        var publishdateWindow = $("#publishdateWindow");
+        publishdateWindow.data("kendoWindow").close();
+        var field = "PublishDate";
+        var endDate = $("#end").data("kendoDatePicker")._value,
+            startDate = $("#start").data("kendoDatePicker")._value;
+        createAndApplyDateFilters(field, startDate, endDate);
+    }
+
+    // Create and Apply Filter for date picker filter values
+    function createAndApplyDateFilters(field, startDate, endDate) {
+        if (startDate === null || endDate === null) {
+            startDate = null;
+            endDate = null;
+        }
+        var gridData = $("#grid").data("kendoGrid");
+        var currFilterObj = gridData.dataSource.filter();
+        var currentFilters = currFilterObj ? currFilterObj.filters : [];
+
+        currentFilters = removeCurrentFilters(currentFilters, field);
+
+        var newFilters = [];
+
+        newFilters.push({
+            field: field,
+            operator: "ge",
+            value: startDate
+        });
+
+        newFilters.push({
+            field: field,
+            operator: "le",
+            value: endDate
+        });
+
+        currentFilters.push({
+            filters: newFilters,
+            logic: "and"
+        });
+
+
+        gridData.dataSource.filter({
+            logic: "and",
+            filters: currentFilters
+        });
+    }
+
+    // Create Filter on basis of Treeview
+    function createAndApplyFilters(sender, field, filterProperty, includeParent) {
+        var checkedNodes = getTreeViewItems(sender, true);
+        var unCheckedNodes = getTreeViewItems(sender, false);
+        if (unCheckedNodes.length > 0) {
+            if (field === "MediaMaterialName") {
+                $("#mediatypehyperlink").addClass("k-state-active");
+            }
+            else if (field === "SectionCode") {
+                $("#departmenthyperlink").addClass("k-state-active");
+            }
+
+        }
+        if (unCheckedNodes.length == 0) {
+            if (field === "MediaMaterialName") {
+                $("#mediatypehyperlink").removeClass("k-state-active");
+            }
+            else if (field === "SectionCode") {
+                $("#departmenthyperlink").removeClass("k-state-active");
+            }
+
+        }
+        var values, op, logic;
+        if (true) {
+            values = unCheckedNodes;
+            op = "neq";
+            logic = "and";
+        }
+
+        var gridData = $("#grid").data("kendoGrid");
+        var currFilterObj = gridData.dataSource.filter();
+        var currentFilters = currFilterObj ? currFilterObj.filters : [];
+
+        currentFilters = removeCurrentFilters(currentFilters, field);
+
+        var newFilters = [];
+        var filterVal;
+        if (values.length === 1) {
+            filterVal = "";
+            if (includeParent) {
+                filterVal = sender.text(sender.parent(sender.findByUid(values[0].uid))) + " - ";
+            }
+            filterVal += values[0][filterProperty];
+            currentFilters.push({
+                field: field,
+                operator: op,
+                value: filterVal
+            });
+        } else {
+            for (var i = 0; i < values.length; i++) {
+                filterVal = "";
+                if (includeParent) {
+                    filterVal = sender.text(sender.parent(sender.findByUid(values[i].uid))) + " - ";
+                }
+                filterVal += values[i][filterProperty];
+                newFilters.push({
+                    field: field,
+                    operator: op,
+                    value: filterVal
+                });
+            }
+            if (newFilters.length > 0) {
+                currentFilters.push({
+                    filters: newFilters,
+                    logic: logic
+                });
+            }
+
+        }
+        // finally, the currentFilters array is applied back to the Grid, using "and" logic.
+        gridData.dataSource.filter({
+            logic: "and",
+            filters: currentFilters
+        });
+    }
+
+    // Clear currently Applied Filters
+    function removeCurrentFilters(currentFilters, field) {
+
+        // iterate over current filters array. if a filter for "filterField" is already
+        // defined, remove it from the array
+        // once an entry is removed, we stop looking at the rest of the array.
+        var i;
+        if ((currentFilters && currentFilters.length > 0)) {
+            for (i = 0; i < currentFilters.length; i++) {
+                var existingFilters;
+                if (currentFilters[i].filters === undefined) {
+                    if (currentFilters[i].field === field) {
+                        currentFilters.splice(i, 1);
+                        break;
+                    }
+                } else {
+                    existingFilters = $.grep(currentFilters[i].filters, function (e) { return e.field === field; });
+                    if (existingFilters !== undefined && existingFilters !== null && existingFilters.length > 0) {
+                        currentFilters.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        }
+        return currentFilters;
+    }
+
+    // Apply Default Sort on Grid
+    function applyDefaultSort(e) {
+        var dsSort = [];
+        dsSort.push({ field: "HasConfiguration", dir: "asc" });
+        dsSort.push({ field: "PublishDate", dir: "asc" });
+        e.sender.dataSource.sort(dsSort);
+    }
+
+    // Fetch data and bind to TreeView Filter
+    function FetchAndBindTreeView(ctrl, url, checkEvt) {
+        var hierarchicalDataSource = new kendo.data.HierarchicalDataSource({
+            transport: {
+                read: {
+                    url: url,
+                    dataType: "json"
+                }
+            },
+            schema: {
+                model: {
+                    id: "Id",
+                    hasChildren: "HasChildren",
+                    children: "Items"
+                }
+            }
+        });
+        $(ctrl).kendoTreeView({
+            dataSource: hierarchicalDataSource,
+            checkboxes: {
+                checkChildren: true
+            },
+            check: checkEvt,
+            dataBound: treeViewBound,
+            loadOnDemand: false,
+            dataTextField: "Text"
+        });
+    }
+
+    // Configure Click event of Filter
+    function ConfigureFilter(ctrlWin, ctrlFilterBtn) {
+        var ctrlWindow = $(ctrlWin),
+            ctrlFilter = $(ctrlFilterBtn);
+        ctrlFilter.click(function (e) {
+            e.stopPropagation();
+            closeTreeViewModel(e);
+            if (ctrlWindow.is(":hidden")) {
+                SetWindowPosition($(this), ctrlWindow);
+                ctrlWindow.data("kendoWindow").open();
+
+            } else {
+                ctrlWindow.data("kendoWindow").close();
+
+            }
+            return false;
+        });
+    }
+
+    // Grid constructor. Performs all startup opertaions for Kendo Grid, including data source binding and config
+    window.StartupComplete = false;
+
+    function InitGridControls(e, grid) {
+        window.StartupComplete = true;
+        ConfigureFilter("#departmentWindow", "#departmentFilter");
+        ConfigureFilter("#mediaTypeWindow", "#mediatypeFilter");
+        ConfigureFilter("#publishdateWindow", "#publishdateFilter");
+        ConfigureFilter("#latestChangeDateInJiniWindow", "#latestChangeDateInJiniFilter");
+
+        // Hide Custom Filter Windows on Click
+        $("*").not("#departmentFilter").not("#mediatypeFilter").not("#publishdateFilter").not("#latestChangeDateInJiniFilter").not(".k-i-calendar").click(function (x) {
+            closeTreeViewModel(x);
+        });
+
+        $("#clearCache").bind("click", function () {
+            $.get("@Utils.JiniServiceUrl" + "v1/Jini/ClearCache");
+        });
+
+        (function ($) {
+            var originalFilter = kendo.data.DataSource.fn.filter;
+
+            kendo.data.DataSource.fn.filter = function (e) {
+                if (e != null && e.filters.length > 0) {
+                    if (e.filters[0].value != null)
+                        e.filters[0].value = e.filters[0].value.trim();
+                }
+
+                return originalFilter.apply(this, arguments);
+            };
+        })(jQuery);
+
+        loadFilters();
+    }
+
+    function filterMenuInit(e) {
+        if (e.field === "AuthorsString" || e.field === "Isbn" || e.field === "Title") {
+            var firstValueDropDown = e.container.find("select:eq(0)").data("kendoDropDownList");
+
+            setTimeout(function () {
+                firstValueDropDown.wrapper.hide();
+            });
+
+        }
+
+
+
+    }
+    $.fn.textWidth = function (text, font) {
+        if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+        $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+        return $.fn.textWidth.fakeEl.width();
+    };
+
+    $.fn.detectFont = function () {
+        var fonts = $.map($(this).css('font-family').split(","), $.trim);
+        if (fonts.length == 1)
+            return fonts[0];
+
+        var element = $(this);
+        var detectedFont = null;
+        var found = false;
+        fonts.forEach(function (font) {
+            if (!found) {
+                var originalWidth = element.width();
+                var cloneWidth = element.css({ 'font-family': font }).width();
+                element.css({ 'font-family': '' });
+                if (originalWidth == cloneWidth) {
+                    detectedFont = font;
+                    found = true;
+                }
+            }
+        });
+
+        return detectedFont;
+    }
+
+    // customize the _show method to call options.beforeShow
+    // to allow preventing the tooltip from being shown..
+    $(document).ready(function () {
+
+        kendo.ui.Tooltip.fn._show = function (show) {
+            return function (target) {
+                var e = {
+                    sender: this,
+                    target: target,
+                    preventDefault: function () {
+                        this.isDefaultPrevented = true;
+                    }
+                };
+
+                if (typeof this.options.beforeShow === "function") {
+                    this.options.beforeShow.call(this, e);
+                }
+                if (!e.isDefaultPrevented) {
+                    // only show the tooltip if preventDefault() wasn't called..
+                    show.call(this, target);
+                }
+            };
+        }(kendo.ui.Tooltip.fn._show);
+    });
+
+    var maxTooltipWidth = 0;
+
+    function gridBound(e) {
+
+            $(".k-filter").prop("title", "Filtrer");
+            $('#grid tr').height(35);
+
+            //sort Grid's dataSource
+        if (!window.StartupComplete) {
+            InitGridControls(e, this);
+            $("#contextmenudiv").show();
+        }
+        // iterate the table rows and apply custom row and cell styling
+        var rows = e.sender.tbody.children();
+
+        // Get Index of Configuration Column
+        var configIndex = this.wrapper.find(".k-grid-header [data-field=" + "ConfigurationText" + "]").index();
+        for (var j = 0; j < rows.length; j++) {
+            var gridRow = $(rows[j]);
+            var dataItem = e.sender.dataItem(gridRow);
+            if (dataItem != undefined && dataItem !== 'undefined') {
+                var publishedDate = dataItem.get("PublishDate");
+                var hasConfiguration = dataItem.get("HasConfiguration");
+                var hasDraft = dataItem.get("HasDraft");
+                var hasTrialAccess = dataItem.get("HasTrailAccess");
+                var hasProductAccess = dataItem.get("HasProductAccess");
+                var configCell = gridRow.children().eq(configIndex);
+
+                if (hasProductAccess && hasConfiguration) {
+                    //$(configCell).addClass("configured");
+                    $(configCell)
+                        .prepend(
+                            ' <svg class="grid-icon icon-check"><use xlink:href="../Content/icons/jini.svg#icon-check"></use></svg>');
+                    if (hasTrialAccess) {
+                        $(configCell)
+                            .prepend(
+                                ' <svg class="grid-icon icon-trial"><use xlink:href="../Content/icons/jini.svg#icon-trial"></use></svg>');
+                    }
+                    if (hasDraft) {
+                        $(configCell)
+                            .prepend(
+                                ' <svg class="grid-icon icon-draft"><use xlink:href="../Content/icons/jini.svg#icon-draft"></use></svg>');
+                    }
+
+                } else {
+                    if (hasDraft) {
+                        // $(configCell).addClass("no-config");
+                        $(configCell)
+                            .prepend(
+                                ' <svg class="grid-icon icon-flag"><use xlink:href="../Content/icons/jini.svg#icon-flag"></use></svg>');
+                        $(configCell)
+                            .prepend(
+                                ' <svg class="grid-icon icon-draft"><use xlink:href="../Content/icons/jini.svg#icon-draft"></use></svg>');
+                    } else {
+                        // $(configCell).addClass("no-config");
+                        $(configCell)
+                            .prepend(
+                                ' <svg class="grid-icon icon-flag"><use xlink:href="../Content/icons/jini.svg#icon-flag"></use></svg>');
+                    }
+                }
+            }
+        }
+
+        // Adjust Tooltip width
+        function autoTooltipSize(e) {
+            if (this.content.text().length > 0) {
+                if (maxTooltipWidth !== 0) {
+                    this.content.parent().width(maxTooltipWidth + 25);
+                    this.popup.wrapper.width(maxTooltipWidth + 25);
+                } else {
+                    this.content.parent().css("width", "auto");
+                    this.popup.wrapper.css("width", "auto");
+                }
+            }
+        }
+
+        if ($("#grid").data("kendoTooltip") == null) {
+            // Add Tooltip on 5th Column Hover
+
+            $("#grid")
+                .kendoTooltip({
+                    filter: "td",
+                    width: 375,
+                    position: "bottom",
+                    show: autoTooltipSize,
+                    beforeShow: function(e) {
+                        this.refresh();
+                        $(".k-grid>table").prop("display", "inline-flex");
+                        $(".k-grid>table").removeProp("display");
+                        var returnVal = getTooltipText(e);
+                        if (returnVal == "") {
+                            e.preventDefault();
+                        }
+                    },
+                    content: function(e) {
+                        maxTooltipWidth = 0;
+                        var returnVal = getTooltipText(e);
+                        return returnVal;
+                    }
+                })
+                .data("kendoTooltip");
+            $("body").on("click",
+                '.jini-tooltip-action',
+                function() {
+                    var rowUid = $(this).data("uid");
+                    var grid = $("#grid").data("kendoGrid");
+                    var row = grid.tbody.find("tr[data-uid='" + rowUid + "']");
+                    grid.select(row);
+                    rowSelect();
+                });
+
+        }
+
+        //Handle double click event on grid row
+        $('#grid table tr').unbind("dblclick").dblclick(function(e) {
+            e.stopPropagation();
+            rowSelect(e);
+        });
+
+        //Inititalize the current product count in #countElement
+        var count = $("#grid").data("kendoGrid").dataSource.total();
+        $("#countElement").html(count);
+        e.preventDefault();
+
+    }
+
+    function getTooltipText(e) {
+        var element = e.target[0];
+        var returnVal = "";
+        maxTooltipWidth = 0;
+        if (element.offsetWidth < element.scrollWidth || element.cellIndex == 6) {
+            var dataItem = $("#grid").data("kendoGrid").dataItem(e.target.closest("tr"));
+            var fontSize = $(e.sender.content).css('font-size');
+            var fontFamily = $(element).detectFont();
+            var currentFont = fontSize + " " + fontFamily;
+            switch (element.cellIndex) {
+            case 0:
+                returnVal = dataItem.DepartmentSectionName;
+                break;
+            case 1:
+                returnVal = dataItem.Isbn;
+                break;
+            case 2:
+                if (dataItem.SubTitle != null && dataItem.SubTitle != "")
+                    returnVal = dataItem.Title + " " + dataItem.SubTitle;
+                else returnVal = dataItem.Title;
+                break;
+            case 3:
+                for (var i = 0; i < dataItem.Authors.length; i++) {
+                    var len = $.fn.textWidth(dataItem.Authors[i].FullName, currentFont);
+                    if (len > maxTooltipWidth) {
+                        maxTooltipWidth = len;
+                    }
+
+                }
+                var currentRow = "";
+                for (var i = 0; i < dataItem.Authors.length; i++) {
+                    var temp = currentRow;
+                    currentRow += dataItem.Authors[i].FullName;
+                    if ($.fn.textWidth(currentRow, currentFont) >= maxTooltipWidth + 15) {
+                        if (temp != "") {
+                            returnVal += $.trim(temp) + "<br />";
+                            currentRow = dataItem.Authors[i].FullName;
+                        } else {
+                            returnVal += $.trim(dataItem.Authors[i].FullName) + ",<br />";
+                            currentRow = "";
+                        }
+                    }
+                    if (i !== dataItem.Authors.length - 1) {
+                        if (currentRow !== "") {
+                            currentRow += ", ";
+                        }
+                    } else {
+                        returnVal += $.trim(currentRow);
+                    }
+                }
+                break;
+            case 4:
+                returnVal = dataItem.MediaMaterialName;
+                break;
+            case 5:
+                returnVal = dataItem.PublishDate;
+                break;
+            case 6:
+                if (dataItem.HasConfiguration) {
+                    if (dataItem.HasDraft) {
+                        returnVal =
+                            "Produktet har en godkendt salgsopsætning samt en ny version, som endnu ikke er godkendt.";
+                    } else {
+                        returnVal = "Produktet har en godkendt salgsopsætning.";
+                    }
+                } else {
+                    if (dataItem.HasDraft) {
+                        returnVal =
+                            "Produktet har en påbegyndt salgsopsætning (kladde), som ikke er godkendt. For at produktet kan blive solgt på shoppen skal det have en godkendt salgsopsætning.";
+                    } else {
+                        returnVal =
+                            "Produktet har ingen salgsopsætning. For at produktet kan blive solgt på shoppen skal det have en godkendt salgsopsætning.";
+                    }
+                }
+                break;
+            }
+            if (element.cellIndex == 6) {
+                maxTooltipWidth = 375;
+            } else if (maxTooltipWidth === 0) {
+                maxTooltipWidth = $.fn.textWidth(returnVal, currentFont);
+            }
+
+        }
+        return returnVal;
+    }
+
+    // Close all open windows when mouse is clicked outside of their body
+    function closeTreeViewModel(e) {
+
+        var departmentWindow = $("#departmentWindow");
+        var mediatypeWindow = $("#mediaTypeWindow");
+        var publishdateWindow = $("#publishdateWindow");
+        var latestChangeDateInJiniWindow = $("#latestChangeDateInJiniWindow");
+        if ($(e.target).parents('#departmentWindow').length === 0) {
+            if (!departmentWindow.is(":hidden")) {
+                departmentWindow.data("kendoWindow").close();
+            }
+        }
+        if ($(e.target).parents('#mediaTypeWindow').length === 0) {
+            if (!mediatypeWindow.is(":hidden")) {
+                mediatypeWindow.data("kendoWindow").close();
+            }
+        }
+        if (($(e.target).parents('#publishdateWindow').length === 0) &&
+            e.currentTarget.id !== 'start_dateview' &&
+            e.currentTarget.id !== 'end_dateview') {
+            if (!publishdateWindow.is(":hidden") &&
+            ($(e.target).parents('#start_dateview').length === 0 &&
+                $(e.target).parents('#end_dateview').length === 0)) {
+                publishdateWindow.data("kendoWindow").close();
+            }
+        } else if (e.currentTarget.id == 'publishdateApply' || e.currentTarget.id == 'publishdateClear') {
+            if (!publishdateWindow.is(":hidden")) {
+                publishdateWindow.data("kendoWindow").close();
+            }
+        } else if (e.currentTarget.id == 'start_dateview' || e.currentTarget.id == 'end_dateview') {
+            e.stopPropagation();
+        }
+
+        if (($(e.target).parents('#latestChangeDateInJiniWindow').length === 0) &&
+            e.currentTarget.id !== 'startJiniChange_dateview' &&
+            e.currentTarget.id !== 'endJiniChange_dateview') {
+            if (!latestChangeDateInJiniWindow.is(":hidden") &&
+            ($(e.target).parents('#start_dateview').length === 0 &&
+                $(e.target).parents('#end_dateview').length === 0)) {
+                latestChangeDateInJiniWindow.data("kendoWindow").close();
+            }
+        } else if (e.currentTarget.id == 'latestChangeDateInJiniApply' ||
+            e.currentTarget.id == 'latestChangeDateInJiniClear') {
+            if (!latestChangeDateInJiniWindow.is(":hidden")) {
+                latestChangeDateInJiniWindow.data("kendoWindow").close();
+            }
+        } else if (e.currentTarget.id == 'startJiniChange_dateview' || e.currentTarget.id == 'endJiniChange_dateview') {
+            e.stopPropagation();
+        }
+        return false;
+    }
+
+    //Position of Filter Windows on the basis of document window size
+    function SetWindowPosition(e, crtlWin) {
+        var position;
+        // Popup position shouldn't exceed Window's width
+        if (e.offset().left + 200 > $(window).width()) {
+            position = e.offset().left - 200;
+        } else {
+            position = e.offset().left;
+        }
+        crtlWin.closest(".k-window").css({
+            top: e.offset().top + 25,
+            left: position
+        });
+        return crtlWin;
+    }
+
+    // Get Treeview Items
+    function getTreeViewItems(treeview, checked) {
+        var nodes = treeview.dataSource.view();
+        return getChildrenNodesOfTreeView(nodes, checked);
+    }
+
+    // Get Children of Treeview Item
+    function getChildrenNodesOfTreeView(nodes, checked) {
+        var node, childNodes;
+        var nodesArr = [];
+        for (var i = 0; i < nodes.length; i++) {
+            node = nodes[i];
+            // Get only children
+            if (node.checked === checked && !node.hasChildren) {
+                nodesArr.push(node);
+            }
+            // to understand recursion, first
+            // you must understand recursion
+            if (node.hasChildren) {
+                childNodes = getChildrenNodesOfTreeView(node.children.view(), checked);
+                if (childNodes.length > 0) {
+                    nodesArr = nodesArr.concat(childNodes);
+                }
+            }
+        }
+        return nodesArr;
+    }
+
+    // Check All Treeview Nodes
+    function checkNodes(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].checked = true;
+            if (nodes[i].hasChildren) {
+                checkNodes(nodes[i].children.view());
+            }
+        }
+    }
+
+    // Perform additional operations after department TreeView Data Bound
+    function treeViewBound(e) {
+        $("#departmentTreeview").children().unbind("click");
+        $("#mediaTypeTreeview").children().unbind("click");
+
+        var treeView = e.sender;
+        treeView.expand(".k-group li:first");
+        //treeView.expand(".k-item .k-plus");
+
+        e.sender.element.find('input[type="checkbox"]').attr('checked', 'checked');
+        var items = treeView.dataSource.view();
+        checkNodes(items);
+    }
+
+    // on row slect event of kendo grid - start wizard
+    function rowSelect(e) {
+        var kendoGrid = $("#grid").data("kendoGrid");
+        var data_= kendoGrid.dataItem(kendoGrid.select());
+        if (data_ != null) {
+            $("#loader").css({ "display": "block" });
+            $("#grid").css({ "pointer-events": "none" });
+            $("#grid").css({ "opacity": ".7" });
+
+
+
+            $.get('@Utils.JiniServiceUrl' + "v1/Product/GetProductDetails/" + data_.Isbn, function (data, status) {
+            $("body").append('<form id="wizardForm" action="../Wizard/SalesConfiguration" method="POST" style="display:none;">');
+            $("body #wizardForm").append('<input type="text"  value="' + data.Isbn + '" name="Isbn" />');
+            $("body #wizardForm").append('<input type="text"  name="Title" value="' + data.Title + '" />');
+            $("body #wizardForm").append('<input type="text"  name="SubTitle" value="' + data.SubTitle + '" />');
+            $("body #wizardForm").append('<input type="text"  name="MediaTypeName" value="' + data.MediaTypeName + '" />');
+            $("body #wizardForm").append('<input type="text"  name="HasConfiguration" value="' + data.HasConfiguration + '" />');
+            $("body #wizardForm").append('<input type="text"  name="DepartmentName" value="' + data.DepartmentName + '" />');
+            $("body #wizardForm").append('<input type="text"  name="HasDraft" value="' + data_.HasDraft + '" />');
+            $("body #wizardForm").append('<input type="text"  name="Version" value="V1" />');
+            $("body #wizardForm").append('<input type="submit" id="createSalesConfig" value="Create" />');
+            $("#createSalesConfig").click();
+        });
+            }
+    }
+
+
+</script>
+<style>
+    .k-calendar .k-header .k-state-hover {
+        background-color: #E43c48;
+    }
+
+    .k-grid-filter {
+        outline: none;
+    }
+
+    .k-icon {
+        font-size: 19px;
+    }
+
+    .k-link {
+        font-size: 16px;
+    }
+
+
+    .k-grid-filter.k-state-active .k-i-filter {
+        color: red;
+    }
+</style>

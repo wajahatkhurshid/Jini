@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>1.4.2.6</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <PackageOutputPath>..\build_output\packages</PackageOutputPath>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <TargetFramework>net461</TargetFramework>
+    <Product>Gyldendal.Jini.Services.ApiClient</Product>
+    <PackageId>Gyldendal.Jini.Services.ApiClient</PackageId>
+    <AssemblyTitle>Gyldendal.Jini.Services.ApiClient</AssemblyTitle>
+    <Description>ApiClient for the Jini Services</Description>
+    <Authors>ITAK</Authors>
+    <PackageProjectUrl>https://dev.azure.com/gyldendaldenmark/Udd%20Forretning/_git/Jini</PackageProjectUrl>
+    <RepositoryUrl>https://dev.azure.com/gyldendaldenmark/Udd%20Forretning/_git/Jini</RepositoryUrl>
+    <Company>Gyldendal™</Company>
+    <Copyright>© Gyldendal</Copyright>
+    <PackageTags>Gyldendal;Jini;ApiClient</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <!--Common Package-->
+
+  <ItemGroup>
+    <PackageReference Include="Gyldendal.Api.ShopServices.Contracts" Version="1.5.6" />
+    <PackageReference Include="Gyldendal.Common.WebUtils" Version="2.3.1.13" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="pack">
+    <Exec Command="nuget push &quot;$(PackageOutputPath)\$(PackageId).$(PackageVersion).nupkg&quot; -ApiKey 24FCB347-75E6-41D6-BF80-E49CB142C092 -Source &quot;https://gyldendalnugetserver.azurewebsites.net/nuget&quot; -ConfigFile &quot;..\.nuget\nuget.config&quot;&#xD;&#xA;nuget push &quot;$(PackageOutputPath)\$(PackageId).$(PackageVersion).symbols.nupkg&quot; -ApiKey 24FCB347-75E6-41D6-BF80-E49CB142C092 -Source &quot;https://gyldendalnugetserver.azurewebsites.net/nuget&quot; -ConfigFile &quot;..\.nuget\nuget.config&quot;&#xD;&#xA;Exit /B 0&#xD;&#xA;" />
+  </Target>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'all'))" />
+    </ItemGroup>
+  </Target>
+</Project>

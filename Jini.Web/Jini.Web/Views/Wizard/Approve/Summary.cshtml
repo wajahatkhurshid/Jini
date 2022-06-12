@@ -1,0 +1,46 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+<section class="block block-summary">
+    <h1>Grundopsætning</h1>
+    <dl class="config-summary">
+        <dt ng-show='jiniData.AccessForm.length > 0'>Salgsformer</dt>
+        <dd ng-show='jiniData.AccessForm.length > 0'><text ng-repeat="access in jiniData.AccessForm">{{access.DisplayName == "Andet salg" ? access.DisplayName : access.DisplayName + "adgang" }}{{$last ? '' : ', '}}</text></dd>
+
+        <dt ng-hide='(jiniData.AccessForm.length ==1 && jiniData.AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales) )|| (jiniData.AccessForm.length == 0)'>Abo./leje</dt>
+        <dd ng-hide='(jiniData.AccessForm.length ==1 && jiniData.AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales) )|| (jiniData.AccessForm.length == 0)'><text ng-repeat="salesForm in jiniData.SalesForm">{{salesForm.DisplayName}}</text></dd>
+
+        <dt ng-hide='(jiniData.AccessForm.length ==1 && jiniData.AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales) )|| (jiniData.AccessForm.length == 0)'>Perioder</dt>
+        <dd ng-hide='(jiniData.AccessForm.length ==1 && jiniData.AccessForm[0].Code == @((int) Enums.EnumAccessForm.ContactSales) ) || (jiniData.AccessForm.length == 0)'>
+            <text ng-repeat="period in jiniData.Periods">{{period.DisplayName}}{{$last ? '' : ', '}} </text>
+        </dd>
+
+        <dt ng-show='jiniData.HasTrial'>Prøveadgang</dt>
+        <dd ng-show='jiniData.HasTrial'>Ja</dd>
+    </dl>
+
+
+    <div ng-show='searchArray(@((int)Enums.EnumAccessForm.School), "AccessForm").length > 0'>
+        @Html.Partial("~/Views/Wizard/Approve/ReviewSchoolLicense.cshtml")
+    </div>
+
+    <div ng-show="searchArray(@((int)Enums.EnumAccessForm.Class), 'AccessForm').length > 0">
+        @Html.Partial("~/Views/Wizard/Approve/ReviewClassLicense.cshtml")
+    </div>
+
+    <div ng-show='searchArray(@((int)Enums.EnumAccessForm.Teacher), "AccessForm").length > 0'>
+        @Html.Partial("~/Views/Wizard/Approve/ReviewTeacherLicense.cshtml")
+    </div>
+
+    <div ng-show="searchArray(@((int) Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0">
+        @Html.Partial("~/Views/Wizard/Approve/ReviewSingleUserLicense.cshtml")
+    </div>
+
+    <div ng-show="searchArray(@((int) Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0">
+        @Html.Partial("~/Views/Wizard/Approve/ReviewContactSalesLicense.cshtml")
+    </div>
+
+    <div ng-show="jiniData.HasTrial">
+        @Html.Partial("~/Views/Wizard/Approve/ReviewTrialLicense.cshtml")
+    </div>
+
+</section>

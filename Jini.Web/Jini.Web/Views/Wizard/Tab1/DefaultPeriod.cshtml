@@ -1,0 +1,60 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+<section class="jini-popup" id="custom-period-popup">
+    @*{{lookupPeriodUnitType}}
+    {{Periods}}*@
+
+    <div id="period-container" class="jini-popup-content custom-period-popup-content" style="max-height:200px; overflow:auto;">
+        
+        <div>
+            <div class="period-row-container" ng-repeat="item in CustomPeriods">
+                <p ng-show="(Validations.indexOf('customperiod:interconflict:duplicate'+$index) != -1) || (Validations.indexOf('customperiod:intraconflict:duplicate'+$index) != -1)" class="jini-msg error">
+                    <img src="~/img/icon-cross.png" /> Perioden er allerede tilføjet. Vælg venligst en anden.
+                </p>
+                <div class="period-row">
+                    <div class="period-string">
+                        <div class="period-unit-count-wrapper">
+                            <input class="period-unit-count" k-value="1" kendo-numeric-text-box="numeric" k-decimals="0" k-format="'n0'" k-min="1" k-step="1"
+                                   k-ng-model="item.periodUnitCount" k-on-change="onCustomPeriodInputChange(item)" k-on-spin="onCustomPeriodInputChange(item)" />
+
+                        </div>
+
+                        <select kendo-drop-down-list class="period-unit-type"
+                                k-data-text-field="'DisplayName'"
+                                k-data-value-field="'Code'"
+                                k-ng-model="item.periodUnitType"
+                                k-data-source="item.lookupPeriodUnitType"></select>
+
+                        <span class="period-unit-label">
+                            {{SalesForm[0].Code == @((int)Enums.EnumSalesForm.Subscription)? 'binding' : 'adgang'}}
+                        </span>
+                    </div>
+                    <button class="jini-btn standout period-remove" ng-click="onRemoveCustomPeriod($index)">Fjern</button>
+                </div>
+                    
+            </div>
+            <button class="period-add" ng-click="onAddCustomPeriod()">Tilføj</button>
+        </div>
+    </div>
+    <div class="jini-popup-buttons-pane">
+        <button class="jini-btn standout" id="append-period" ng-click="onAppendCustomPeriods()">Gem</button>
+        <button class="jini-btn" id="close-period" onclick="onClose()">Annuller</button>
+    </div>
+</section>
+
+<script>
+    
+
+    //$('.period-add').click(function () {
+    //    addPeriodRow();
+    //});
+    $(".period-add").kendoButton({
+        icon: "plus"
+    });
+
+    function onClose() {
+        $('#close-period').closest(".k-window-content").data("kendoWindow").close();
+    }
+       
+</script>
+ 

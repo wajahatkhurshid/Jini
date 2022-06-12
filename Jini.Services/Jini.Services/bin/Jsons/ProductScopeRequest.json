@@ -1,0 +1,27 @@
+{
+  "parentSubscriptionId": 0,
+  "name": "Jini Product Scope",
+  "enabled": true,
+  "offsetDate": "2000-09-01T12:28:28.923Z",
+  "businessObjectScope": {
+    "businessObjectName": "ProductBusinessObject",
+    "resolvableScopeNodes": [],
+    "metadataScopeNodes": [
+
+      { "metadataTechnicalName": "ProductISBN13" },
+      { "metadataTechnicalName": "ProductPrintRun" },
+      { "metadataTechnicalName": "ProductEdition" },
+      { "metadataTechnicalName": "ProductTitle" },
+      { "metadataTechnicalName": "ProductSubtitle" },
+      { "metadataTechnicalName": "ProductMediaMaterialeType" },
+      { "metadataTechnicalName": "ProductEducationSubjectLevel" },
+      { "metadataTechnicalName": "ProductEditorialDivision" },
+      { "metadataTechnicalName": "ProductPublishedDate" }
+
+    ],
+    "phaseScopeNodes": [
+      { "phaseTechnicalName": "Published" },
+      { "phaseTechnicalName": "Termination" }
+    ]
+  }
+}

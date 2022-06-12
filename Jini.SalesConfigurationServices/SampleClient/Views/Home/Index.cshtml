@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<button ng-click="Refresh()" class="btn" style="margin: 5px">Clear</button>
+<div class="jumbotron">
+    <div style="margin:0 auto; width:600px">
+        <table cellpadding="10">
+            <tr>
+                <td><h1>ISBN</h1></td>
+                <td><h1>Institution#</h1></td>
+            </tr>
+            <tr>
+                <td><input id="isbn" name="ISBN" ng-model="ISBN" type="text" class="input-lg" /></td>
+                <td><input id="institutionNumber" name="InstitutionNumber" ng-model="InstitutionNo" type="text" class="input-lg" /></td>
+            </tr>
+        </table>
+
+        <div style="margin:0 auto; width: 200px">
+            <p><button id="checkAvailability" ng-click="IsPublished()" class="btn btn-primary btn-lg">Check Availability &raquo;</button></p>
+            <p><button id="getConfiguration" type="button" ng-click="GetConfiguration()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> Get Configuration &raquo;</button></p>
+
+        </div>
+        
+    </div>
+
+
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Sales Configuration</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/SalesConfiguration/_Summary.cshtml")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="calculatePrice" type="button" ng-click="CalculatePrice()" class="btn btn-primary">Calculate Price</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="D:\Wajahat\Jini\Gyldendal.Jini\Jini.Services\Jini.Services\Bin\Gyldendal.LoggingManager.dll" /&gt;&#xD;
+  &lt;Assembly Path="D:\Wajahat\Jini\Gyldendal.Jini\Jini.Services\Jini.Services\Bin\LoggingManager.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cead2082_002D15eb_002D4ce6_002Dae0f_002D8991b3584929/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetProductsShouldReturnProducts" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::91645522-07D1-4C44-8B76-820BCD19E166::.NETFramework,Version=v4.6.1::Gyldendal.Jini.Services.Tests.Controllers.ProductControllerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::91645522-07D1-4C44-8B76-820BCD19E166::.NETFramework,Version=v4.6.1::Gyldendal.Jini.Services.Tests.Controllers.DeflatedSalesConfigurationTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::91645522-07D1-4C44-8B76-820BCD19E166::.NETFramework,Version=v4.6.1::Gyldendal.Jini.Services.Tests.Services.RapServiceTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

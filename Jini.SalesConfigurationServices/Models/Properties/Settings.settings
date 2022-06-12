@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SalesConfigurationServices.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ActiveConfiguration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Godkendt</Value>
+    </Setting>
+    <Setting Name="InactiveConfiguration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Afventer</Value>
+    </Setting>
+    <Setting Name="CacheDuration" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="DbServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">JINI-DB-DEV</Value>
+    </Setting>
+    <Setting Name="DbName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SalesConfiguration_Dev</Value>
+    </Setting>
+    <Setting Name="DbIntegratedSecurity" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DbUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jini</Value>
+    </Setting>
+    <Setting Name="DbPass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jini</Value>
+    </Setting>
+    <Setting Name="RapMetaServiceUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://test.rapmetaservice.gyldendal.dk/api/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

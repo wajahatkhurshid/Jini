@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 14.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="ProjectPath = ..\Jini ModelLib\Jini ModelLib.csproj" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2016-06-14T07:49:42" Importance="Medium" Text="Jini Model's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'Jini Model::SalesConfigurationParameters' -  (Class), 'Jini Model::AccessForm' -  (Class), 'Jini Model::Period' -  (Class), 'Jini Model::PriceModel' -  (Class), 'Jini Model::LicenseParameters' -  (Class), 'Jini Model::UnicParameters' -  (Class), 'Jini Model::LogonParameters' -  (Class), 'Jini Model::GradeLevel' -  (Class), 'Jini Model::Class' -  (Class) " />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::SalesConfigurationParameters' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\SalesConfigurationParameters.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::AccessForm' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\AccessForm.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::Period' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\Period.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::PriceModel' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\PriceModel.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::LicenseParameters' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\LicenseParameters.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::UnicParameters' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\UnicParameters.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::LogonParameters' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\LogonParameters.cs" />
+  <Message Timestamp="2016-06-14T07:49:43" Importance="Medium" Text="'Jini Model::GradeLevel' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\GradeLevel.cs" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Medium" Text="'Jini Model::Class' -  (Class) : success (file replaced) - D:\Repos\jini-frontend\Jini\Jini ModelLib\GeneratedCode\Class.cs" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="ProjectPath = ..\Jini ModelLib\Jini ModelLib.csproj" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Medium" Text="Jini Model's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'Jini Model::SalesConfigurationParameters' -  (Class), 'Jini Model::AccessForm' -  (Class), 'Jini Model::Period' -  (Class), 'Jini Model::PriceModel' -  (Class), 'Jini Model::LicenseParameters' -  (Class), 'Jini Model::UnicParameters' -  (Class), 'Jini Model::LogonParameters' -  (Class), 'Jini Model::GradeLevel' -  (Class), 'Jini Model::Class' -  (Class) " />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::SalesConfigurationParameters' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::AccessForm' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::Period' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::PriceModel' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::LicenseParameters' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::UnicParameters' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::LogonParameters' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::GradeLevel' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::Class' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="The selection included 7 elements which were not bound to a template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::' -  (Association): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::' -  (Association): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::' -  (Association): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'1b150450-87f4-4a45-8230-e5e4cc5131bf' -  (Generalization): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'7a64d21f-4d5c-428b-859f-e59c0d3171f4' -  (Generalization): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::' -  (Association): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="Diagnostic" Text="'Jini Model::' -  (Association): no bound template." />
+  <Message Timestamp="2016-06-14T07:49:44" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>

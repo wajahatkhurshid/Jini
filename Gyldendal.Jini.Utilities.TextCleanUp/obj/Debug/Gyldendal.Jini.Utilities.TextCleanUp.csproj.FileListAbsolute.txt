@@ -1,0 +1,17 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\Gyldendal.Jini.Utilities.TextCleanUp.exe.config
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\Gyldendal.Jini.Utilities.TextCleanUp.exe
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\Gyldendal.Jini.Utilities.TextCleanUp.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\EntityFramework.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\EntityFramework.SqlServer.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\HtmlAgilityPack.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\Newtonsoft.Json.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\EntityFramework.xml
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\EntityFramework.SqlServer.xml
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\HtmlAgilityPack.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\HtmlAgilityPack.xml
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\bin\Debug\Newtonsoft.Json.xml
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\obj\Debug\Gyldendal.Jini.Utilities.TextCleanUp.csproj.AssemblyReference.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\obj\Debug\Gyldendal.Jini.Utilities.TextCleanUp.csproj.CoreCompileInputs.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\obj\Debug\Gyldendal.Jini.Utilities.TextCleanUp.csproj.CopyComplete
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\obj\Debug\Gyldendal.Jini.Utilities.TextCleanUp.exe
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.TextCleanUp\obj\Debug\Gyldendal.Jini.Utilities.TextCleanUp.pdb

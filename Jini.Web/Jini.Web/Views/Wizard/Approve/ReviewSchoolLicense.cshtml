@@ -1,0 +1,77 @@
+﻿<h1>Priser for skolelicens</h1>
+<dl class="config-summary">
+    <dt>Fakturering</dt>
+    <dd>{{jiniData.SchoolLicense.BillingModel['DisplayName']}}</dd>
+    
+    <dt ng-show="jiniData.SchoolLicense.BillingModel.ShowPercentage == true">Procentdel</dt>
+    <dd ng-show="jiniData.SchoolLicense.BillingModel.ShowPercentage == true">{{jiniData.SchoolLicense.BillingPercentage}}%</dd>
+
+    <dd class="full">
+        <table>
+            <thead>
+                <tr>
+                    <th>Periode</th>
+                    <th class="price">Pris (eksl. moms)</th>
+                    <th class="price">Pris (inkl. moms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="period in jiniData.Periods">
+                    <td >{{period["DisplayName"]}}</td>
+                    <td class="price">{{jiniData.SchoolLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].ExTax}} DKK </td>
+                    <td class="price">{{jiniData.SchoolLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].IncTax}} DKK</td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>
+
+    @*<dt class="full">Sådan beregnes prisen</dt>
+    <dd class="full price-info">
+        <p>
+            Abonnementsvilkår<br>
+            Nedenstående vilkår gælder generelt for de forskellige typer af abonnementer Gyldendal Uddannelse sælger.
+        </p>
+
+        <p>
+            Levering<br>
+            Hvis intet andet er angivet, så gælder abonnementet fra købsdato og et år frem.<br>
+            Du kan læse nærmere om vilkår forbundet med digitale produkter her.
+        </p>
+
+        <p>
+            Betaling<br>
+            Opkrævning sker ved udsendelse af faktura. Betaling skal ske senest på sidste, rettidige indbetalingsdag. Ved gentegning af abonnement udsender Gyldendal Uddannelse opkrævning for den aftalte ydelse, hvilket sker forud for den periode, betalingen omhandler.
+        </p>
+
+        <p>
+            Pris<br>
+            Abonnementets pris fremgår af gyldendal-uddannelse.dk og fakturaen.<br>
+            Prisændringer får tidligst virkning fra førstkommende fornyelse af abonnementet.
+        </p>
+
+        <p>
+            Varighed<br>
+            Det løbende abonnement fortsætter til det opsiges. Dette gælder også kampagne- og introduktionsabonnementer.
+        </p>
+
+        <p>
+            Fortrydelsesret<br>
+            Et abonnement købt hos Gyldendal Uddannelse er omfattet af reglen om fortrydelsesret. På www.forbrug.dk kan du finde hele Forbrugeraftaleloven.
+        </p>
+
+        <p>
+            Opsigelse og bindingsperiode<br>
+            En aftale om abonnement mellem kunden og Gyldendal Uddannelse er en aftale om en løbende ydelse, som fortsættes indtil den opsiges af en af parterne.<br>
+            Hvis der er aftalt en bindingsperiode, kan aftalen ved kundes opsigelse tidligst ophøre ved bindingsperiodens udløb, medmindre andet fremgår af de særlige abonnementsvilkår, som er gældende for den pågældende abonnementstype.<br>
+            Opsigelse skal ske skriftligt, enten elektronisk eller ved brev, senest 1 måned før abonnementets udløb.
+        </p>
+
+        <p>
+            Manglende eller forsinket adgang<br>
+            Hvis du har problemer med at få leveret det, du har tegnet abonnement på (fx adgang til den købte online-ydelse), så skal du hurtigst muligt kontakte Gyldendal Uddannelse: information@gyldendal.dk eller på telefon 33 75 55 60. Oplys gerne kundenummer eller ordrenummer.
+        </p>
+    </dd>*@
+</dl>
+<script>
+    adjustPriceInfoText();
+</script>

@@ -1,0 +1,16 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Gyldendal.Jini.Database.dacpac
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Deploy\SessionScript.ps1
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Jini.Database.publish.xml
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Gyldendal.Jini.Database.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Gyldendal.Jini.Database.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.Data.Tools.Contracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.Data.Tools.Schema.Sql.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.Data.Tools.Schema.Tasks.Sql.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.Data.Tools.Schema.Utilities.Sql.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.Data.Tools.Utilities.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.SqlServer.Dac.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\bin\Debug\Microsoft.SqlServer.Dac.Extensions.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\obj\Debug\Gyldendal.Jini.Database.sqlproj.CopyComplete
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\obj\Debug\Gyldendal.Jini.Database.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\obj\Debug\Gyldendal.Jini.Database.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Jini.Database\obj\Debug\Gyldendal.Jini.Database.sqlproj.AssemblyReference.cache

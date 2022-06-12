@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SalesConfigurationServices.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="JiniServiceUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://dev-jiniservices.gyldendal.local/api/</Value>
+    </Setting>
+    <Setting Name="Seller" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gyldendal Uddannelse</Value>
+    </Setting>
+    <Setting Name="UniCServiceUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://test-gyldendalaccessservice.gyldendal.dk/api/</Value>
+    </Setting>
+    <Setting Name="GasApiKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">f09ae499-8628-4655-9a5b-aaa3c1e35735</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

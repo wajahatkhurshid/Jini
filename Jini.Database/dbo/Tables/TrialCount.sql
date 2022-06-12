@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[TrialCount](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UnitValue] [int] NULL,
+	[RefCountUnitTypeCode] [int] NOT NULL,
+ CONSTRAINT [PK__TrialCou__3214EC07662179D3] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY], 
+    CONSTRAINT [FK_TrialCount_RefTrialCountUnitType] FOREIGN KEY ([RefCountUnitTypeCode]) REFERENCES [RefTrialCountUnitType]([Code])
+) ON [PRIMARY]
+
+GO
+
+

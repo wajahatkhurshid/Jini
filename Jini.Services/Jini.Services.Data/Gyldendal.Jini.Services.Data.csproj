@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB53AFD1-87A7-4BC5-B2D5-97B0E48FD730}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gyldendal.Jini.Services.Data</RootNamespace>
+    <AssemblyName>Gyldendal.Jini.Services.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Gyldendal.AccessServices.Contracts, Version=1.5.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gyldendal.AccessServices.Contracts.1.5.0.9\lib\net461\Gyldendal.AccessServices.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Gyldendal.Api.CommonContracts, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gyldendal.Api.CommonContracts.1.8.5\lib\net461\Gyldendal.Api.CommonContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Gyldendal.Api.ShopServices.Contracts, Version=1.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gyldendal.Api.ShopServices.Contracts.1.5.6\lib\net461\Gyldendal.Api.ShopServices.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Gyldendal.Common.WebUtils, Version=2.3.1.13, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gyldendal.Common.WebUtils.2.3.1.13\lib\net451\Gyldendal.Common.WebUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.Abstractions.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.Binder.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.3.0.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Http, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Http.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.Abstractions.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Options.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Primitives.3.0.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\..\Dependencies\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ComponentModel.Annotations.4.6.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessForm.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DeflatedSalesConfigurationDbController.cs" />
+    <Compile Include="DataAccess\IDeflatedSalesConfigurationDbController.cs" />
+    <Compile Include="DataAccess\ISaleConfigurationDbController.cs" />
+    <Compile Include="DataAccess\ProductAccessProviderDbController.cs" />
+    <Compile Include="DataAccess\SaleConfigurationDbController.cs" />
+    <Compile Include="DataAccess\IProductAccessProviderDbController.cs" />
+    <Compile Include="DataAccess\ILookUpsDbController.cs" />
+    <Compile Include="DataAccess\LookUpsDbController.cs" />
+    <Compile Include="DbVersion.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dealer.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeflatedSalesConfigurationView.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GpmSubscription.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Jini_Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Jini_Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Jini_Entities.cs" />
+    <Compile Include="Jini_Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Jini_Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Jini_Entities1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MappingHelper\DbMapper.cs" />
+    <Compile Include="MappingHelper\Mapper.cs" />
+    <Compile Include="MappingHelper\RevsionHistory\RevisionHistoryData.cs" />
+    <Compile Include="MappingHelper\SalesConfigurationRevisionHistoryDto.cs" />
+    <Compile Include="MaterialType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MediaType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodPrice.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceModel.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAccessProvider.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefAccessForm.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefAccessProvider.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefDealer.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefDealerText.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefPeriod.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefPeriodUnitType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefPriceModel.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefSalesChannel.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefSalesConfigType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefSalesForm.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefSeller.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefTrialAccessForm.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefTrialCountUnitType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RefTrialPeriodUnitType.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesConfiguration.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesConfigurationHistory.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesForm.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seller.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrialCount.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrialLicense.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrialPeriod.cs">
+      <DependentUpon>Jini_Entities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Jini_Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Jini_Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Jini_Entities.edmx.diagram">
+      <DependentUpon>Jini_Entities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Gyldendal.Jini.Services.Contracts\Gyldendal.Jini.Services.Contracts.csproj">
+      <Project>{2A1A4833-4340-403D-B4EF-4E644817B494}</Project>
+      <Name>Gyldendal.Jini.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jini.Services.Common\Gyldendal.Jini.Services.Common.csproj">
+      <Project>{cef5d2d4-6756-40b4-8a94-f2cd74a497d9}</Project>
+      <Name>Gyldendal.Jini.Services.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Jini_Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Jini_Entities.edmx</DependentUpon>
+      <LastGenOutput>Jini_Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Jini_Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Jini_Entities.edmx</DependentUpon>
+      <LastGenOutput>Jini_Entities1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalesConfiguration_DevModelStoreContainer" CdmEntityContainer="Jini_Entities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessForms">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.AccessForm">
+        <MappingFragment StoreEntitySet="AccessForm">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SalesConfigurationId" ColumnName="SalesConfigurationId" />
+          <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+          <ScalarProperty Name="WebText" ColumnName="WebText" />
+          <ScalarProperty Name="DescriptionText" ColumnName="DescriptionText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DbVersions">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.DbVersion">
+        <MappingFragment StoreEntitySet="DbVersion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+          <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dealers">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.Dealer">
+        <MappingFragment StoreEntitySet="Dealer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerType" ColumnName="DealerType" />
+          <ScalarProperty Name="SalesConfigurationId" ColumnName="SalesConfigurationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeriodPrices">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.PeriodPrice">
+        <MappingFragment StoreEntitySet="PeriodPrice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+          <ScalarProperty Name="RefPeriodTypeCode" ColumnName="RefPeriodTypeCode" />
+          <ScalarProperty Name="AccessFormId" ColumnName="AccessFormId" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="UnitPriceVat" ColumnName="UnitPriceVat" />
+          <ScalarProperty Name="VatValue" ColumnName="VatValue" />
+          <ScalarProperty Name="IsCustomPeriod" ColumnName="IsCustomPeriod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriceModels">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.PriceModel">
+        <MappingFragment StoreEntitySet="PriceModel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="AccessFormId" ColumnName="AccessFormId" />
+          <ScalarProperty Name="RefPriceModelCode" ColumnName="RefPriceModelCode" />
+          <ScalarProperty Name="PercentValue" ColumnName="PercentValue" />
+          <ScalarProperty Name="GradeLevels" ColumnName="GradeLevels" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefAccessForms">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefAccessForm">
+        <MappingFragment StoreEntitySet="RefAccessForm">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="WebText" ColumnName="WebText" />
+          <ScalarProperty Name="ExternalIdentifier" ColumnName="ExternalIdentifier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefDealers">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefDealer">
+        <MappingFragment StoreEntitySet="RefDealer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="LogoImage" ColumnName="LogoImage" />
+          <ScalarProperty Name="RefDealerTextId" ColumnName="RefDealerTextId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefDealerTexts">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefDealerText">
+        <MappingFragment StoreEntitySet="RefDealerText">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefPeriods">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefPeriod">
+        <MappingFragment StoreEntitySet="RefPeriod">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+          <ScalarProperty Name="RefPeriodUnitTypeCode" ColumnName="RefPeriodUnitTypeCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefPeriodUnitTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefPeriodUnitType">
+        <MappingFragment StoreEntitySet="RefPeriodUnitType">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefPriceModels">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefPriceModel">
+        <MappingFragment StoreEntitySet="RefPriceModel">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="RefAccessFormCode" ColumnName="RefAccessFormCode" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ShowPercentage" ColumnName="ShowPercentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefSalesChannels">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefSalesChannel">
+        <MappingFragment StoreEntitySet="RefSalesChannel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefSalesForms">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefSalesForm">
+        <MappingFragment StoreEntitySet="RefSalesForm">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ExternalIdentifier" ColumnName="ExternalIdentifier" />
+          <ScalarProperty Name="PeriodTypeName" ColumnName="PeriodTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefSellers">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefSeller">
+        <MappingFragment StoreEntitySet="RefSeller">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefTrialAccessForms">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefTrialAccessForm">
+        <MappingFragment StoreEntitySet="RefTrialAccessForm">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefTrialCountUnitTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefTrialCountUnitType">
+        <MappingFragment StoreEntitySet="RefTrialCountUnitType">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefTrialPeriodUnitTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefTrialPeriodUnitType">
+        <MappingFragment StoreEntitySet="RefTrialPeriodUnitType">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesConfigurations">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.SalesConfiguration">
+        <MappingFragment StoreEntitySet="SalesConfiguration">
+          <ScalarProperty Name="RefSalesConfigTypeCode" ColumnName="RefSalesConfigTypeCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SalesFormId" ColumnName="SalesFormId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="TrialLicenseId" ColumnName="TrialLicenseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesConfigurationHistories">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.SalesConfigurationHistory">
+        <MappingFragment StoreEntitySet="SalesConfigurationHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+          <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesForms">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.SalesForm">
+        <MappingFragment StoreEntitySet="SalesForm">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RefSalesFormCode" ColumnName="RefSalesFormCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sellers">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.Seller">
+        <MappingFragment StoreEntitySet="Seller">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WebShopId" ColumnName="WebShopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialCounts">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.TrialCount">
+        <MappingFragment StoreEntitySet="TrialCount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+          <ScalarProperty Name="RefCountUnitTypeCode" ColumnName="RefCountUnitTypeCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialLicenses">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.TrialLicense">
+        <MappingFragment StoreEntitySet="TrialLicense">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TrialPeriodId" ColumnName="TrialPeriodId" />
+          <ScalarProperty Name="MultipleTrials" ColumnName="MultipleTrials" />
+          <ScalarProperty Name="TrialAccessFormCode" ColumnName="TrialAccessFormCode" />
+          <ScalarProperty Name="TrialCountId" ColumnName="TrialCountId" />
+          <ScalarProperty Name="ContactSalesText" ColumnName="ContactSalesText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrialPeriods">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.TrialPeriod">
+        <MappingFragment StoreEntitySet="TrialPeriod">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+          <ScalarProperty Name="RefTrialPeriodTypeCode" ColumnName="RefTrialPeriodTypeCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefSalesConfigTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefSalesConfigType">
+        <MappingFragment StoreEntitySet="RefSalesConfigType">
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefAccessProviders">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.RefAccessProvider">
+        <MappingFragment StoreEntitySet="RefAccessProvider">
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAccessProviders">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.ProductAccessProvider">
+        <MappingFragment StoreEntitySet="ProductAccessProvider">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="AccessProviderId" ColumnName="AccessProviderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeflatedSalesConfigurationViews">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.DeflatedSalesConfigurationView">
+        <MappingFragment StoreEntitySet="DeflatedSalesConfigurationView">
+          <ScalarProperty Name="ProductAccessProvider" ColumnName="ProductAccessProvider" />
+          <ScalarProperty Name="IsExternalLogin" ColumnName="IsExternalLogin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RefPriceModelDisplayName" ColumnName="RefPriceModelDisplayName" />
+          <ScalarProperty Name="RefPriceModelCode" ColumnName="RefPriceModelCode" />
+          <ScalarProperty Name="RefPeriodTypeDisplayName" ColumnName="RefPeriodTypeDisplayName" />
+          <ScalarProperty Name="RefPeriodTypeCode" ColumnName="RefPeriodTypeCode" />
+          <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+          <ScalarProperty Name="UnitPriceVat" ColumnName="UnitPriceVat" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="RefAccessFormDisplayName" ColumnName="RefAccessFormDisplayName" />
+          <ScalarProperty Name="RefAccessFormCode" ColumnName="RefAccessFormCode" />
+          <ScalarProperty Name="RefSalesDisplayName" ColumnName="RefSalesDisplayName" />
+          <ScalarProperty Name="RefSalesCode" ColumnName="RefSalesCode" />
+          <ScalarProperty Name="RefSalesConfigTypeCode" ColumnName="RefSalesConfigTypeCode" />
+          <ScalarProperty Name="TrialLicenseId" ColumnName="TrialLicenseId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SalesFormId" ColumnName="SalesFormId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialTypes">
+          <ScalarProperty Name="GpmMediaTypeId" ColumnName="GpmMediaTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GpmId" ColumnName="GpmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MediaTypes">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.MediaType">
+        <MappingFragment StoreEntitySet="MediaType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GpmId" ColumnName="GpmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GpmSubscriptions">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.GpmSubscription">
+        <MappingFragment StoreEntitySet="GpmSubscription">
+          <ScalarProperty Name="SubscripitionName" ColumnName="SubscripitionName" />
+          <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="SalesConfiguration_DevModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+          <ScalarProperty Name="GpmMaterialTypeId" ColumnName="GpmMaterialTypeId" />
+          <ScalarProperty Name="GpmMediaTypeId" ColumnName="GpmMediaTypeId" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="GradeLevels" ColumnName="GradeLevels" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="UnderTitle" ColumnName="UnderTitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+          <ScalarProperty Name="IsExternalLogin" ColumnName="IsExternalLogin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

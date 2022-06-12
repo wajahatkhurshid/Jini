@@ -1,0 +1,1118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JiniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccessForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesConfigurationId" Type="int" Nullable="false" />
+          <Property Name="RefCode" Type="int" Nullable="false" />
+          <Property Name="WebText" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionText" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DbVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VersionNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SequenceNo" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="250" />
+          <Property Name="ScriptName" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="DealerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DealerType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SalesConfigurationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PeriodPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitValue" Type="int" Nullable="false" />
+          <Property Name="RefPeriodTypeCode" Type="int" Nullable="false" />
+          <Property Name="AccessFormId" Type="int" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="UnitPriceVat" Type="money" Nullable="false" />
+          <Property Name="VatValue" Type="int" Nullable="false" />
+          <Property Name="IsCustomPeriod" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceModel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessFormId" Type="int" Nullable="false" />
+          <Property Name="RefPriceModelCode" Type="int" Nullable="false" />
+          <Property Name="PercentValue" Type="int" />
+          <Property Name="GradeLevels" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RefAccessForm">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebText" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExternalIdentifier" Type="int" />
+        </EntityType>
+        <EntityType Name="RefDealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+          <Property Name="LogoImage" Type="nvarchar" MaxLength="10" />
+          <Property Name="RefDealerTextId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefDealerText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RefPeriod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitValue" Type="int" Nullable="false" />
+          <Property Name="RefPeriodUnitTypeCode" Type="int" Nullable="false" />
+          <Property Name="RefSalesFormCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefPeriodUnitType">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefPriceModel">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RefAccessFormCode" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShowPercentage" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefSalesChannel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefSalesForm">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExternalIdentifier" Type="int" Nullable="false" />
+          <Property Name="PeriodTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RefSeller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesConfiguration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isbn" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+          <Property Name="SalesChannel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="SalesFormId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="RevisionNumber" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesConfigurationHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VersionNo" Type="int" Nullable="false" />
+          <Property Name="Isbn" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefSalesFormCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_AccessForm_RefAccessForm">
+          <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefAccessForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="AccessForm">
+              <PropertyRef Name="RefCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessForm_SalesConfiguration">
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesConfiguration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessForm">
+              <PropertyRef Name="SalesConfigurationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Period_AccessForm">
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PeriodPrice">
+              <PropertyRef Name="AccessFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PeriodPrice_RefPeriodUnitType">
+          <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+          <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPeriodUnitType">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PeriodPrice">
+              <PropertyRef Name="RefPeriodTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceModel_AccessForm">
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceModel">
+              <PropertyRef Name="AccessFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceModel_RefPriceModel">
+          <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="1" />
+          <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPriceModel">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PriceModel">
+              <PropertyRef Name="RefPriceModelCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefDealer_RefDealerText">
+          <End Role="RefDealerText" Type="Self.RefDealerText" Multiplicity="1" />
+          <End Role="RefDealer" Type="Self.RefDealer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefDealerText">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RefDealer">
+              <PropertyRef Name="RefDealerTextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPeriod_RefPeriodUnitType">
+          <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+          <End Role="RefPeriod" Type="Self.RefPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPeriodUnitType">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPeriod">
+              <PropertyRef Name="RefPeriodUnitTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPeriod_RefSalesForm">
+          <End Role="RefSalesForm" Type="Self.RefSalesForm" Multiplicity="1" />
+          <End Role="RefPeriod" Type="Self.RefPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefSalesForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPeriod">
+              <PropertyRef Name="RefSalesFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPriceModel_RefAccessForm">
+          <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+          <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefAccessForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPriceModel">
+              <PropertyRef Name="RefAccessFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesConfiguration_SalesForm">
+          <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="1" />
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesConfiguration">
+              <PropertyRef Name="SalesFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesConfiguration_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesConfiguration">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesForm_RefSalesForm">
+          <End Role="RefSalesForm" Type="Self.RefSalesForm" Multiplicity="1" />
+          <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefSalesForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SalesForm">
+              <PropertyRef Name="RefSalesFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JiniModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessForm" EntityType="Self.AccessForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DbVersion" EntityType="Self.DbVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dealer" EntityType="Self.Dealer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PeriodPrice" EntityType="Self.PeriodPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceModel" EntityType="Self.PriceModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefAccessForm" EntityType="Self.RefAccessForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefDealer" EntityType="Self.RefDealer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefDealerText" EntityType="Self.RefDealerText" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefPeriod" EntityType="Self.RefPeriod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefPeriodUnitType" EntityType="Self.RefPeriodUnitType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefPriceModel" EntityType="Self.RefPriceModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefSalesChannel" EntityType="Self.RefSalesChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefSalesForm" EntityType="Self.RefSalesForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefSeller" EntityType="Self.RefSeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesConfiguration" EntityType="Self.SalesConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesConfigurationHistory" EntityType="Self.SalesConfigurationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesForm" EntityType="Self.SalesForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessForm_RefAccessForm" Association="Self.FK_AccessForm_RefAccessForm">
+            <End Role="RefAccessForm" EntitySet="RefAccessForm" />
+            <End Role="AccessForm" EntitySet="AccessForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessForm_SalesConfiguration" Association="Self.FK_AccessForm_SalesConfiguration">
+            <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+            <End Role="AccessForm" EntitySet="AccessForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Period_AccessForm" Association="Self.FK_Period_AccessForm">
+            <End Role="AccessForm" EntitySet="AccessForm" />
+            <End Role="PeriodPrice" EntitySet="PeriodPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodPrice_RefPeriodUnitType" Association="Self.FK_PeriodPrice_RefPeriodUnitType">
+            <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitType" />
+            <End Role="PeriodPrice" EntitySet="PeriodPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceModel_AccessForm" Association="Self.FK_PriceModel_AccessForm">
+            <End Role="AccessForm" EntitySet="AccessForm" />
+            <End Role="PriceModel" EntitySet="PriceModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceModel_RefPriceModel" Association="Self.FK_PriceModel_RefPriceModel">
+            <End Role="RefPriceModel" EntitySet="RefPriceModel" />
+            <End Role="PriceModel" EntitySet="PriceModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefDealer_RefDealerText" Association="Self.FK_RefDealer_RefDealerText">
+            <End Role="RefDealerText" EntitySet="RefDealerText" />
+            <End Role="RefDealer" EntitySet="RefDealer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPeriod_RefPeriodUnitType" Association="Self.FK_RefPeriod_RefPeriodUnitType">
+            <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitType" />
+            <End Role="RefPeriod" EntitySet="RefPeriod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPeriod_RefSalesForm" Association="Self.FK_RefPeriod_RefSalesForm">
+            <End Role="RefSalesForm" EntitySet="RefSalesForm" />
+            <End Role="RefPeriod" EntitySet="RefPeriod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPriceModel_RefAccessForm" Association="Self.FK_RefPriceModel_RefAccessForm">
+            <End Role="RefAccessForm" EntitySet="RefAccessForm" />
+            <End Role="RefPriceModel" EntitySet="RefPriceModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesConfiguration_SalesForm" Association="Self.FK_SalesConfiguration_SalesForm">
+            <End Role="SalesForm" EntitySet="SalesForm" />
+            <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesConfiguration_Seller" Association="Self.FK_SalesConfiguration_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesForm_RefSalesForm" Association="Self.FK_SalesForm_RefSalesForm">
+            <End Role="RefSalesForm" EntitySet="RefSalesForm" />
+            <End Role="SalesForm" EntitySet="SalesForm" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JiniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccessForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalesConfigurationId" Type="Int32" Nullable="false" />
+          <Property Name="RefCode" Type="Int32" Nullable="false" />
+          <Property Name="WebText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RefAccessForm" Relationship="Self.FK_AccessForm_RefAccessForm" FromRole="AccessForm" ToRole="RefAccessForm" />
+          <NavigationProperty Name="SalesConfiguration" Relationship="Self.FK_AccessForm_SalesConfiguration" FromRole="AccessForm" ToRole="SalesConfiguration" />
+          <NavigationProperty Name="PeriodPrices" Relationship="Self.FK_Period_AccessForm" FromRole="AccessForm" ToRole="PeriodPrice" />
+          <NavigationProperty Name="PriceModels" Relationship="Self.FK_PriceModel_AccessForm" FromRole="AccessForm" ToRole="PriceModel" />
+        </EntityType>
+        <EntityType Name="DbVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VersionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ScriptName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DealerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DealerType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalesConfigurationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PeriodPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitValue" Type="Int32" Nullable="false" />
+          <Property Name="RefPeriodTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="AccessFormId" Type="Int32" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="UnitPriceVat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="VatValue" Type="Int32" Nullable="false" />
+          <Property Name="IsCustomPeriod" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccessForm" Relationship="Self.FK_Period_AccessForm" FromRole="PeriodPrice" ToRole="AccessForm" />
+          <NavigationProperty Name="RefPeriodUnitType" Relationship="Self.FK_PeriodPrice_RefPeriodUnitType" FromRole="PeriodPrice" ToRole="RefPeriodUnitType" />
+        </EntityType>
+        <EntityType Name="PriceModel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessFormId" Type="Int32" Nullable="false" />
+          <Property Name="RefPriceModelCode" Type="Int32" Nullable="false" />
+          <Property Name="PercentValue" Type="Int32" />
+          <Property Name="GradeLevels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccessForm" Relationship="Self.FK_PriceModel_AccessForm" FromRole="PriceModel" ToRole="AccessForm" />
+          <NavigationProperty Name="RefPriceModel" Relationship="Self.FK_PriceModel_RefPriceModel" FromRole="PriceModel" ToRole="RefPriceModel" />
+        </EntityType>
+        <EntityType Name="RefAccessForm">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalIdentifier" Type="Int32" />
+          <NavigationProperty Name="AccessForms" Relationship="Self.FK_AccessForm_RefAccessForm" FromRole="RefAccessForm" ToRole="AccessForm" />
+          <NavigationProperty Name="RefPriceModels" Relationship="Self.FK_RefPriceModel_RefAccessForm" FromRole="RefAccessForm" ToRole="RefPriceModel" />
+        </EntityType>
+        <EntityType Name="RefDealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LogoImage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RefDealerTextId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RefDealerText" Relationship="Self.FK_RefDealer_RefDealerText" FromRole="RefDealer" ToRole="RefDealerText" />
+        </EntityType>
+        <EntityType Name="RefDealerText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RefDealers" Relationship="Self.FK_RefDealer_RefDealerText" FromRole="RefDealerText" ToRole="RefDealer" />
+        </EntityType>
+        <EntityType Name="RefPeriod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitValue" Type="Int32" Nullable="false" />
+          <Property Name="RefPeriodUnitTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="RefSalesFormCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RefPeriodUnitType" Relationship="Self.FK_RefPeriod_RefPeriodUnitType" FromRole="RefPeriod" ToRole="RefPeriodUnitType" />
+          <NavigationProperty Name="RefSalesForm" Relationship="Self.FK_RefPeriod_RefSalesForm" FromRole="RefPeriod" ToRole="RefSalesForm" />
+        </EntityType>
+        <EntityType Name="RefPeriodUnitType">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PeriodPrices" Relationship="Self.FK_PeriodPrice_RefPeriodUnitType" FromRole="RefPeriodUnitType" ToRole="PeriodPrice" />
+          <NavigationProperty Name="RefPeriods" Relationship="Self.FK_RefPeriod_RefPeriodUnitType" FromRole="RefPeriodUnitType" ToRole="RefPeriod" />
+        </EntityType>
+        <EntityType Name="RefPriceModel">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RefAccessFormCode" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShowPercentage" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PriceModels" Relationship="Self.FK_PriceModel_RefPriceModel" FromRole="RefPriceModel" ToRole="PriceModel" />
+          <NavigationProperty Name="RefAccessForm" Relationship="Self.FK_RefPriceModel_RefAccessForm" FromRole="RefPriceModel" ToRole="RefAccessForm" />
+        </EntityType>
+        <EntityType Name="RefSalesChannel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefSalesForm">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExternalIdentifier" Type="Int32" Nullable="false" />
+          <Property Name="PeriodTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RefPeriods" Relationship="Self.FK_RefPeriod_RefSalesForm" FromRole="RefSalesForm" ToRole="RefPeriod" />
+          <NavigationProperty Name="SalesForms" Relationship="Self.FK_SalesForm_RefSalesForm" FromRole="RefSalesForm" ToRole="SalesForm" />
+        </EntityType>
+        <EntityType Name="RefSeller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesConfiguration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <Property Name="SalesChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="SalesFormId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RevisionNumber" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccessForms" Relationship="Self.FK_AccessForm_SalesConfiguration" FromRole="SalesConfiguration" ToRole="AccessForm" />
+          <NavigationProperty Name="SalesForm" Relationship="Self.FK_SalesConfiguration_SalesForm" FromRole="SalesConfiguration" ToRole="SalesForm" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_SalesConfiguration_Seller" FromRole="SalesConfiguration" ToRole="Seller" />
+        </EntityType>
+        <EntityType Name="SalesConfigurationHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VersionNo" Type="Int32" Nullable="false" />
+          <Property Name="Isbn" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefSalesFormCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RefSalesForm" Relationship="Self.FK_SalesForm_RefSalesForm" FromRole="SalesForm" ToRole="RefSalesForm" />
+          <NavigationProperty Name="SalesConfigurations" Relationship="Self.FK_SalesConfiguration_SalesForm" FromRole="SalesForm" ToRole="SalesConfiguration" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SalesConfigurations" Relationship="Self.FK_SalesConfiguration_Seller" FromRole="Seller" ToRole="SalesConfiguration" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_AccessForm_RefAccessForm">
+          <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefAccessForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="AccessForm">
+              <PropertyRef Name="RefCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessForm_SalesConfiguration">
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesConfiguration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessForm">
+              <PropertyRef Name="SalesConfigurationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Period_AccessForm">
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PeriodPrice">
+              <PropertyRef Name="AccessFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceModel_AccessForm">
+          <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceModel">
+              <PropertyRef Name="AccessFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PeriodPrice_RefPeriodUnitType">
+          <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+          <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPeriodUnitType">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PeriodPrice">
+              <PropertyRef Name="RefPeriodTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceModel_RefPriceModel">
+          <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="1" />
+          <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPriceModel">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PriceModel">
+              <PropertyRef Name="RefPriceModelCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPriceModel_RefAccessForm">
+          <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+          <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefAccessForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPriceModel">
+              <PropertyRef Name="RefAccessFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefDealer_RefDealerText">
+          <End Role="RefDealerText" Type="Self.RefDealerText" Multiplicity="1" />
+          <End Role="RefDealer" Type="Self.RefDealer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefDealerText">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RefDealer">
+              <PropertyRef Name="RefDealerTextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPeriod_RefPeriodUnitType">
+          <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+          <End Role="RefPeriod" Type="Self.RefPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPeriodUnitType">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPeriod">
+              <PropertyRef Name="RefPeriodUnitTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefPeriod_RefSalesForm">
+          <End Role="RefSalesForm" Type="Self.RefSalesForm" Multiplicity="1" />
+          <End Role="RefPeriod" Type="Self.RefPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefSalesForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="RefPeriod">
+              <PropertyRef Name="RefSalesFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesForm_RefSalesForm">
+          <End Role="RefSalesForm" Type="Self.RefSalesForm" Multiplicity="1" />
+          <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefSalesForm">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SalesForm">
+              <PropertyRef Name="RefSalesFormCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesConfiguration_SalesForm">
+          <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="1" />
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesConfiguration">
+              <PropertyRef Name="SalesFormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesConfiguration_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesConfiguration">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Jini_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="AccessForms" EntityType="Self.AccessForm" />
+          <EntitySet Name="DbVersions" EntityType="Self.DbVersion" />
+          <EntitySet Name="Dealers" EntityType="Self.Dealer" />
+          <EntitySet Name="PeriodPrices" EntityType="Self.PeriodPrice" />
+          <EntitySet Name="PriceModels" EntityType="Self.PriceModel" />
+          <EntitySet Name="RefAccessForms" EntityType="Self.RefAccessForm" />
+          <EntitySet Name="RefDealers" EntityType="Self.RefDealer" />
+          <EntitySet Name="RefDealerTexts" EntityType="Self.RefDealerText" />
+          <EntitySet Name="RefPeriods" EntityType="Self.RefPeriod" />
+          <EntitySet Name="RefPeriodUnitTypes" EntityType="Self.RefPeriodUnitType" />
+          <EntitySet Name="RefPriceModels" EntityType="Self.RefPriceModel" />
+          <EntitySet Name="RefSalesChannels" EntityType="Self.RefSalesChannel" />
+          <EntitySet Name="RefSalesForms" EntityType="Self.RefSalesForm" />
+          <EntitySet Name="RefSellers" EntityType="Self.RefSeller" />
+          <EntitySet Name="SalesConfigurations" EntityType="Self.SalesConfiguration" />
+          <EntitySet Name="SalesConfigurationHistories" EntityType="Self.SalesConfigurationHistory" />
+          <EntitySet Name="SalesForms" EntityType="Self.SalesForm" />
+          <EntitySet Name="Sellers" EntityType="Self.Seller" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_AccessForm_RefAccessForm" Association="Self.FK_AccessForm_RefAccessForm">
+            <End Role="RefAccessForm" EntitySet="RefAccessForms" />
+            <End Role="AccessForm" EntitySet="AccessForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessForm_SalesConfiguration" Association="Self.FK_AccessForm_SalesConfiguration">
+            <End Role="SalesConfiguration" EntitySet="SalesConfigurations" />
+            <End Role="AccessForm" EntitySet="AccessForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Period_AccessForm" Association="Self.FK_Period_AccessForm">
+            <End Role="AccessForm" EntitySet="AccessForms" />
+            <End Role="PeriodPrice" EntitySet="PeriodPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceModel_AccessForm" Association="Self.FK_PriceModel_AccessForm">
+            <End Role="AccessForm" EntitySet="AccessForms" />
+            <End Role="PriceModel" EntitySet="PriceModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PeriodPrice_RefPeriodUnitType" Association="Self.FK_PeriodPrice_RefPeriodUnitType">
+            <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitTypes" />
+            <End Role="PeriodPrice" EntitySet="PeriodPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceModel_RefPriceModel" Association="Self.FK_PriceModel_RefPriceModel">
+            <End Role="RefPriceModel" EntitySet="RefPriceModels" />
+            <End Role="PriceModel" EntitySet="PriceModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPriceModel_RefAccessForm" Association="Self.FK_RefPriceModel_RefAccessForm">
+            <End Role="RefAccessForm" EntitySet="RefAccessForms" />
+            <End Role="RefPriceModel" EntitySet="RefPriceModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefDealer_RefDealerText" Association="Self.FK_RefDealer_RefDealerText">
+            <End Role="RefDealerText" EntitySet="RefDealerTexts" />
+            <End Role="RefDealer" EntitySet="RefDealers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPeriod_RefPeriodUnitType" Association="Self.FK_RefPeriod_RefPeriodUnitType">
+            <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitTypes" />
+            <End Role="RefPeriod" EntitySet="RefPeriods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefPeriod_RefSalesForm" Association="Self.FK_RefPeriod_RefSalesForm">
+            <End Role="RefSalesForm" EntitySet="RefSalesForms" />
+            <End Role="RefPeriod" EntitySet="RefPeriods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesForm_RefSalesForm" Association="Self.FK_SalesForm_RefSalesForm">
+            <End Role="RefSalesForm" EntitySet="RefSalesForms" />
+            <End Role="SalesForm" EntitySet="SalesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesConfiguration_SalesForm" Association="Self.FK_SalesConfiguration_SalesForm">
+            <End Role="SalesForm" EntitySet="SalesForms" />
+            <End Role="SalesConfiguration" EntitySet="SalesConfigurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesConfiguration_Seller" Association="Self.FK_SalesConfiguration_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="SalesConfiguration" EntitySet="SalesConfigurations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JiniModelStoreContainer" CdmEntityContainer="Jini_Entities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="JiniModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessForms">
+            <EntityTypeMapping TypeName="JiniModel.AccessForm">
+              <MappingFragment StoreEntitySet="AccessForm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SalesConfigurationId" ColumnName="SalesConfigurationId" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="WebText" ColumnName="WebText" />
+                <ScalarProperty Name="DescriptionText" ColumnName="DescriptionText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DbVersions">
+            <EntityTypeMapping TypeName="JiniModel.DbVersion">
+              <MappingFragment StoreEntitySet="DbVersion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dealers">
+            <EntityTypeMapping TypeName="JiniModel.Dealer">
+              <MappingFragment StoreEntitySet="Dealer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerType" ColumnName="DealerType" />
+                <ScalarProperty Name="SalesConfigurationId" ColumnName="SalesConfigurationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeriodPrices">
+            <EntityTypeMapping TypeName="JiniModel.PeriodPrice">
+              <MappingFragment StoreEntitySet="PeriodPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="RefPeriodTypeCode" ColumnName="RefPeriodTypeCode" />
+                <ScalarProperty Name="AccessFormId" ColumnName="AccessFormId" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitPriceVat" ColumnName="UnitPriceVat" />
+                <ScalarProperty Name="VatValue" ColumnName="VatValue" />
+                <ScalarProperty Name="IsCustomPeriod" ColumnName="IsCustomPeriod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceModels">
+            <EntityTypeMapping TypeName="JiniModel.PriceModel">
+              <MappingFragment StoreEntitySet="PriceModel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AccessFormId" ColumnName="AccessFormId" />
+                <ScalarProperty Name="RefPriceModelCode" ColumnName="RefPriceModelCode" />
+                <ScalarProperty Name="PercentValue" ColumnName="PercentValue" />
+                <ScalarProperty Name="GradeLevels" ColumnName="GradeLevels" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefAccessForms">
+            <EntityTypeMapping TypeName="JiniModel.RefAccessForm">
+              <MappingFragment StoreEntitySet="RefAccessForm">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="WebText" ColumnName="WebText" />
+                <ScalarProperty Name="ExternalIdentifier" ColumnName="ExternalIdentifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefDealers">
+            <EntityTypeMapping TypeName="JiniModel.RefDealer">
+              <MappingFragment StoreEntitySet="RefDealer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="LogoImage" ColumnName="LogoImage" />
+                <ScalarProperty Name="RefDealerTextId" ColumnName="RefDealerTextId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefDealerTexts">
+            <EntityTypeMapping TypeName="JiniModel.RefDealerText">
+              <MappingFragment StoreEntitySet="RefDealerText">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefPeriods">
+            <EntityTypeMapping TypeName="JiniModel.RefPeriod">
+              <MappingFragment StoreEntitySet="RefPeriod">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="RefPeriodUnitTypeCode" ColumnName="RefPeriodUnitTypeCode" />
+                <ScalarProperty Name="RefSalesFormCode" ColumnName="RefSalesFormCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefPeriodUnitTypes">
+            <EntityTypeMapping TypeName="JiniModel.RefPeriodUnitType">
+              <MappingFragment StoreEntitySet="RefPeriodUnitType">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefPriceModels">
+            <EntityTypeMapping TypeName="JiniModel.RefPriceModel">
+              <MappingFragment StoreEntitySet="RefPriceModel">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="RefAccessFormCode" ColumnName="RefAccessFormCode" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ShowPercentage" ColumnName="ShowPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefSalesChannels">
+            <EntityTypeMapping TypeName="JiniModel.RefSalesChannel">
+              <MappingFragment StoreEntitySet="RefSalesChannel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefSalesForms">
+            <EntityTypeMapping TypeName="JiniModel.RefSalesForm">
+              <MappingFragment StoreEntitySet="RefSalesForm">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ExternalIdentifier" ColumnName="ExternalIdentifier" />
+                <ScalarProperty Name="PeriodTypeName" ColumnName="PeriodTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefSellers">
+            <EntityTypeMapping TypeName="JiniModel.RefSeller">
+              <MappingFragment StoreEntitySet="RefSeller">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesConfigurations">
+            <EntityTypeMapping TypeName="JiniModel.SalesConfiguration">
+              <MappingFragment StoreEntitySet="SalesConfiguration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="SalesFormId" ColumnName="SalesFormId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesConfigurationHistories">
+            <EntityTypeMapping TypeName="JiniModel.SalesConfigurationHistory">
+              <MappingFragment StoreEntitySet="SalesConfigurationHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesForms">
+            <EntityTypeMapping TypeName="JiniModel.SalesForm">
+              <MappingFragment StoreEntitySet="SalesForm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RefSalesFormCode" ColumnName="RefSalesFormCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sellers">
+            <EntityTypeMapping TypeName="JiniModel.Seller">
+              <MappingFragment StoreEntitySet="Seller">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="JiniModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

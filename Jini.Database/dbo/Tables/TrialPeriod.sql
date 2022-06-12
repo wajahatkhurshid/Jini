@@ -1,0 +1,23 @@
+﻿
+
+CREATE TABLE [dbo].[TrialPeriod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UnitValue] [int] NOT NULL,
+	[RefTrialPeriodTypeCode] [int] NOT NULL,
+ CONSTRAINT [PK__TrialPer__B0B31F907D642036] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[TrialPeriod]  WITH CHECK ADD  CONSTRAINT [FK__TrialPeri__RefTr__656C112C] FOREIGN KEY([RefTrialPeriodTypeCode])
+REFERENCES [dbo].[RefTrialPeriodUnitType] ([Code])
+GO
+
+ALTER TABLE [dbo].[TrialPeriod] CHECK CONSTRAINT [FK__TrialPeri__RefTr__656C112C]
+GO
+
+
+

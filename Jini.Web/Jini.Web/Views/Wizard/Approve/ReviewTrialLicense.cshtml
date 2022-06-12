@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<div ng-show="jiniData.TrialContactSales">
+    <h1>Opsætning af fritekstfelt</h1>
+    <div class="free-text-preview">
+        {{jiniData.TrialContactSalesText}}
+    </div>
+</div>
+
+<div>
+    <div class="header-with-toolbar">
+        <h1>Opsætning af prøveadgang</h1>
+        <ul class="sales-config-toolbar">
+            <li ng-show="state=='history'" onclick="copy()">Kopier link</li>
+        </ul>
+    </div>
+    <dl class="config-summary">
+        <dt>Adgangstype</dt>
+        <dd>{{jiniData.Trial.AccessForm.DisplayName}}</dd>
+
+        <dt>Varighed</dt>
+        <dd>{{jiniData.Trial.Period.UnitValue}} {{jiniData.Trial.Period.UnitType.DisplayName}}</dd>
+
+        <dt>Max antal</dt>
+        <dd><span ng-show="jiniData.Trial.MultipleTrialsPerUser">Ja, {{jiniData.Trial.TrialAccessCount.UnitValue}} {{jiniData.Trial.TrialAccessCount.UnitType.DisplayName}} </span><span ng-show="jiniData.Trial.MultipleTrialsPerUser == false">Nej</span></dd>
+
+        <dt>Fritekstfelt</dt>
+        <dd><span ng-show="jiniData.Trial.TrialContactSales">Ja</span> <span ng-show="!jiniData.Trial.TrialContactSales">Nej</span></dd>
+    </dl>
+    <div class="free-text-preview" ng-show="jiniData.Trial.TrialContactSales" style="word-wrap: break-word;">
+        <p ng-bind-html="jiniData.Trial.ContactSalesTextHtml "></p>
+
+    </div>
+</div>
+<script>
+    function copy() {
+        copyToClipboard(window.shareLink);
+    }
+</script>

@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<div ng-controller="history">
+
+    <section class="content view-sales-config">
+
+            <header>
+                <h1 class="main-head">Salgsopsætning: “{{::jiniData.DigitalTitle.TitleAndMediaType}}”</h1>
+            </header>
+
+        <!-- START-->
+        <section class="block has-tabstrip">
+            <div id="view-sales-config-tabstrip">
+                <ul>
+                    <li class="k-state-active">Detaljer</li>
+                    <li>Historik ({{jiniData.VersionHistory.length}})</li>
+                </ul>
+
+                <div class="sales-config-summary">
+                    <div ui-view="VersionMessage">
+
+                    </div>
+
+                    @Html.Partial("~/Views/Wizard/Approve/Summary.cshtml")
+
+                </div>
+
+                <div class="sales-config-history">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Godkendt</th>
+                                <th>Godkendt af</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="version in jiniData.VersionHistory">
+                                <td>Version {{version.VersionNo}}</td>
+                                <td>{{ ("0" + version.CreatedDate.getDate()).slice(-2) + '-' + ("0" + (version.CreatedDate.getMonth() +1) ).slice(-2) + '-' + version.CreatedDate.getFullYear() + ' ' + ("0" + version.CreatedDate.getHours()).slice(-2) + ':' + ("0" + version.CreatedDate.getMinutes()).slice(-2) }}</td>
+                                <td>{{version.CreatedBy}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="sales-config-gua-history">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Godkendt</th>
+                                <th>Godkendt af</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="version in jiniData.GuaVersionHistory">
+                                <td>Version {{version.VersionNo}}</td>
+                                <td>{{ ("0" + version.CreatedDate.getDate()).slice(-2) + '-' + ("0" + (version.CreatedDate.getMonth() +1) ).slice(-2) + '-' + version.CreatedDate.getFullYear() + ' ' + ("0" + version.CreatedDate.getHours()).slice(-2) + ':' + ("0" + version.CreatedDate.getMinutes()).slice(-2) }}</td>
+                                <td>{{version.CreatedBy}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </section>
+
+            <section class="jini-popup" id="new-version-warning-popup">
+                <div class="jini-popup-content new-version-warning-popup-content">
+
+                    <p>
+                        Der er allerede oprettet en ny version af salgsopsætningen (kladde). <br />
+                        Du kan arbejde på den nye version så længe du vil indtil den er godkendt. Først når du godkender vil ændringerne træde i kraft.
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="dont-show-new-version-warning" class="k-checkbox">
+                        <label class="k-checkbox-label" for="dont-show-new-version-warning">Vis ikke denne meddelelse igen</label>
+                    </p>
+                </div>
+                <div class="jini-popup-buttons-pane">
+                    <button class="jini-btn standout" ng-click="TransitionToWizardWithDraft()">Genoptag redigering</button>
+                    <button class="jini-btn" ng-click="hidePopops()">Få mig væk herfra</button>
+                </div>
+            </section>    
+        <!--END -->
+    </section>
+
+</div>

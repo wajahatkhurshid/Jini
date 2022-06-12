@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "";
+}
+
+<section id="email-hyperlink" ng-controller="config">
+    <div class="k-editor-dialog k-popup-edit-form k-edit-form-container k-window-content k-content" data-role="window" tabindex="0">
+        <div class="k-edit-label k-editor-link-text-row">
+            <label>Adresse</label>
+        </div>
+        <div class="k-edit-field k-editor-link-text-row">
+            <input type="text" class="k-input k-textbox" ng-model="jiniData.EmailHyperLink.address">
+        </div>
+        <div class="k-edit-label k-editor-link-text-row">
+            <label>Link-tekst</label>
+        </div>
+        <div class="k-edit-field k-editor-link-text-row">
+            <input type="text" class="k-input k-textbox" ng-model="jiniData.EmailHyperLink.text">
+        </div>
+        <div class="k-edit-label k-editor-link-text-row">
+            <label>Emne</label>
+        </div>
+        <div class="k-edit-field k-editor-link-text-row">
+            <input type="text" class="k-input k-textbox" ng-model="jiniData.EmailHyperLink.subject">
+        </div>
+        <div class="k-edit-label">
+            <label>Skærmtiptekst</label>
+        </div>
+        <div class="k-edit-field">
+            <input type="text" class="k-input k-textbox" ng-model="jiniData.EmailHyperLink.tooltip">
+        </div>
+        <div class="k-edit-label"></div>
+        <div class="k-edit-field">
+            <input type="checkbox" class="k-checkbox" ng-model="jiniData.EmailHyperLink.openInNewTab" id="k-editor-link-target"> <label for="k-editor-link-target" class="k-checkbox-label">Åbn link i nyt vindue</label>
+        </div>
+        <div class="k-edit-buttons k-state-default">
+            <button class="k-dialog-insert k-button k-primary" ng-click="appendEmailHyperLink()">Indsæt</button><button class="k-dialog-close k-button" ng-click="closeEmailPopup()">Annuller</button>
+        </div>
+    </div>
+</section>

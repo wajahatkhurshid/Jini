@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8e4791ed0434b788776b909789d2616" Name="Diagram1">
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.C__RefactorLog" Width="1.5" PointX="7.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.AccessForm" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.DbVersion" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.Dealer" Width="1.5" PointX="2.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.PeriodPrice" Width="1.5" PointX="12" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.PriceModel" Width="1.5" PointX="15" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefAccessForm" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefDealer" Width="1.5" PointX="10" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefDealerText" Width="1.5" PointX="7.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefPeriod" Width="1.5" PointX="12" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefPeriodUnitType" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefPriceModel" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefSalesChannel" Width="1.5" PointX="4.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefSalesForm" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefSeller" Width="1.5" PointX="6.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefTrialAccessForm" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefTrialCountUnitType" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefTrialPeriodUnitType" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.SalesConfiguration" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.SalesConfigurationHistory" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.SalesForm" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.Seller" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.sysdiagram" Width="1.5" PointX="12.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.TrialCount" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.TrialLicense" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.TrialPeriod" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_AccessForm_RefAccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_AccessForm_SalesConfiguration" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_Period_AccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_PriceModel_AccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_PeriodPrice_RefPeriodUnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_PriceModel_RefPriceModel" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_RefPriceModel_RefAccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_RefDealer_RefDealerText" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_RefPeriod_RefPeriodUnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_SalesForm_RefSalesForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_TrialLicense_RefTrialAccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_TrialCount_RefTrialCountUnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK__TrialPeri__RefTr__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_SalesConfiguration_SalesForm" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_SalesConfiguration_Seller" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_SalesConfiguration_TrialLicense" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK__TrialLicense__Trial__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_TrialLicense_TrialPeriod" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefSalesConfigType" Width="1.5" PointX="9.375" PointY="14.875" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_SalesConfiguration_RefSalesConfigType" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.RefAccessProvider" Width="1.5" PointX="11.375" PointY="14.875" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.ProductAccessProvider" Width="1.5" PointX="13.875" PointY="16.375" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_AccessProvider" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.DeflatedSalesConfigurationView" Width="1.5" PointX="15.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.MaterialType" Width="1.5" PointX="9.375" PointY="18.375" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.MediaType" Width="1.5" PointX="7.125" PointY="18.5" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.fk_MediaType" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.GpmSubscription" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesConfiguration_DevModel.Product" Width="1.5" PointX="11.625" PointY="18.25" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.fk_GpmMaterialTypeId" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.fk_GpmMediaTypeId" />
+        <AssociationConnector Association="SalesConfiguration_DevModel.FK_Product" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

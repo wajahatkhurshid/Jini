@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "";
+}
+
+<div>
+    <style>
+        #history th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-family: 'Fira Sans Medium', 'Fira Sans', sans-serif;
+            font-weight: bold;
+            font-style: normal;
+        }
+        #history td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    <div class="block--neue__header no-border" style="background-color:#53607D">
+        <table>
+            <tr>
+                <td style="width:50%;">
+                    <span style="font-family:'Fira Sans Medium', 'Fira Sans', sans-serif;font-weight:500; color:#FFFFFF">Ændret af :  </span>
+                    <span style="font-family:'Fira Sans', sans-serif;font-weight:400;color:#FFFFFF">{{version.CreatedBy}}</span>
+                </td>
+                <td>
+                    <span style="font-family:'Fira Sans Medium', 'Fira Sans', sans-serif;font-weight:500; color:#FFFFFF;">Dato :  </span>
+                    <span style="font-family:'Fira Sans', sans-serif;font-weight:400;color:#FFFFFF">
+                        {{version.CreatedDate | date:'dd-MM-yyyy HH:mm' }}
+
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table id="history">
+        <thead style="border-bottom:none">
+            <tr>
+                <th>Salgsform</th>
+                <th>Abo./Leje</th>
+                <th>Periode</th>
+                <th>Pris u. moms</th>
+                <th>Pris m. moms</th>
+                <th>Max antal</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dt in version.RevisionHistoryData">
+            <tr ng-if="dt.SalgsformText=='Friteksfelt'">
+                <td>{{dt.SalgsformText}}</td>
+                <td colspan="5">
+                    <div ng-bind-html="dt.MaxAntalText | unsafe"></div>
+                </td>
+            </tr>
+            <tr ng-if="dt.SalgsformText != 'Friteksfelt' && dt.SalgsformText != 'Prøveadgang' ">
+                <td>{{dt.SalgsformText}}</td>
+                <td>{{dt.SubscriptionText}}</td>
+                <td>{{dt.PeriodText}}</td>
+                <td>{{dt.Price}} kr.</td>
+                <td>{{dt.PriceVat}} kr.</td>
+                <td></td>
+            </tr>
+            <tr ng-if="dt.SalgsformText == 'Prøveadgang'">
+                <td>{{dt.SalgsformText}}</td>
+                <td></td>
+                <td>{{dt.PeriodText}}</td>
+                <td>0.00 kr.</td>
+                <td>0.00 kr</td>
+                <td>{{dt.MaxAntalText}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

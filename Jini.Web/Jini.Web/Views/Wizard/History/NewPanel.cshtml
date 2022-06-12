@@ -1,0 +1,17 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+@{
+    Layout = "";
+}
+
+<section class="sales-config-info">
+    <p class="jini-msg"><img src="~/img/icon-info.png" /> <span>Godkendt</span> <span>{{::  ("0" + jiniData.VersionHistory[0].CreatedDate.getDate()).slice(-2) + ' - ' +   ("0" + (jiniData.VersionHistory[0].CreatedDate.getMonth() + 1)).slice(-2) + ' - ' + jiniData.VersionHistory[0].CreatedDate.getFullYear()}}</span> <span>{{::jiniData.VersionHistory[0].CreatedBy}}</span></p>
+
+</section>
+
+<section class="block block-toolbar">
+    <ul class="sales-config-toolbar">
+        <!--ng-click="StartWizard('Create', false)"-->
+        <li id="newConfiguration" ng-click="TransitionToWizard()"><img src="~/img/icon-plus.png" /> Ny version</li>
+    </ul>
+</section>

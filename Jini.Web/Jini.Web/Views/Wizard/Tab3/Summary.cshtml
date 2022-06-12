@@ -1,0 +1,42 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+<section class="block block-summary">
+    <h1>Licenser</h1>
+    <dl class="config-summary">
+        <dt ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'>Salgsform</dt>
+        <dd ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'><text ng-repeat="salesForm in SalesForm">{{::salesForm.DisplayName}}</text></dd>
+
+        <dt>Adg. typer</dt>
+        <dd><text ng-repeat="access in AccessForm">{{access.DisplayName == "Andet salg" ? access.DisplayName : access.DisplayName + "adgang" }}{{$last ? '' : ', '}}</text></dd>
+        
+        <dt ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'>Perioder</dt>
+        <dd ng-hide='AccessForm.length ==1 && AccessForm[0].Code == @((int)Enums.EnumAccessForm.ContactSales)'>
+            <text ng-repeat="period in Periods">{{period.DisplayName}}{{$last ? '' : ', '}} </text>
+        </dd>
+    </dl>
+
+
+    <div ng-show='searchArray(@((int)Enums.EnumAccessForm.School), "AccessForm").length > 0'>
+        @Html.Partial("~/Views/Wizard/Tab3/ReviewSchoolLicense.cshtml")
+    </div>
+
+    <div ng-show="searchArray(@((int)Enums.EnumAccessForm.Class), 'AccessForm').length > 0">
+        @Html.Partial("~/Views/Wizard/Tab3/ReviewClassLicense.cshtml")
+    </div>
+
+    <div ng-show='searchArray(@((int)Enums.EnumAccessForm.Teacher), "AccessForm").length > 0'>
+        @Html.Partial("~/Views/Wizard/Tab3/ReviewTeacherLicense.cshtml")
+    </div>
+
+    <div ng-show="searchArray(@((int)Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0">
+        @Html.Partial("~/Views/Wizard/Tab3/ReviewSingleUserLicense.cshtml")
+    </div>
+
+    <div ng-show="stage==2">
+        <h1>Næsten færdig…</h1>
+        <p class="desc" >…nu mangler du kun at se, hvordan produktet kommer til at se ud på shoppen. Så er du nemlig helt sikker på, at det er sat rigtigt op.</p>
+        <button id="preview-products" ng-show="(searchArray(@((int)Enums.EnumAccessForm.School), 'AccessForm').length > 0) || (searchArray(@((int)Enums.EnumAccessForm.Class), 'AccessForm').length > 0)">Vis Shopopsætning</button>
+        <button id="preview-products-single-user" ng-show="(searchArray(@((int)Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0) || (searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)">Vis Shopopsætning (single user)</button>
+    </div>
+    
+</section>

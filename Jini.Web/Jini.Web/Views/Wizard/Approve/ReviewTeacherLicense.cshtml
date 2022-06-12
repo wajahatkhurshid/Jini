@@ -1,0 +1,25 @@
+﻿
+<h1>Priser for underviserlicens</h1>
+<dl class="config-summary">
+    <dt>Fakturering</dt>
+    <dd>{{jiniData.TeacherLicense.BillingModel['DisplayName']}}</dd>
+
+    <dd class="full">
+        <table>
+            <thead>
+                <tr>
+                    <th>Periode</th>
+                    <th class="price">Pris (eksl. moms)</th>
+                    <th class="price">Pris (inkl. moms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="period in jiniData.Periods">
+                    <td>{{period["DisplayName"]}}</td>
+                    <td class="price">{{jiniData.TeacherLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].ExTax}} DKK</td>
+                    <td class="price">{{jiniData.TeacherLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].IncTax}} DKK</td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>
+</dl>

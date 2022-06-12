@@ -1,0 +1,6 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\bin\Debug\Gyldendal.Jini.Services.Contracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\bin\Debug\Gyldendal.Jini.Services.Contracts.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\obj\Debug\Gyldendal.Jini.Services.Contracts.csproj.CoreCompileInputs.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\obj\Debug\Gyldendal.Jini.Services.Contracts.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\obj\Debug\Gyldendal.Jini.Services.Contracts.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Services.Contracts\obj\Debug\Gyldendal.Jini.Services.Contracts.csproj.AssemblyReference.cache

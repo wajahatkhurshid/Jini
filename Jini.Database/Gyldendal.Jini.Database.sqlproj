@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>JiniDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{ac7c7134-356a-4d04-8489-c5caf14061a8}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Gyldendal.Jini.Database</RootNamespace>
+    <AssemblyName>Gyldendal.Jini.Database</AssemblyName>
+    <ModelCollation>1030,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Danish_Norwegian_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Deploy" />
+    <Folder Include="PreDeployment" />
+    <Folder Include="PostDeployment" />
+    <Folder Include="dbo\Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\DbVersion.sql" />
+    <None Include="Security\Role_Jini.sql" />
+    <None Include="Security\jini_1.sql" />
+    <None Include="Security\GYLDENDAL_sa-jini-d.sql" />
+    <None Include="Security\GYLDENDAL_sa-jini-d_1.sql" />
+    <None Include="Security\GYLDENDAL_sa-jinideploy-d_1.sql" />
+    <None Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Tables\SalesForm.sql" />
+    <Build Include="dbo\Tables\AccessForm.sql" />
+    <Build Include="dbo\Tables\Seller.sql" />
+    <Build Include="dbo\Tables\PriceModel.sql" />
+    <Build Include="dbo\Tables\RefSalesForm.sql" />
+    <Build Include="dbo\Tables\RefSalesChannel.sql" />
+    <Build Include="dbo\Tables\RefPriceModel.sql" />
+    <Build Include="dbo\Tables\RefPeriodUnitType.sql" />
+    <Build Include="dbo\Tables\RefPeriod.sql" />
+    <Build Include="dbo\Tables\RefDealerText.sql" />
+    <Build Include="dbo\Tables\RefDealer.sql" />
+    <Build Include="dbo\Tables\RefAccessForm.sql" />
+    <Build Include="dbo\Tables\RefSeller.sql" />
+    <Build Include="dbo\Tables\PeriodPrice.sql" />
+    <Build Include="dbo\Tables\Dealer.sql" />
+    <Build Include="dbo\Tables\SalesConfiguration.sql" />
+    <Build Include="dbo\Tables\SalesConfigurationHistory.sql" />
+    <None Include="PostDeployment\Script.PostDeployment1.sql" />
+    <Build Include="dbo\Tables\RefTrialPeriodUnitType.sql" />
+    <Build Include="dbo\Tables\TrialPeriod.sql" />
+    <Build Include="dbo\Tables\TrialCount.sql" />
+    <Build Include="dbo\Tables\TrialLicense.sql" />
+    <Build Include="dbo\Tables\RefTrialAccessForm.sql" />
+    <Build Include="dbo\Tables\RefTrialCountUnitType.sql" />
+    <Build Include="dbo\Tables\RefSalesConfigType.sql" />
+    <Build Include="dbo\Tables\RefAccessProvider.sql" />
+    <Build Include="dbo\Tables\ProductAccessProvider.sql" />
+    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Views\DeflatedSalesConfigurationView.sql" />
+    <Build Include="dbo\Tables\MediaType.sql" />
+    <Build Include="dbo\Tables\MaterialTypes.sql" />
+    <Build Include="dbo\Tables\GpmSubscription.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Deploy\SessionScript.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Jini.Database.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Data.Tools.Contracts">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.Data.Tools.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Tasks.Sql">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.Data.Tools.Schema.Tasks.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Utilities.Sql">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.Data.Tools.Schema.Utilities.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.Data.Tools.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.SqlServer.Dac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac.Extensions">
+      <HintPath>..\..\Dependencies\SqlServer.Dac.12.0.0\lib\Microsoft.SqlServer.Dac.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Jini.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PreDeployment\Script.PreDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeployment\Script.PostDeployment2.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeployment\Script.PostDeployment3.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PreDeployment\Script.PreDeployment2.sql" />
+  </ItemGroup>
+</Project>

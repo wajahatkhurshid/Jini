@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "";
+}
+
+<style>
+
+    .selected {
+        background-color: #10C4B2 !important;
+        color: #FFFFFF !important;
+    }
+
+</style>
+
+<div ng-controller="trial">
+    <header>
+        <h1 class="main-head">Prøveadgang</h1>
+        <p class="desc">Vi har allerede lavet en standardopsætning for prøveadgangen. Din opgave er at gennemse og evt. justere opsætningen så den passer til produktet.</p>
+    </header>
+
+    <section class="block">
+        <h1>Vælg adgangstype</h1>
+        <p ng-show="jiniData.Validations.indexOf('tab4:accessform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+
+        <ul id="select-access-type">
+            <li class="km-button" ng-repeat="accessForm in lookupTrialAccessForms" ng-class="{'selected': jiniData.Trial.AccessForm.Code == accessForm.Code}" ng-click="setSelectedTrialAccess(accessForm.DisplayName,accessForm.Code)">{{::accessForm.DisplayName}}</li> @*ng-class="{'selected': searchArray(accessForm.Code, 'SalesForm').length > 0}"*@
+        </ul>
+    </section>
+
+    <section class="block">
+        <h1>Vælg varighed</h1>
+        <p ng-show="jiniData.Validations.indexOf('tab4:trialperiod') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+
+        <div class="period-string lite">
+            <div class="period-unit-count-wrapper">
+                <input class="period-unit-count" kendo-numeric-text-box k-min="1" k-on-change="checkNullValue()" k-decimals="0" k-step="1" k-value="1" k-format="'n0'" k-ng-model="jiniData.Trial.Period.UnitValue"/>
+            </div>
+           
+            <select id="period-type" kendo-drop-down-list class="period-unit-type"
+                    k-data-text-field="'DisplayName'"
+                    k-data-value-field="'Code'"
+                    k-options="eventTypeDropDown"
+                    k-ng-model="jiniData.Trial.Period.UnitType"
+                    k-value="1001"
+                    k-data-source="lookupTrialPeriodUnitTypes"></select>
+        </div>
+    </section>
+
+    <section class="block">
+        <h1>Max antal per kunde?</h1>
+        <p class="block-lead">Skal der opsættes en begrænsning på hvor mange prøveadgange en kunde kan bestille til produktet?</p>
+
+        <p ng-show="jiniData.Validations.indexOf('tab4:multipletrials') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+
+        <ul id="toggle-max-trials">
+            <li ng-click="maxTrials(true)" >Ja</li> 
+            <li ng-click="maxTrials(false)" >Nej</li>
+        </ul>
+
+        <div class="sub-block" ng-show="jiniData.Trial.MultipleTrialsPerUser">
+            <p class="block-lead">Angiv antal</p>
+            <div class="period-string lite">
+                <div class="period-unit-count-wrapper">
+                    <input class="period-unit-count" kendo-numeric-text-box k-min="1" k-on-change="checkNullValue()" k-decimals="0" k-value="3"  k-step="1" k-format="'n0'" k-ng-model="jiniData.Trial.TrialAccessCount.UnitValue"/>
+                </div>
+                <select id="trial-count" kendo-drop-down-list class="period-unit-type"
+                        k-data-text-field="'DisplayName'"
+                        k-data-value-field="'Code'"
+                        k-ng-model="jiniData.Trial.TrialAccessCount.UnitType"
+                        k-data-source="lookupTrialCountUnitTypes"></select>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <h1>Vis fritekstfelt?</h1>
+        <p class="block-lead">Fritekst kan fx være ‘kontakt salg for alternativ adgangstype’.</p>
+
+        <p ng-show="jiniData.Validations.indexOf('tab4:contactsales') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+
+        <ul id="toggle-contact-sales-text">
+            <li ng-click="hasContactSales(true)" >Ja</li> 
+            <li ng-click="hasContactSales(false)" >Nej</li>
+        </ul>
+
+        <div class="sub-block" ng-show="jiniData.Trial.TrialContactSales">
+            <createlink ng-model="jiniData.Trial.ContactSales" ></createlink>
+        </div>
+    </section>
+</div>

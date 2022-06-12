@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [jini]
+    WITH PASSWORD = N'iki.oxhcyexcld+ZpgjkyKd|msFT7_&#$!~<izYksTvp|gv7', SID = 0x5699C2CCBA6F4148933AE68482C5992D, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

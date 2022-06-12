@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Approve";
+    Layout = "";
+}
+
+<section ng-controller="approve" class="content">
+
+    <header id="ApproveHeader">
+        <h1 class="main-head">Godkend salgsopsætningen</h1>
+        <p class="desc">Gennemse resuméet nedenfor for at kontrollere, om salgsopsætningen er korrekt. Før du godkender skal du også huske at kontrollere, hvordan produktet vil se ud på shoppen med den valgte salgsopsætning.</p>
+    </header>
+
+    @Html.Partial("~/Views/Wizard/Approve/Summary.cshtml")
+</section>
+
+

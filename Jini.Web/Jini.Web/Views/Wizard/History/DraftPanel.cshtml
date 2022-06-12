@@ -1,0 +1,15 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+@{
+    Layout = "";
+}
+
+<section class="sales-config-info">
+    <p class="jini-msg highlight"><svg class="icon-draft"><use xlink:href="/Content/icons/jini.svg#icon-draft"></use></svg> <span>Der findes en nyere version af salgsopsætningen, som ikke er godkendt</span> <span><a ng-click="ResumeDraftVersion()">Åbn kladde</a></span></p>
+</section>
+
+<section class="block block-toolbar">
+    <ul class="sales-config-toolbar">
+        <li id="newConfiguration" ng-click="ResumeDraftVersion()"><img src="~/img/icon-plus.png" /> Ny version</li>
+    </ul>
+</section>

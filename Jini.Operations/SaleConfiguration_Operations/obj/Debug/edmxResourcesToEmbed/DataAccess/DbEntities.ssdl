@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesConfigurationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesConfigurationId" Type="int" Nullable="false" />
+    <Property Name="RefCode" Type="int" Nullable="false" />
+    <Property Name="WebText" Type="nvarchar" MaxLength="500" />
+    <Property Name="DescriptionText" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="DbVersion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VersionNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SequenceNo" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="250" />
+    <Property Name="ScriptName" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dealer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DealerType" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalesConfigurationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PeriodPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitValue" Type="int" Nullable="false" />
+    <Property Name="RefPeriodTypeCode" Type="int" Nullable="false" />
+    <Property Name="AccessFormId" Type="int" Nullable="false" />
+    <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="UnitPriceVat" Type="money" Nullable="false" />
+    <Property Name="VatValue" Type="int" Nullable="false" />
+    <Property Name="IsCustomPeriod" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PriceModel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessFormId" Type="int" Nullable="false" />
+    <Property Name="RefPriceModelCode" Type="int" Nullable="false" />
+    <Property Name="PercentValue" Type="int" />
+    <Property Name="GradeLevels" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RefAccessForm">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WebText" Type="nvarchar" MaxLength="500" />
+    <Property Name="ExternalIdentifier" Type="int" />
+  </EntityType>
+  <EntityType Name="RefDealer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Text" Type="nvarchar" MaxLength="500" />
+    <Property Name="LogoImage" Type="nvarchar" MaxLength="10" />
+    <Property Name="RefDealerTextId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefDealerText">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="RefPeriod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitValue" Type="int" Nullable="false" />
+    <Property Name="RefPeriodUnitTypeCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefPeriodUnitType">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefPriceModel">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RefAccessFormCode" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="500" />
+    <Property Name="ShowPercentage" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefSalesChannel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefSalesConfigType">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefSalesForm">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExternalIdentifier" Type="int" Nullable="false" />
+    <Property Name="PeriodTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RefSeller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefTrialAccessForm">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefTrialCountUnitType">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefTrialPeriodUnitType">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Isbn" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="SellerId" Type="int" Nullable="false" />
+    <Property Name="SalesChannel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="SalesFormId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="RevisionNumber" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TrialLicenseId" Type="int" />
+    <Property Name="RefSalesConfigTypeCode" Type="int" />
+  </EntityType>
+  <EntityType Name="SalesConfigurationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VersionNo" Type="int" Nullable="false" />
+    <Property Name="Isbn" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RefSalesFormCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WebShopId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrialCount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitValue" Type="int" />
+    <Property Name="RefCountUnitTypeCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrialLicense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrialPeriodId" Type="int" />
+    <Property Name="MultipleTrials" Type="bit" Nullable="false" />
+    <Property Name="TrialAccessFormCode" Type="int" />
+    <Property Name="TrialCountId" Type="int" />
+    <Property Name="ContactSalesText" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TrialPeriod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitValue" Type="int" Nullable="false" />
+    <Property Name="RefTrialPeriodTypeCode" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TrialPeri__RefTr__656C112C">
+    <End Role="RefTrialPeriodUnitType" Type="Self.RefTrialPeriodUnitType" Multiplicity="1" />
+    <End Role="TrialPeriod" Type="Self.TrialPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefTrialPeriodUnitType">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="TrialPeriod">
+        <PropertyRef Name="RefTrialPeriodTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccessForm_RefAccessForm">
+    <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+    <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefAccessForm">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="AccessForm">
+        <PropertyRef Name="RefCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccessForm_SalesConfiguration">
+    <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessForm">
+        <PropertyRef Name="SalesConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Period_AccessForm">
+    <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessForm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PeriodPrice">
+        <PropertyRef Name="AccessFormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeriodPrice_RefPeriodUnitType">
+    <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+    <End Role="PeriodPrice" Type="Self.PeriodPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefPeriodUnitType">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="PeriodPrice">
+        <PropertyRef Name="RefPeriodTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriceModel_AccessForm">
+    <End Role="AccessForm" Type="Self.AccessForm" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessForm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PriceModel">
+        <PropertyRef Name="AccessFormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriceModel_RefPriceModel">
+    <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="1" />
+    <End Role="PriceModel" Type="Self.PriceModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefPriceModel">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="PriceModel">
+        <PropertyRef Name="RefPriceModelCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RefDealer_RefDealerText">
+    <End Role="RefDealerText" Type="Self.RefDealerText" Multiplicity="1" />
+    <End Role="RefDealer" Type="Self.RefDealer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefDealerText">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RefDealer">
+        <PropertyRef Name="RefDealerTextId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RefPeriod_RefPeriodUnitType">
+    <End Role="RefPeriodUnitType" Type="Self.RefPeriodUnitType" Multiplicity="1" />
+    <End Role="RefPeriod" Type="Self.RefPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefPeriodUnitType">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="RefPeriod">
+        <PropertyRef Name="RefPeriodUnitTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RefPriceModel_RefAccessForm">
+    <End Role="RefAccessForm" Type="Self.RefAccessForm" Multiplicity="1" />
+    <End Role="RefPriceModel" Type="Self.RefPriceModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefAccessForm">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="RefPriceModel">
+        <PropertyRef Name="RefAccessFormCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesConfiguration_RefSalesConfigType">
+    <End Role="RefSalesConfigType" Type="Self.RefSalesConfigType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefSalesConfigType">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="SalesConfiguration">
+        <PropertyRef Name="RefSalesConfigTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesConfiguration_SalesForm">
+    <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="0..1" />
+    <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesForm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SalesConfiguration">
+        <PropertyRef Name="SalesFormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesConfiguration_Seller">
+    <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+    <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SalesConfiguration">
+        <PropertyRef Name="SellerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesConfiguration_TrialLicense">
+    <End Role="TrialLicense" Type="Self.TrialLicense" Multiplicity="0..1" />
+    <End Role="SalesConfiguration" Type="Self.SalesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialLicense">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SalesConfiguration">
+        <PropertyRef Name="TrialLicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesForm_RefSalesForm">
+    <End Role="RefSalesForm" Type="Self.RefSalesForm" Multiplicity="1" />
+    <End Role="SalesForm" Type="Self.SalesForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefSalesForm">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="SalesForm">
+        <PropertyRef Name="RefSalesFormCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialCount_RefTrialCountUnitType">
+    <End Role="RefTrialCountUnitType" Type="Self.RefTrialCountUnitType" Multiplicity="1" />
+    <End Role="TrialCount" Type="Self.TrialCount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefTrialCountUnitType">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="TrialCount">
+        <PropertyRef Name="RefCountUnitTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialLicense_RefTrialAccessForm">
+    <End Role="RefTrialAccessForm" Type="Self.RefTrialAccessForm" Multiplicity="0..1" />
+    <End Role="TrialLicense" Type="Self.TrialLicense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RefTrialAccessForm">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="TrialLicense">
+        <PropertyRef Name="TrialAccessFormCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialLicense_TrialCount">
+    <End Role="TrialCount" Type="Self.TrialCount" Multiplicity="0..1" />
+    <End Role="TrialLicense" Type="Self.TrialLicense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialCount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrialLicense">
+        <PropertyRef Name="TrialCountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrialLicense_TrialPeriod">
+    <End Role="TrialPeriod" Type="Self.TrialPeriod" Multiplicity="0..1" />
+    <End Role="TrialLicense" Type="Self.TrialLicense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrialPeriod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrialLicense">
+        <PropertyRef Name="TrialPeriodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SalesConfigurationModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessForm" EntityType="Self.AccessForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DbVersion" EntityType="Self.DbVersion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dealer" EntityType="Self.Dealer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PeriodPrice" EntityType="Self.PeriodPrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriceModel" EntityType="Self.PriceModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefAccessForm" EntityType="Self.RefAccessForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefDealer" EntityType="Self.RefDealer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefDealerText" EntityType="Self.RefDealerText" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefPeriod" EntityType="Self.RefPeriod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefPeriodUnitType" EntityType="Self.RefPeriodUnitType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefPriceModel" EntityType="Self.RefPriceModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefSalesChannel" EntityType="Self.RefSalesChannel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefSalesConfigType" EntityType="Self.RefSalesConfigType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefSalesForm" EntityType="Self.RefSalesForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefSeller" EntityType="Self.RefSeller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefTrialAccessForm" EntityType="Self.RefTrialAccessForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefTrialCountUnitType" EntityType="Self.RefTrialCountUnitType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefTrialPeriodUnitType" EntityType="Self.RefTrialPeriodUnitType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesConfiguration" EntityType="Self.SalesConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesConfigurationHistory" EntityType="Self.SalesConfigurationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesForm" EntityType="Self.SalesForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrialCount" EntityType="Self.TrialCount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrialLicense" EntityType="Self.TrialLicense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrialPeriod" EntityType="Self.TrialPeriod" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TrialPeri__RefTr__656C112C" Association="Self.FK__TrialPeri__RefTr__656C112C">
+      <End Role="RefTrialPeriodUnitType" EntitySet="RefTrialPeriodUnitType" />
+      <End Role="TrialPeriod" EntitySet="TrialPeriod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccessForm_RefAccessForm" Association="Self.FK_AccessForm_RefAccessForm">
+      <End Role="RefAccessForm" EntitySet="RefAccessForm" />
+      <End Role="AccessForm" EntitySet="AccessForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccessForm_SalesConfiguration" Association="Self.FK_AccessForm_SalesConfiguration">
+      <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+      <End Role="AccessForm" EntitySet="AccessForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Period_AccessForm" Association="Self.FK_Period_AccessForm">
+      <End Role="AccessForm" EntitySet="AccessForm" />
+      <End Role="PeriodPrice" EntitySet="PeriodPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeriodPrice_RefPeriodUnitType" Association="Self.FK_PeriodPrice_RefPeriodUnitType">
+      <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitType" />
+      <End Role="PeriodPrice" EntitySet="PeriodPrice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriceModel_AccessForm" Association="Self.FK_PriceModel_AccessForm">
+      <End Role="AccessForm" EntitySet="AccessForm" />
+      <End Role="PriceModel" EntitySet="PriceModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriceModel_RefPriceModel" Association="Self.FK_PriceModel_RefPriceModel">
+      <End Role="RefPriceModel" EntitySet="RefPriceModel" />
+      <End Role="PriceModel" EntitySet="PriceModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RefDealer_RefDealerText" Association="Self.FK_RefDealer_RefDealerText">
+      <End Role="RefDealerText" EntitySet="RefDealerText" />
+      <End Role="RefDealer" EntitySet="RefDealer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RefPeriod_RefPeriodUnitType" Association="Self.FK_RefPeriod_RefPeriodUnitType">
+      <End Role="RefPeriodUnitType" EntitySet="RefPeriodUnitType" />
+      <End Role="RefPeriod" EntitySet="RefPeriod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RefPriceModel_RefAccessForm" Association="Self.FK_RefPriceModel_RefAccessForm">
+      <End Role="RefAccessForm" EntitySet="RefAccessForm" />
+      <End Role="RefPriceModel" EntitySet="RefPriceModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesConfiguration_RefSalesConfigType" Association="Self.FK_SalesConfiguration_RefSalesConfigType">
+      <End Role="RefSalesConfigType" EntitySet="RefSalesConfigType" />
+      <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesConfiguration_SalesForm" Association="Self.FK_SalesConfiguration_SalesForm">
+      <End Role="SalesForm" EntitySet="SalesForm" />
+      <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesConfiguration_Seller" Association="Self.FK_SalesConfiguration_Seller">
+      <End Role="Seller" EntitySet="Seller" />
+      <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesConfiguration_TrialLicense" Association="Self.FK_SalesConfiguration_TrialLicense">
+      <End Role="TrialLicense" EntitySet="TrialLicense" />
+      <End Role="SalesConfiguration" EntitySet="SalesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesForm_RefSalesForm" Association="Self.FK_SalesForm_RefSalesForm">
+      <End Role="RefSalesForm" EntitySet="RefSalesForm" />
+      <End Role="SalesForm" EntitySet="SalesForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialCount_RefTrialCountUnitType" Association="Self.FK_TrialCount_RefTrialCountUnitType">
+      <End Role="RefTrialCountUnitType" EntitySet="RefTrialCountUnitType" />
+      <End Role="TrialCount" EntitySet="TrialCount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialLicense_RefTrialAccessForm" Association="Self.FK_TrialLicense_RefTrialAccessForm">
+      <End Role="RefTrialAccessForm" EntitySet="RefTrialAccessForm" />
+      <End Role="TrialLicense" EntitySet="TrialLicense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialLicense_TrialCount" Association="Self.FK_TrialLicense_TrialCount">
+      <End Role="TrialCount" EntitySet="TrialCount" />
+      <End Role="TrialLicense" EntitySet="TrialLicense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrialLicense_TrialPeriod" Association="Self.FK_TrialLicense_TrialPeriod">
+      <End Role="TrialPeriod" EntitySet="TrialPeriod" />
+      <End Role="TrialLicense" EntitySet="TrialLicense" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

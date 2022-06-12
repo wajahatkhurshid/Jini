@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF517FB7-38E5-4F61-A4D3-865476D247EC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gyldendal.Jini.Utilities.TextCleanUp</RootNamespace>
+    <AssemblyName>Gyldendal.Jini.Utilities.TextCleanUp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.13.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.13\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\AccessForm.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DbVersion.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Dealer.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\PeriodPrice.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\PriceModel.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefAccessForm.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefDealer.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefDealerText.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefPeriod.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefPeriodUnitType.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefPriceModel.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefSalesChannel.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefSalesForm.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefSeller.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefTrialAccessForm.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefTrialCountUnitType.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\RefTrialPeriodUnitType.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SaleConfiguration.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleConfiguration.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SaleConfiguration.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SaleConfiguration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleConfiguration.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SalesConfiguration.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SalesConfigurationHistory.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SalesForm.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Seller.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TrialCount.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TrialLicense.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TrialPeriod.cs">
+      <DependentUpon>SaleConfiguration.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlPackUtil.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="DataAccess\SaleConfiguration.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SaleConfiguration.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="DataAccess\SaleConfiguration.edmx.diagram">
+      <DependentUpon>SaleConfiguration.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAccess\SaleConfiguration.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SaleConfiguration.Context.cs</LastGenOutput>
+      <DependentUpon>SaleConfiguration.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataAccess\SaleConfiguration.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaleConfiguration.edmx</DependentUpon>
+      <LastGenOutput>SaleConfiguration.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="AfterCompile" Condition="Exists('App.$(Configuration).config')">
+    <!--Generate transformed app config in the intermediate directory-->
+    <TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
+    <!--Force build process to use the transformed configuration file from now on.-->
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="App.config" />
+      <AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
+  <!--Override After Publish to support ClickOnce AfterPublish. Target replaces the untransformed config file copied to the deployment directory with the transformed one.-->
+  <Target Name="AfterPublish">
+    <PropertyGroup>
+      <DeployedConfig>$(_DeploymentApplicationDir)$(TargetName)$(TargetExt).config$(_DeploymentFileMappingExtension)</DeployedConfig>
+    </PropertyGroup>
+    <!--Publish copies the untransformed App.config to deployment directory so overwrite it-->
+    <Copy Condition="Exists('$(DeployedConfig)')" SourceFiles="$(IntermediateOutputPath)$(TargetFileName).config" DestinationFiles="$(DeployedConfig)" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

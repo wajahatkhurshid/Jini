@@ -1,0 +1,271 @@
+﻿@using Gyldendal.Jini.Web.Common
+@using Kendo.Mvc.UI
+
+<!DOCTYPE html>
+<html ng-app="jiniV2bulk" ng-controller="configurationV2Ctrl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script>
+        (function (window) {
+            window.__jiniEnv = {};
+            // Jini API url
+            window.__jiniEnv.jiniApiUrl = '@Utils.JiniServiceUrl';
+            // Base url
+            window.__jiniEnv.baseUrl = '/';
+            // vat = 25%
+            window.__jiniEnv.vat = '@Utils.Vat';
+            // MMS URL
+            window.__jiniEnv.mmsUrl = '@Utils.MmsUrl';
+            // Logged in User Name
+            window.__jiniEnv.userName = '@Utils.GetLoggedInUserName()';
+            // Seller Name
+            window.__jiniEnv.sellerName = "Gyldendal Uddannelse";
+        }(this));
+
+    </script>
+    <style>
+
+        .k-grid tbody tr {
+            height: 35px;
+        }
+
+            .k-grid tbody tr td {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding-top: 1px;
+                padding-bottom: 1px;
+            }
+
+        span.k-widget.k-dropdown.k-header {
+            visibility: hidden;
+            height: 0px;
+        }
+
+        .k-calendar .k-header .k-state-hover {
+            background-color: #E43c48;
+        }
+
+        .k-grid-filter {
+            outline: none;
+        }
+
+        a > .k-icon.k-i-filter {
+            font-size: 19px;
+        }
+
+        .k-link {
+            font-size: 16px;
+        }
+    </style>
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.common.min.css")">*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.common-nova.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.mobile.min.css")">
+    @Styles.Render(@"~/Content/Jini")
+    @Scripts.Render(@"~/bundles/jquery")
+    @Scripts.Render(@"~/bundles/Jini")
+    <script>
+        //Make DatePicker Input ReadOnly
+        $(document).ready(function () {
+
+            $("#start").keydown(function () { return false; });
+            $("#end").keydown(function () { return false; });
+            $("#startLastModified").keydown(function () { return false; });
+            $("#endLastModified").keydown(function () { return false; });
+
+            $("#start").click(function (e) {
+                if ($('#start_dateview').css('display') == 'none') {
+                    $("#start").data("kendoDatePicker").open();
+                    e.stopPropagation();
+                } else {
+                    $("#start").data("kendoDatePicker").close();
+                }
+
+            });
+            $("#end").click(function (e) {
+                if ($('#end_dateview').css('display') == 'none') {
+                    $("#end").data("kendoDatePicker").open();
+                    e.stopPropagation();
+                } else {
+                    $("#end").data("kendoDatePicker").close();
+                }
+            });
+
+            $("#startLastModified").click(function (e) {
+                if ($('#startLastModified_dateview').css('display') == 'none') {
+                    $("#startLastModified").data("kendoDatePicker").open();
+                    e.stopPropagation();
+                } else {
+                    $("#startLastModified").data("kendoDatePicker").close();
+                }
+
+            });
+            $("#endLastModified").click(function (e) {
+                if ($('#endLastModified_dateview').css('display') == 'none') {
+                    $("#endLastModified").data("kendoDatePicker").open();
+                    e.stopPropagation();
+                } else {
+                    $("#endLastModified").data("kendoDatePicker").close();
+                }
+            });
+            //load lastly selected filters when document is ready
+
+        });
+    </script>
+</head>
+<body class="main-grid">
+    <header role="banner">
+        <div class="header-content-main">
+            <div class="brand">
+                @*<img class="jini-logo" src="~/img/jini-logo.svg" />*@
+                <h1>Jini</h1>
+            </div>
+            <div class="greeting">
+                <p>Hej, <strong>@Utils.GetLoggedInUserName()</strong></p>s
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <section class="content main-page">
+            <div id="bulkbody">
+                @RenderBody()
+            </div>
+            <div>
+                <!--Custom Header Template for Udgivelsesdato Column in Kendo Grid uses this window as filter menu-->
+                @(Html.Kendo().Window()
+          .Name("releasedateWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .Width(265)
+          .HtmlAttributes(new { style = "max-height: 400px; padding:0px 0px 0px 0px;" })
+          .Content(@<text>
+                    <div class="k-content k-filter-menu">
+                        <span style="font-size: 14px">Periode:</span>
+                        @(Html.Kendo().DatePicker()
+                                         .Name("start")
+                                         .Value(DateTime.Now.Date)
+                                         .Max(DateTime.Now.Date)
+                                         .Events(e => e.Change("startChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px;" })
+                        )
+                        @(Html.Kendo().DatePicker()
+                                         .Name("end")
+                                         .Value(DateTime.Now.Date)
+                                         .Min(DateTime.Now.Date)
+                                         .Events(e => e.Change("endChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px; " })
+                        )
+                        <div class="k-group k-reset">
+                            <div style="padding: 0; font-size: 14px;">
+                                <div>
+                                   <button id="releasedateApply" class="k-button k-primary" type="submit" onclick="releaseDateFilterApplied()">FILTRER</button>
+                                   <button id="releasedateClear" class="k-button" type="reset" onclick="releaseDateFilterCleared()">NULSTIL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </text>)
+        .Width(200)
+        .Visible(false)
+        )
+                <!--Custom Header Template for LastModified Column in Kendo Grid uses this window as filter menu-->
+                @(Html.Kendo().Window()
+          .Name("lastmodifiedWindow")
+          .Animation(animation =>
+          {
+              animation.Open(open =>
+              {
+                  open.Expand(ExpandDirection.Vertical);
+                  open.Duration(100);
+              });
+
+              animation.Close(close =>
+              {
+                  close.Reverse(true);
+                  close.Duration(50);
+                  close.Expand(ExpandDirection.Vertical);
+              });
+          })
+          .Title(false)
+          .Width(265)
+          .HtmlAttributes(new { style = "max-height: 400px; padding:0px 0px 0px 0px;" })
+          .Content(@<text>
+                    <div class="k-content k-filter-menu">
+                        <span style="font-size: 14px">Periode:</span>
+                        @(Html.Kendo().DatePicker()
+                                         .Name("startLastModified")
+                                         .Value(DateTime.Now.Date)
+                                         .Max(DateTime.Now.Date)
+                                         .Events(e => e.Change("startLastModifiedChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px;" })
+                        )
+                        @(Html.Kendo().DatePicker()
+                                         .Name("endLastModified")
+                                         .Value(DateTime.Now.Date)
+                                         .Min(DateTime.Now.Date)
+                                         .Events(e => e.Change("endLastModifiedChange").Open("onCalenderFilterOpen"))
+                                         .Format("dd-MM-yyyy")
+                                         .HtmlAttributes(new { style = "width: 100%; font-size: 14px; " })
+                        )
+                        <div class="k-group k-reset">
+                            <div style="padding: 0; font-size: 14px;">
+                                <div>
+                                    <button id="lastmodifiedApply" class="k-button k-primary" type="submit" onclick="lastModifiedFilterApplied()">FILTRER</button>
+                                    <button id="lastmodifiedClear" class="k-button" type="reset" onclick="lastModifiedFilterCleared()">NULSTIL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </text>)
+.Width(200)
+.Visible(false)
+        )
+            </div>
+
+            <section class="jini-popup" id="confirmation-popup">
+                <div class="jini-popup-content custom-period-popup-content">
+                    <h3>Skal de ændringer du har lavet på salgsopsætningen gemmes?</h3>
+                </div>
+                <div class="jini-popup-buttons-pane">
+                    <button class="jini-btn standout period-remove" ng-click="hideAbandonPopop();Save(false)">Gem</button>
+                    <button class="jini-btn" ng-click="GemIkke()">Gem ikke</button>
+                    <button class="jini-btn" ng-click="hidePopops()">Annuller</button>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script>
+        createPopup(
+            "confirmation-popup",
+            "",
+            true,
+            "Gem ændringer?",
+            500
+        );
+    </script>
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>Jini | Gyldendal</p>
+        </div>
+    </footer>
+</body>
+</html>

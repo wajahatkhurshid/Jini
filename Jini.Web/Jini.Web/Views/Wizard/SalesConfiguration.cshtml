@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Jini: Configuration Wizard";
+    Layout = "";
+}
+
+@using Gyldendal.Jini.Web.Common
+
+<!DOCTYPE html>
+<html ng-app="jini" ng-controller="wizard">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script>
+        (function (window) {
+            window.__jiniEnv = {};
+            // Jini API url
+            window.__jiniEnv.jiniApiUrl = '@Utils.JiniServiceUrl';
+            // Base url
+            window.__jiniEnv.baseUrl = '/';
+            // vat = 25%
+            window.__jiniEnv.vat = '@Utils.Vat';
+            // MMS URL
+            window.__jiniEnv.mmsUrl = '@Utils.MmsUrl';
+            // Logged in User Name
+            window.__jiniEnv.userName = '@Utils.GetLoggedInUserName()';
+            // Seller Name
+            window.__jiniEnv.sellerName = '@Model.DepartmentName';
+        }(this));
+
+        var _approveCode = @((int)Enums.EnumState.Approved);
+        var _draftCode = @((int)Enums.EnumState.Draft);
+        var _subscription = @((int)Enums.EnumSalesForm.Subscription);
+        var _rental = @((int)Enums.EnumSalesForm.Rental);
+        var _school = @((int)Enums.EnumAccessForm.School);
+        var _class = @((int)Enums.EnumAccessForm.Class);
+        var _teacher = @((int)Enums.EnumAccessForm.Teacher);
+        var _singleUser = @((int)Enums.EnumAccessForm.SingleUser);
+        var _contactSales = @((int)Enums.EnumAccessForm.ContactSales);
+
+        var _noOfStudentsInReleventClasses = @((int)Enums.EnumPriceModel.NoOfStudentsInReleventClasses);
+        var _noOfReleventClasses = @((int)Enums.EnumPriceModel.NoOfReleventClasses);
+    </script>
+
+    <script>
+        var ViewModel=@Html.Raw(Json.Encode(Model));
+    </script>
+    
+    
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.common.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.common-nova.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.mobile.min.css")">
+    @Styles.Render(@"~/Content/Jini")
+    @Scripts.Render(@"~/bundles/jquery")
+    @Scripts.Render(@"~/bundles/Jini")
+
+</head>
+<body>
+    <header role="banner">
+        <div class="header-content-main">
+            <div class="brand">
+                <svg class="jini-logo"><use xlink:href="~/Content/icons/jini.svg#jini-logo"></use></svg>
+                <h1>Jini</h1>
+            </div>
+            <div class="greeting">
+                <p>
+                    Hej, <strong>@Utils.GetLoggedInUserName()</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="breadcrumbs">
+            <ul id="breadcrumb-list">
+                <li><a id="product-list" ng-click="openAbandonSales('product-list')">Digitale produkter</a></li>
+                <li id="breadcrumb-title" ng-if="!Approved || (Approved && state=='history')"><strong>{{::jiniData.DigitalTitle.TitleAndMediaType}}</strong></li>
+                <li id="breadcrumb-title" ng-if="Approved && state!='history'"><strong><a ng-click="openAbandonSales('product-history')">{{::jiniData.DigitalTitle.TitleAndMediaType}}</a></strong></li>
+                <li id="breadcrumb-version" ng-if="Approved && state!='history'"><strong>Salgsopsætning - Version {{jiniData.VersionHistory.length + 1}}</strong></li>
+                @*for checking states and approved variable *@
+                @*<li>value of Approved : {{Approved+" "+state}}</li>*@
+            </ul>
+        </div>
+    </header>
+
+    <div id="wizardbody">
+        <div ui-view="ProgressBar"></div>
+        <div id="divLoading">
+        </div>
+        <div class="container">
+
+            <section class="content">
+                <div ui-view="Main"></div>
+                @Html.Partial("~/Views/Wizard/Shared/WizardActionBar.cshtml")
+            </section>
+
+        </div>
+    </div>
+    <section class="jini-popup" id="confirmation-popup">
+        <div class="jini-popup-content custom-period-popup-content">
+            <h3>Skal de ændringer du har lavet på salgsopsætningen gemmes?</h3>
+        </div>
+        <div class="jini-popup-buttons-pane">
+            <button class="jini-btn standout period-remove" ng-click="hideAbandonPopop();Save(false)">Gem</button>
+            <button class="jini-btn" ng-click="GemIkke()">Gem ikke</button>
+            <button class="jini-btn" ng-click="hidePopops()">Annuller</button>
+        </div>
+    </section>
+    <script>
+        createPopup(
+            "confirmation-popup",
+            "",
+            true,
+            "Gem ændringer?",
+            500
+        );
+    </script>
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>Jini | Gyldendal</p>
+        </div>
+    </footer>
+
+    <script>
+        kendo.culture("da-DK");
+
+    </script>
+
+
+</body>
+
+</html>

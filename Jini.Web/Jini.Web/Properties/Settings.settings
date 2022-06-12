@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gyldendal.Jini.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Vat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1.25</Value>
+    </Setting>
+    <Setting Name="MmsUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://newtest.multimediaserver.gyldendal.dk/Gyldendal/CoverFace/W156/</Value>
+    </Setting>
+    <Setting Name="CheckAllText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Vælg alle</Value>
+    </Setting>
+    <Setting Name="SellerName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gyldendal Uddannelse</Value>
+    </Setting>
+    <Setting Name="JiniServiceUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:31728/api/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

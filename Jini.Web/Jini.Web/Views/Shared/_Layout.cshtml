@@ -1,0 +1,54 @@
+﻿@using Gyldendal.Jini.Web.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Jini</title>
+    <link href="@Url.Content("~/Content/kendo/2016.1.112/kendo.common-nova.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.112/kendo.nova.mobile.min.css")" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/product-list.css")" />
+    <script src="@Url.Content("~/Scripts/kendo/2020.3.1021/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/svg4everybody.min.js")" ></script>
+</head>
+<body class="@ViewBag.BodyClass">
+    <header role="banner">
+        <div class="header-content-main">
+            <div class="brand">
+                <svg class="jini-logo"><use xlink:href="Content/icons/jini.svg#jini-logo"></use></svg>
+                <h1>Jini</h1>
+            </div>
+            <div class="greeting">
+                <p>Hej, <strong>@Utils.GetLoggedInUserName()</strong></p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        @RenderBody()
+        
+
+        <!-- <section class="sidebar">
+            <h1>Some things to keep in mind</h1>
+            <p>Lorem ispsum blah blah. Først og fremmest skal du tage stilling til, hvordan produktet overordnet skal sættes til salg på shoppen—dvs hvilke licenser der tilbydes for dette produkt.</p>
+        </section> -->
+    </div>
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>Jini | Gyldendal</p>
+        </div>
+    </footer>
+    <script src="@Url.Content("~/Scripts/jini/jini-custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2020.3.1021/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2020.3.1021/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2020.3.1021/cultures/kendo.culture.da-DK.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2020.3.1021/messages/kendo.messages.da-DK.min.js")"></script>
+    <script>
+         kendo.culture("da-DK");
+    </script>
+</body>
+</html>

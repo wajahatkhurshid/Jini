@@ -1,0 +1,72 @@
+﻿
+
+.k-grid table {
+    table-layout: fixed;
+}
+
+.k-tooltip-content {
+    padding: 5px;
+    font-size: 13px;
+    line-height: 1;
+    text-align: left;
+}
+
+.redColor {
+    color: #FF404E;
+}
+
+.k-in {
+    white-space: initial;
+    width: 150px;
+}
+
+.k-grid td {
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.k-grid th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.k-drag-clue {
+    font-size: 14px;
+}
+
+.k-grid-content {
+    min-height: 400px;
+}
+
+.k-grid.k-grid-norecords {
+    margin-top: 30px;
+}
+@media (max-width: 400px) {
+    .k-widget .k-window .k-window-titleless {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/*Custom Filter Window Style*/
+#departmentWindow.k-window-content.k-content {
+    padding: 5px !important;
+}
+#mediaTypeWindow.k-window-content.k-content {
+    padding: 5px !important;
+}
+#publishdateWindow.k-window-content.k-content {
+    padding: 0 !important;
+}
+/*New popup for change date padding setting*/
+#latestChangeDateInJiniWindow.k-window-content.k-content {
+    padding: 0 !important;
+}
+span.avoidwrap { 
+    display:inline-block;
+    white-space: nowrap;
+}

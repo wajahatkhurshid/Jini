@@ -1,0 +1,46 @@
+﻿@using JiniWeb.Common;
+
+<section class="jini-popup" id="product-preview-popup">
+    <div class="jini-popup-content product-preview-popup-content">
+        <div class="product-preview-meta">
+            <h3>{{::DigitalTitle.Title}}</h3>
+            <p class="desc">{{::DigitalTitle.SubTitle}}</p>
+            <img src="{{::DigitalTitle.Cover}}" />
+        </div>
+        <div class="product-preview-buying-opts">
+            <h3>Køb adgang til produktet</h3>
+
+            <select kendo-drop-down-list class="jini-dropdown" id="preview-period-select"
+                    k-data-text-field="'DisplayName'"
+                    k-data-value-field="'Id'"
+                    k-ng-model="PreviewPeriodSelection"
+                    k-value-primitve="true"
+                    k-data-source="Periods"></select>
+            
+            <ul class="product-preview-licenses">
+                <li ng-show="(searchArray(@((int)Enums.EnumAccessForm.School), 'AccessForm').length > 0)">
+                    <h4>Skolelicens</h4>
+                    <p class="price">{{SchoolLicense.Pricing[PreviewPeriodSelection['DisplayName']].ExTax}}</p>
+                    <p class="currency">
+                        <text ng-show="SchoolLicense.BillingModel.DisplayName == 'Hele skolen'">DKK</text>
+                        <text ng-show="SchoolLicense.BillingModel.DisplayName == 'Antal elever'">DKK pr. elev</text>
+                        <text ng-show="SchoolLicense.BillingModel.DisplayName == 'Procentdel af elever'">DKK pr. elev</text>
+                        <text ng-show="SchoolLicense.BillingModel.DisplayName == 'Antal elever på relevante klassetrin'">DKK pr. elev</text>
+                        <text ng-show="SchoolLicense.BillingModel.DisplayName == 'Antal klasser på relevante klassetrin'">DKK pr. klasse</text>
+                    </p>
+
+                </li>
+                <li ng-show="(searchArray(@((int)Enums.EnumAccessForm.Class), 'AccessForm').length > 0)">
+                    <h4>Klasselicens</h4>
+                    <p class="price">{{ClassLicense.Pricing[PreviewPeriodSelection['DisplayName']].ExTax}}</p>
+                    <p class="currency">
+                        <text ng-show="ClassLicense.BillingModel.DisplayName == 'Pris pr. klasse'"> DKK pr. elev</text>
+                        <text ng-show="ClassLicense.BillingModel.DisplayName == 'Pris pr. elev i klasser'">DKK pr. klasse</text>
+                    </p>
+
+                </li>
+            </ul>
+            <span class="product-preview-calc-price">Beregn din pris</span>
+        </div>
+    </div>
+</section>

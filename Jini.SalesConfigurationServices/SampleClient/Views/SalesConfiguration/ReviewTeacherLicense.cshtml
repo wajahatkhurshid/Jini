@@ -1,0 +1,26 @@
+﻿
+<h4>Priser for underviseradgang</h4>
+<dl class="config-summary">
+    <dt>Fakturering</dt>
+    <dd>{{accessType.BillingModels[0]['DisplayName']}}</dd>
+    
+    <dd class="full">
+        <table>
+            <thead>
+                <tr>
+                    <th>Periode</th>
+                    <th class="price">Pris (eksl. moms)</th>
+                    <th class="price">Pris (inkl. moms)</th>
+                    <th class="price">Calculated Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="period in accessType.BillingPeriods">
+                    <td>{{period["DisplayName"]}}</td>
+                    <td class="price">{{period.Price.UnitPrice}} DKK </td>
+                    <td class="price">{{period.Price.UnitPriceVat}} DKK</td>
+                    <td class="price">{{period.Price.CalculatedPrice}} DKK</td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>

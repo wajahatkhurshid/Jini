@@ -1,0 +1,1551 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gyldendal.Jini.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Gyldendal.Jini.Services.ContainerRegistration">
+            <summary>
+            Registers the Autofac as container for Dependency Injection
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.ContainerRegistration.Initialize(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes the Autofac container
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.RouteConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.SwaggerConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.SwaggerConfig.Register">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.WebApiConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ApiDescriptionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.App_Start.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.App_Start.HelpPageConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.Index">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.Api(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="apiId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Controllers.HelpController.ResourceModel(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="modelName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageAreaRegistration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageAreaRegistration.AreaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.CollectionModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.CollectionModelDescription.ElementDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.Values">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumValueDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.KeyModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.ValueModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription.ModelType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.AnnotationTextGenerator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.DefaultTypeDocumentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GeneratedModels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetOrCreateModelDescription(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="modelType"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterAnnotation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.AnnotationAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription.Annotations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription.TypeDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.SimpleTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.DefaultSampleObjectFactory(Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ObjectGenerator"/>) and other
+            factories in <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey"/> based on media type, <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.ParameterType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.HelpPageSampleKey.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample.Src">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ImageSample.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample.ErrorMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.InvalidSample.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection.Request">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.SampleDirection.Response">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample.Text">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.SampleGeneration.TextSample.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="controllerDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="parameterDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.AccessProviderController">
+            <summary>
+            Access form Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.AccessProviderController.#ctor(Gyldendal.Jini.Services.Data.DataAccess.ILookUpsDbController)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="lookUpsDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.AccessProviderController.GetRefAccessProviders">
+            <summary>
+            Returns List of AccessProvider from Jini Database
+            </summary>
+            <returns>Returns List of Access Forms in Json</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.AccessProviderController.GetRefAccessProviderById(Gyldendal.Api.ShopServices.Contracts.License.Access.EnumAccessProvider)">
+            <summary>
+            Returns List of AccessProvider from Jini Database
+            </summary>
+            <returns>Returns List of Access Forms in Json</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.ErrorInfoController">
+            <summary>
+            For Exposing Errors
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ErrorInfoController.#ctor(Gyldendal.Jini.Services.Common.Utils.IErrorCodeUtil)">
+            <summary>
+            Constructor of ErrorInfo Controller for getting the error codes
+            </summary>
+            <param name="errorCodeUtil"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ErrorInfoController.GetErrorCodeDetails(System.UInt64)">
+            <summary>
+            Get error details for the specified error code of CoreData
+            <param name="errorCode"></param>
+            </summary>
+            <returns>Error code details</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ErrorInfoController.GetAllErrorCodes">
+            <summary>
+            Get All ErrorCodes of Jini
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.GpmSubscriptionController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.GpmSubscriptionController.#ctor(Gyldendal.Jini.Services.Core.GpmSubscription.IGpmSubscriptionService)">
+            <summary>
+            
+            </summary>
+            <param name="gpmSubscriptionService"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.GpmSubscriptionController.CreateSubscription(System.String,System.String,System.String)">
+            <summary>
+            Create subscription and scopes in GPM
+            </summary>
+            <param name="gpmEnvironment">Dev,Test,QA,Production</param>
+            <param name="jiniEnvironment">Dev,Test,QA,Production</param>
+            <param name="subscriptionName"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.HomeController">
+            <summary>
+            Landing Page
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.HomeController.Index">
+            <summary>
+            Landing Page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.JiniBulkController">
+            <summary>
+            Jini Bulk Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniBulkController.GetDeflatedSalesConfigurations(Gyldendal.Jini.Services.Common.RequestResponse.DeflatedSalesConfigurationRequest)">
+            <summary>
+            Get deflated sales configuration by filters
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniBulkController.SaveDeflatedPrices(Gyldendal.Jini.Services.Common.RequestResponse.PriceModelRequest)">
+            <summary>
+            Save Deflated Save Prices in bulk
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.JiniController">
+            <summary>
+            Jini Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniController.#ctor(Gyldendal.Jini.Services.Core.Manager.IRapManager,Gyldendal.Jini.Services.Utils.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="rapManager"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniController.GetLastSyncTime">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniController.ClearCache">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniController.GetDepartmentsAndEditorial">
+            <summary>
+                Get a hierarchical list of departments and sub departments from RAP
+            </summary>
+            <returns>returns list of departments and sub departments</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.JiniController.GetMediaAndMaterialeTypes">
+            <summary>
+                Get a hierarchical list of media type and their material types from RAP
+            </summary>
+            <returns>returns a list of media and material types</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.SellerController">
+            <summary>
+            Get Seller Related Detail
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SellerController.#ctor(Gyldendal.Jini.Services.Core.Seller.ISellerFacade)">
+            <summary>
+            Constructor for SellerController
+            </summary>
+            <param name="sellerFacade"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SellerController.GetSellerId(System.String)">
+            <summary>
+            Get seller Id from DB
+            </summary>
+            <param name="sellerName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.TrailLicenseController">
+            <summary>
+            Controller for trail license
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.TrailLicenseController.#ctor(Gyldendal.Jini.Services.Core.TrialLicense.ITrialLicenseFacade)">
+            <summary>
+            Constructor of Trail license
+            facade will be pushed from dependency containor
+            </summary>
+            <param name="trialLicenseFacade"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.TrailLicenseController.GetTrialLicenseShareLink(System.String,System.String)">
+            <summary>
+            Get Link to Share Trial License on WebShops
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.TrailLicenseController.GetRefTrialAccessForm">
+            <summary>
+            Get list of ref trial access forms
+            </summary>
+            <returns>list of ref trial access form</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.TrailLicenseController.GetRefTrialPeriodUnitTypes">
+            <summary>
+            Get list of ref trial period unit types
+            </summary>
+            <returns>list of ref trial period unit types</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.TrailLicenseController.GetRefTrialCountUnitTypes">
+            <summary>
+            Get list of ref trial count unit types
+            </summary>
+            <returns>list of ref trial count unit types</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.PriceModelController">
+            <summary>
+            Price Model Controller
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Controllers.PriceModelController._logger">
+            <summary>
+            Logger Instance
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.PriceModelController.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Data.DataAccess.ILookUpsDbController)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="lookUpsDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.PriceModelController.GetRefPriceModels(Gyldendal.AccessServices.Contracts.Enumerations.EnumAccessForm)">
+            <summary>
+            Get a list of Price Model of Provided Access Form
+            </summary>
+            <returns>returns a list of Price Model</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.PeriodController">
+            <summary>
+             Period Controller
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Controllers.PeriodController._logger">
+            <summary>
+            Logger Instance
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.PeriodController.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Data.DataAccess.ILookUpsDbController)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="lookUpsDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.PeriodController.GetRefPeriods(Gyldendal.AccessServices.Contracts.Enumerations.EnumLicenseType)">
+            <summary>
+            Get a list of Periods of provided salesForm
+            </summary>
+            <returns>returns list of Periods</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.PeriodController.GetRefPeriodUnitTypes">
+            <summary>
+            Get a list of Period Types
+            </summary>
+            <returns>returns list of Periods</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.SalesConfigurationController">
+            <summary>
+            Sales Configuration Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.#ctor(Gyldendal.Jini.Services.Core.SaleConfiguration.ISaleConfigurationFacade,Gyldendal.Jini.Services.Core.Manager.IJiniManager,Gyldendal.Jini.Services.Data.DataAccess.ISaleConfigurationDbController,Gyldendal.Jini.Services.Utils.ILogger)">
+             <summary>
+            
+             </summary>
+             <param name="saleConfigurationFacade"></param>
+             <param name="jiniManager"></param>
+             <param name="saleConfigurationDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.CreateSalesConfiguration(Gyldendal.Api.ShopServices.Contracts.SalesConfiguration.SalesConfiguration)">
+            <summary>
+            Get a list of Period Types
+            </summary>
+            <returns>returns list of Periods</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.SalesConfigurationHistory(System.String)">
+            <summary>
+            Retreive sales configuration hisotry for a particular ISBN.
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.GetSalesConfiguration(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Check if Sales configuration Exists of ISBN for Particular Seller.
+            Seller Name check has been removed internally for External Sales configuration
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.GetSalesConfigurationByWebShop(System.String,Gyldendal.Api.CommonContracts.WebShop,System.Boolean)">
+            <summary>
+            Get Sales configuration for webshop
+            WebShop id check has been removed internally for External Sales configuration
+            </summary>
+            <param name="isbn"></param>
+            <param name="webShop"></param>
+            <param name="approved"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.GetSalesConfigurationByWebShop(System.String,Gyldendal.Api.CommonContracts.WebShop,Gyldendal.Api.ShopServices.Contracts.SalesConfiguration.SalesConfigurationType,System.Boolean)">
+            <summary>
+            Get Internal/External Sales configuration for webshop
+            WebShop id check has been removed internally for External Sales configuration
+            </summary>
+            <param name="isbn"></param>
+            <param name="webShop"></param>
+            <param name="approved"></param>
+            <param name="salesConfigType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.SalesConfigurationExists(System.String,System.String)">
+            <summary>
+            Check if Sales configuration Exists of ISBN for Particular Seller.
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.SalesConfigurationExistsByWebShop(System.String,Gyldendal.Api.CommonContracts.WebShop)">
+            <summary>
+            Check if Sales configuration Exists of ISBN for Particular Seller.
+            WebShop id check has been removed internally for External Sales configuration
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.GetUpdatedSaleConfigsInfo(System.Int64,Gyldendal.Api.CommonContracts.WebShop,System.Int32)">
+            <summary>
+            Get details for the Sales Configurations updated after the given time for the given seller.
+            WebShop id check has been removed internally for External Sales configuration
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.SalesConfigurationRevisionHistory(System.String)">
+            <summary>
+            Retreive sales configuration Revisionhisotry for a particular ISBN.
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesConfigurationController.GuaSalesConfigurationRevisionHistory(System.String)">
+            <summary>
+            Retreive sales configuration Revisionhisotry for a particular ISBN (GUA).
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.SalesFormController">
+            <summary>
+            Sales Form Controller
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Controllers.SalesFormController._logger">
+            <summary>
+            Logger Instance
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesFormController.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Data.DataAccess.ILookUpsDbController)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="lookUpsDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.SalesFormController.GetRefSalesForms">
+            <summary>
+            Get a list of Sales Forms
+            </summary>
+            <returns>returns a list of SaleForm</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.AccessFormController">
+            <summary>
+            Access form Controller
+            </summary>
+        </member>
+        <member name="F:Gyldendal.Jini.Services.Controllers.AccessFormController._logger">
+            <summary>
+            Logger Instance
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.AccessFormController.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Data.DataAccess.ILookUpsDbController)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="lookUpsDbController"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.AccessFormController.GetRefAccessForms">
+            <summary>
+            Returns List of Access Forms from Jini Database
+            </summary>
+            <returns>Returns List of Access Forms in Json</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.V2.JiniBulkV2Controller">
+            <summary>
+            Jini Bulk Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.JiniBulkV2Controller.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Core.Product.Services.IProductService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="productService"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.JiniBulkV2Controller.GetDeflatedSalesConfigurations(Gyldendal.Jini.Services.Common.RequestResponse.DeflatedSalesConfigurationRequest)">
+            <summary>
+            Get deflated sales configuration by filters
+            </summary>
+            <returns>returns true/false</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.V2.JiniV2Controller">
+            <summary>
+            JiniV2 Controller 
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.JiniV2Controller.#ctor(Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Core.MediaMaterialType.IMediaMaterialTypeService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="mediaMaterialTypeService"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.JiniV2Controller.GetMediaAndMaterialTypes">
+            <summary>
+                Get a hierarchical list of media type and their material types from Database
+            </summary>
+            <returns>returns a list of media and material types</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.V2.ProductV2Controller">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.ProductV2Controller.#ctor(Gyldendal.Jini.Services.Core.Product.Services.IProductService,Gyldendal.Jini.Services.Utils.ILogger)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.ProductV2Controller.GetProducts(Kendo.Mvc.UI.DataSourceRequest)">
+            <summary>
+                Get all digital products from Database
+            </summary>
+            <returns>returns list of digital products</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.V2.ProductV2Controller.GetProductDetails(System.String)">
+            <summary>
+                Get Product Details of ISBN
+            </summary>
+            <returns>returns Json result of details</returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Controllers.ProductController">
+            <summary>
+            Product Controller
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.#ctor(Gyldendal.Jini.Services.Core.Product.IProductFacade,Gyldendal.Jini.Services.Core.Product.IProductAccessProviderFacade,Gyldendal.Jini.Services.Utils.ILogger,Gyldendal.Jini.Services.Core.Product.Services.IProductService)">
+            <summary>
+            Product Controller Constructor
+            </summary>
+            <param name="productFacade"></param>
+            <param name="productAccessProviderFacade"></param>
+            <param name="logger"></param>
+            <param name="productService"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.GetProducts(Kendo.Mvc.UI.DataSourceRequest)">
+            <summary>
+                Get all digital products from RAP
+            </summary>
+            <returns>returns list of digital products</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.GetProductDetails(System.String)">
+            <summary>
+                Get Product Details of ISBN
+            </summary>
+            <returns>returns Json result of details</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.GetGradeLevels(System.String,System.String)">
+            <summary>
+                Get Grade Levels of ISBN from RAP
+            </summary>
+            <returns>returns Json result of GradeLevels</returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.GetProductAccessProviders(System.Collections.Generic.List{System.String})">
+            <summary>
+            Return the list of product accessProviders of isbns
+            </summary>
+            <param name="isbns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.IsProductAccessProviderExists(System.String,Gyldendal.Api.ShopServices.Contracts.License.Access.EnumAccessProvider)">
+            <summary>
+            Tells either the specified accessProvider exists for isbn or not
+            </summary>
+            <param name="isbn"></param>
+            <param name="enumAccessProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.GetAllProductAccessProviders(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="isbn"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Controllers.ProductController.SaveProductAccessProviders(Gyldendal.Jini.Services.Common.Dtos.ProductAccessProviders)">
+             <summary>
+            
+             </summary>
+             <param name="productAccessProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Filters.ExceptionFilter">
+            <summary>
+            Catch Exception and handle it
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Filters.ExceptionFilter.#ctor(Gyldendal.Jini.Services.Utils.ILogger)">
+            <summary>
+            Constructor of work Controller
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Filters.ExceptionFilter.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">The context for the action.</param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Filters.IExceptionFilter">
+            <summary>
+            Interface for Exception Filter
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Filters.IExceptionFilter.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            On Exception, This method will be executed
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Filters.INullValueFilter">
+            <summary>
+            check null value for arguments
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Filters.NullValueFilter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Filters.NullValueFilter.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <inheritdoc />
+            Generate error if action arguments are null
+            ignore nullable parameters
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Hangfire.HangfireAuthorizationFilter">
+            <summary>
+            Hangfire Authorization Filter
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Hangfire.HangfireAuthorizationFilter.Authorize(Hangfire.Dashboard.DashboardContext)">
+            <summary>
+            Hangfire Dashboard Context for Authorization
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Hangfire.HangFireJobs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Hangfire.HangFireJobs.ConfigureHangFireJobs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Hangfire.HangFireStartup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Hangfire.HangFireStartup.PreProcessing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Hangfire.HangFireStartup.DeleteHangFirePendingInstancesForJob">
+            <summary>
+            Delete all consumer jobs which are in pending/processing state
+            </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Models.DataSourceRequestModelBinder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Models.DataSourceRequestModelBinder.BindModel(System.Web.Http.Controllers.HttpActionContext,System.Web.Http.ModelBinding.ModelBindingContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionContext"></param>
+            <param name="bindingContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Global">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Gyldendal.Jini.Services.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gyldendal.Jini.Services.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+    </members>
+</doc>

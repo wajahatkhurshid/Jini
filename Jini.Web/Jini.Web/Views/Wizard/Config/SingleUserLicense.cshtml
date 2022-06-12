@@ -1,0 +1,51 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+<section class="block padded">
+    <span class="access-label">Enkeltbrugerlicens</span>
+
+    <h1>Hvad er prisen pr. bruger?</h1>
+    <p class="jini-msg error std-len" ng-show="jiniData.Validations.indexOf('tab2:singleuser:pricing') != -1">
+        <img src="~/img/icon-cross.png" /> Prisen 0,00 er ugyldig. Angiv venligst en gyldig pris.
+    </p>
+    <table class="price-table std-len">
+        <thead>
+            <tr>
+                <th>Periode</th>
+                <th class="price">Pris (eksl. moms)</th>
+                <th class="price">Pris (inkl. moms)</th>
+                <th class="check"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="task-done" ng-repeat="period in jiniData.Periods">
+                <td>{{::period["DisplayName"]}}</td>
+                <td class="price">
+                    <div class="control-suffix">
+                        <div class="control">
+                            <input class="price-minus-tax numeric" 
+                                   kendo-numeric-text-box="numeric" k-min="0" k-step="1" 
+                                   ng-model="jiniData.SingleUserLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].ExTax" k-on-spin="onSpinner(period['UnitValue']+' '+period['RefPeriodUnitTypeCode'], @((int)Enums.EnumAccessForm.SingleUser))"
+                                   k-spinners="false"
+                                   ng-change="onPriceChange(period['UnitValue']+' '+period['RefPeriodUnitTypeCode'], @((int) Enums.EnumAccessForm.SingleUser))"
+                                   ng-blur ="onPriceChange(period['UnitValue']+' '+period['RefPeriodUnitTypeCode'], @((int)Enums.EnumAccessForm.SingleUser))" />
+                        </div>
+                        <span class="suffix">DKK</span>
+                    </div>
+                </td>
+                <td class="price">
+                    <div class="control-suffix">
+                        <div class="control">
+                            <input class="price-plus-tax numeric inctax" 
+                                   kendo-numeric-text-box k-min="0" k-step="1" k-spinners="false"
+                                   ng-model="jiniData.SingleUserLicense.Pricing[period['UnitValue']+' '+period['RefPeriodUnitTypeCode']].IncTax"
+                                   ng-change="onPriceChangeIncTax(period['UnitValue']+' '+period['RefPeriodUnitTypeCode'], @((int) Enums.EnumAccessForm.SingleUser))"
+                                   ng-blur ="onPriceChangeIncTax(period['UnitValue']+' '+period['RefPeriodUnitTypeCode'], @((int)Enums.EnumAccessForm.SingleUser))"/>
+                        </div>
+                        <span class="suffix">DKK</span>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>

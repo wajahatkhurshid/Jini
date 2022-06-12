@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = "";
+}
+
+
+<section class="sidebar">
+
+    <section class="block--neue">
+        <div class="block--neue__header">
+            <h1>Adgang til produkt</h1>
+        </div>
+        <div ng-show="!jiniData.isRDatafill">
+
+            <img style="margin-left: 50%;" src="~/Content/kendo/2016.1.112/Nova/loading_2x.gif" />
+        </div>
+        <div ng-show="!!jiniData.isRDatafill" class="block--neue__body">
+            <div class="block-error" ng-show="( (!jiniData.ProductAccessProviderInformation.AccessProvider || jiniData.ProductAccessProviderInformation.AccessProvider.length<1) && !jiniData.ProductAccessProviderInformation.IsExternalLogin)">
+                <p class="jini-msg warning">
+                    <svg class="icon-warning">
+                        <use xlink:href="~/Content/icons/jini.svg#icon-warning"></use>
+                    </svg> <span>Ingen logintyper valgt</span>
+                </p>
+            </div>
+            <input class="jini-toggle-switch" ng-click="toggleExternalLogin(jiniData.ProductAccessProviderInformation)" ng-checked="jiniData.ProductAccessProviderInformation.IsExternalLogin" ng-model="jiniData.ProductAccessProviderInformation.IsExternalLogin" type="checkbox" id="product-remote-access-switch" />
+            <label for="product-remote-access-switch">Adgang håndteres eksternt</label>
+            <div class="access-providers-list">
+
+                <ul>
+                    <li ng-repeat="provideraccess in  jiniData.ProviderAccessForm" class="access-provider">
+                        <input class="k-checkbox" ng-checked="provideraccess.ischecked" ng-click="togglestate($event,provideraccess)" ng-model="provideraccess.Identifier" type="checkbox" ng-attr-id="{{provideraccess.Code}}" />
+                        <label class="k-checkbox-label" ng-attr-for="{{provideraccess.Code}}">{{provideraccess.DisplayName}}</label>
+                    </li>
+                </ul>
+            </div>
+            <button class="k-button block--neue__btn" ng-click="SaveProductAccess()">Gem</button>
+
+        </div>
+    </section>
+
+</section>
+
+

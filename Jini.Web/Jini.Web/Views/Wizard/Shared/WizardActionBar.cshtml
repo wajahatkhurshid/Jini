@@ -1,0 +1,19 @@
+﻿<section class="block wizard-nav" ng-hide="state=='history' || state=='published' || state=='dashboard' || state=='Dashboard' ">
+    <div class="wizard-button-group">
+        <button id="wizard-prev-button" ng-hide="state == 'create'">Forrige</button>
+    </div>
+    <div class="wizard-button-group">
+        <button id="wizard-cancel-button" ng-click="openAbandonSales()">Annuller</button>
+        <button id="wizard-saveclose-button" ng-click="SaveDraft()">Gem &amp; luk</button>
+        <button id="wizard-next-button" ng-hide="state=='approve'" class="k-primary">Næste</button>
+        <button id="wizard-save-button" class="k-primary" ng-show="state=='approve'" ng-click="Save(true)">Godkend</button>
+    </div>
+</section>
+
+<script>
+    $("#wizard-prev-button").kendoButton();
+    $("#wizard-next-button").kendoButton();
+    $("#wizard-save-button").kendoButton();
+    $("#wizard-saveclose-button").kendoButton();
+    $("#wizard-cancel-button").kendoButton();
+</script>

@@ -1,0 +1,41 @@
+﻿@using JiniWeb.Common;
+
+<section class="jini-popup" id="product-preview-popup-single-user">
+    <div class="jini-popup-content product-preview-popup-content">
+        <div class="product-preview-meta">
+            <h3>{{::DigitalTitle.Title}}</h3>
+            <p class="desc">{{::DigitalTitle.SubTitle}}</p>
+            <img src="{{::DigitalTitle.Cover}}" />
+        </div>
+        <div class="product-preview-buying-opts">
+            <div ng-show="(searchArray(@((int)Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0)">
+                <p>Køb adgang til produktet</p>
+                <select kendo-drop-down-list class="jini-dropdown" id="preview-user-period-select"
+                        k-data-text-field="'SingleUserPreviewText'"
+                        k-data-value-field="'Id'"
+                        k-ng-model="PreviewPeriodSelection"
+                        k-value-primitve="true"
+                        k-change="onUserPeriodChange"
+                        k-data-source="SingleUserPeriods"></select>
+
+                
+                <div class="product-preview-single-user-block">
+                    <label for="single-user-access-count">Antal adgange (brugere):</label>
+                    <div class="wrap">
+                        <input class="single-user-access-count" k-value="0" kendo-numeric-text-box="numeric" k-decimals="0" k-format="'n0'" k-min="0" k-step="1" id="single-user-access-count"
+                               k-ng-model="PreviewUserCount" k-on-change="onUserCountChange(PreviewPeriodSelection['DisplayName'])" k-on-spin="onSpinnerUserCountChange(PreviewPeriodSelection['DisplayName'])" />
+                    </div>
+                </div>
+                <div class="product-preview-single-user-block">
+                    <label>Pris ialt (eksl. moms):</label>
+                    <p class="single-user-price">{{PreviewUserPrice.Pricing[PreviewPeriodSelection['DisplayName']].ExTax}} <span>DKK</span></p>
+                </div>
+                <span class="product-preview-calc-price">Læg i kurv</span>
+                <p class="single-user-terms"><a href="#">Handelsbetingelser</a></p>
+            </div>
+            <div class="single-user-contact-sales" ng-show="(searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)">
+                <p id="DescriptionText"></p>
+            </div>
+        </div>
+    </div>
+</section>

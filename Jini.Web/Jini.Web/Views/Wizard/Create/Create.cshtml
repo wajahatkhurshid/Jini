@@ -1,0 +1,128 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<style>
+    /*Commenting Height of Multiselect due to this multiselect doesn't work properly after adding multiple values'*/
+    /*.k-multiselect-wrap {
+        height: 10px;
+    }*/
+     #select-model   .km-button
+     {
+
+     }
+    #select-access .km-state-active
+    {
+        background-color: #FFFFFF;   
+        color: #4C5356;
+    }
+
+    #select-access .selected
+    {
+        background-color: #10C4B2 !important;   
+        color: #FFFFFF !important;
+    }
+    #select-access .disabled
+    {
+        background-color: #FCFCFC !important;   
+        color: #B8B8B8 !important;
+    }
+    #select-model .km-state-active
+    {
+        background-color: #FFFFFF;   
+        color: #4C5356;
+    }
+
+    #select-model .selected
+    {
+        background-color: #10C4B2 !important;   
+        color: #FFFFFF !important;
+    }
+
+</style>
+
+<div ng-controller="create">
+    <header>
+        <h1 class="main-head">Grundopsætning</h1>
+        <p class="desc">Hvordan skal produktet overordnet sættes til salg på shoppen?<br>Du skal vælge mindst én salgsform eller prøveadgang.</p>
+    </header>
+
+
+    <p ng-show="jiniData.Validations.indexOf('tab1:noselection') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png"/> Vælg mindst én salgsform og/eller prøveadgang</p>
+
+    <section class="block">
+        <h1>Hvilke salgsformer skal udstilles for produktet i shoppen?</h1>
+        <p ng-show="jiniData.Validations.indexOf('tab1:accessform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+        <ul id="select-access" class="wizard-options-list">
+            <li ng-repeat="access in jiniData.LookupAccessTypes">
+                <input type="checkbox" id="license-{{access.DisplayName}}" class="k-checkbox" ng-checked="searchArray(access.Code, 'AccessForm').length > 0"  ng-click="setSelectedAccess(access.DisplayName,access.Code)"/>
+                <label class="k-checkbox-label" for="license-{{access.DisplayName}}">{{access.DisplayName}}</label>
+                <p ng-if="access.Code == @((int)Enums.EnumAccessForm.ContactSales)" class="help-text">fx hvis du vil henvise til direkte salg eller ekstern forhandler</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="block" ng-hide="(jiniData.AccessForm.length==1 && (searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)) || (jiniData.AccessForm.length==0)">
+        <h1>Skal produktet sælges som abonnement eller leje?</h1>
+        <p ng-show="jiniData.Validations.indexOf('tab1:salesform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+        <ul id="select-model">
+            <li class="km-button"  ng-class="{'selected': searchArray(salesType.Code, 'SalesForm').length > 0}"  ng-repeat="salesType in jiniData.LookupSalesTypes" ng-click="setSelectedSales(salesType.DisplayName,salesType.Code)">{{::salesType.DisplayName}}</li>
+        </ul>
+
+    </section>
+
+    <section class="block" ng-hide="(jiniData.AccessForm.length==1 && (searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)) || (jiniData.AccessForm.length==0)">
+        <h1>Hvilke perioder skal udstilles i shoppen?</h1>
+        <p ng-show="jiniData.Validations.indexOf('tab1:periods') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+        <label for="select-period">Vælg en til flere af nedenstående muligheder</label>
+        <p ng-show="jiniData.Validations.indexOf('tab1:salesform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+
+        <select kendo-multi-select=""
+                id="select-period"
+                class="std-len"
+                k-options="selectOptions"
+                k-data-text-field="'DisplayName'"
+                k-data-value-field="'DisplayName'"
+                k-ng-model="jiniData.Periods"
+                k-on-open="OnPeriodOpen(kendoEvent)"
+                k-on-close="OnPeriodClose(kendoEvent)"
+                k-on-change="OnPeriodChange(kendoEvent)"
+                k-auto-close="false"
+                k-data-source="jiniData.LookupDefaultPeriods"></select>
+
+        <button ng-hide="jiniData.SalesForm.length==0" id="specify-custom-period" class="specify-custom-period" ng-click="inititalizeCustomPeriods()">Anden periode</button>
+
+    </section>
+
+    <section class="block">
+        <h1>Skal der opsættes en prøveadgang?</h1>
+        <!-- <p class="jini-msg error std-len"><img src="img/icon-cross.png" /> Ups&hellip; du mangler at udfylde noget her!</p> -->
+        <ul class="wizard-options-list">
+            <li>
+                <input type="checkbox" id="set-trial-license" ng-model="jiniData.HasTrial" ng-click="onHasTrial()" class="k-checkbox" />
+                <label class="k-checkbox-label" for="set-trial-license">Ja, opsæt prøveadgang</label>
+            </li>
+        </ul>
+    </section>
+
+    <section class="jini-popup" id="period-warning">
+        <div class="jini-popup-content new-version-warning-popup-content">
+
+            <p>
+                Du skal vælge om produktet skal sælges som abonnement/leje før du kan vælge perioder.
+            </p>
+
+        </div>
+    </section>
+
+
+    
+
+
+</div>
+
+@Html.Partial("~/Views/Wizard/Create/DefaultPeriod.cshtml")

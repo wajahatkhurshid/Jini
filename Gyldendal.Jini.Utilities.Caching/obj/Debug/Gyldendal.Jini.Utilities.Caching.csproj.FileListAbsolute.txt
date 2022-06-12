@@ -1,0 +1,6 @@
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\bin\Debug\Gyldendal.Jini.Utilities.Caching.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\bin\Debug\Gyldendal.Jini.Utilities.Caching.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\obj\Debug\Gyldendal.Jini.Utilities.Caching.csproj.CoreCompileInputs.cache
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\obj\Debug\Gyldendal.Jini.Utilities.Caching.dll
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\obj\Debug\Gyldendal.Jini.Utilities.Caching.pdb
+D:\Wajahat\Jini\Gyldendal.Jini\Gyldendal.Jini.Utilities.Caching\obj\Debug\Gyldendal.Jini.Utilities.Caching.csproj.AssemblyReference.cache

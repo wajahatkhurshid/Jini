@@ -1,0 +1,45 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+@{
+    ViewBag.Title = "Config";
+    Layout = "";
+}
+
+
+<div ng-controller="config">
+ 
+        <header>
+            <h1 class="main-head">Salgsformer</h1>
+            <p class="desc">
+                Her laver du en detaljeret opsætning for hver af de valgte salgsformer.<br>Du skal bl.a. angive hvordan prisen beregnes for hver licenstype.
+            </p>
+        </header>
+
+        <section>
+
+            <div ng-show="(searchArray(@((int) Enums.EnumAccessForm.School), 'AccessForm').length > 0)">
+                @Html.Partial("~/Views/Wizard/Config/SchoolLicense.cshtml")
+            </div>
+
+            <div ng-show="(searchArray(@((int) Enums.EnumAccessForm.Class), 'AccessForm').length > 0)">
+                @Html.Partial("~/Views/Wizard/Config/ClassLicense.cshtml")
+            </div>
+
+            <div ng-show="(searchArray(@((int) Enums.EnumAccessForm.Teacher), 'AccessForm').length > 0)">
+                @Html.Partial("~/Views/Wizard/Config/TeacherLicense.cshtml")
+            </div>
+
+            <div ng-show="(searchArray(@((int) Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0)">
+                @Html.Partial("~/Views/Wizard/Config/SingleUserLicense.cshtml")
+            </div>
+
+            <div ng-show="(searchArray(@((int) Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)">
+                @Html.Partial("~/Views/Wizard/Config/ContactSalesLicense.cshtml")
+            </div>
+
+        </section>
+
+    
+
+</div>
+

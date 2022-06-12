@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47aa85beb7484820b0b07ec6f64cfea7" Name="Diagram1">
+        <EntityTypeShape EntityType="JiniModel.C__RefactorLog" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.AccessForm" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.DbVersion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.Dealer" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.PeriodPrice" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.PriceModel" Width="1.5" PointX="12.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefAccessForm" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefDealer" Width="1.5" PointX="8" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefDealerText" Width="1.5" PointX="5.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefPeriod" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefPeriodUnitType" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefPriceModel" Width="1.5" PointX="10.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefSalesChannel" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefSalesForm" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.RefSeller" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.SalesConfiguration" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.SalesConfigurationHistory" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.SalesForm" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.Seller" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="JiniModel.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="JiniModel.FK_AccessForm_RefAccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_AccessForm_SalesConfiguration" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_Period_AccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_PriceModel_AccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_PeriodPrice_RefPeriodUnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_PriceModel_RefPriceModel" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_RefPriceModel_RefAccessForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_RefDealer_RefDealerText" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_RefPeriod_RefPeriodUnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_RefPeriod_RefSalesForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_SalesForm_RefSalesForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_SalesConfiguration_SalesForm" ManuallyRouted="false" />
+        <AssociationConnector Association="JiniModel.FK_SalesConfiguration_Seller" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

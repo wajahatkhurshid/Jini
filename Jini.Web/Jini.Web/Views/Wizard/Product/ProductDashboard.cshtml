@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+<style>
+    .content {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 800px;
+        flex: 1 1 800px;
+        margin: 0 auto;
+    }
+</style>
+<div ng-controller="Dashboard">
+    <div>
+        <header style="margin-bottom: 0px;border-bottom: none; width :100%" class="container" >
+            <h1 class="main-head">{{jiniData.DigitalTitle.TitleAndMediaType}}</h1>
+        </header>
+        <div class="container" style="margin-top:0px;margin-bottom:0px;width :100%">
+            <span style="font-size: 18px;">ISBN: {{jiniData.DigitalTitle.Isbn}}</span>
+        </div>
+        <div class="container" style="margin-top:15px;width :100%">
+            <salesetup></salesetup>
+            <accessprovider></accessprovider>
+        </div>
+    </div>
+</div>

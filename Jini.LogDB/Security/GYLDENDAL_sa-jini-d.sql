@@ -1,0 +1,2 @@
+﻿CREATE USER [GYLDENDAL\sa-jini-d] FOR LOGIN [GYLDENDAL\sa-jini-d];
+

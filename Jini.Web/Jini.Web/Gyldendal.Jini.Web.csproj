@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6831742F-7361-4834-BD1F-D2274D710A58}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gyldendal.Jini.Web</RootNamespace>
+    <AssemblyName>Gyldendal.Jini.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\..\Dependencies\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\icons\filter-red.png" />
+    <Content Include="Content\icons\icon-check.png" />
+    <Content Include="Content\icons\icon-cross.png" />
+    <Content Include="Content\icons\icon-flag.png" />
+    <Content Include="Content\icons\icon-info.png" />
+    <Content Include="Content\icons\icon-plus.png" />
+    <Content Include="Content\icons\icon-preview.png" />
+    <Content Include="Content\icons\jini-logo-old.svg" />
+    <Content Include="Content\icons\jini-logo.svg" />
+    <Content Include="Content\icons\jini.svg" />
+    <Content Include="Content\icons\loading.gif" />
+    <Content Include="Content\icons\check_green.png" />
+    <Content Include="Content\icons\flag_red.png" />
+    <Content Include="Content\icons\product.png" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\kendo\2016.1.112\images\back.png" />
+    <Content Include="Content\kendo\2016.1.112\images\kendoui.svg" />
+    <Content Include="Content\kendo\2016.1.112\images\wp8_icons.png" />
+    <Content Include="Content\kendo\2016.1.112\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\2016.1.112\kendo.common-nova.min.css" />
+    <Content Include="Content\kendo\2016.1.112\kendo.common.min.css" />
+    <Content Include="Content\kendo\2016.1.112\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo\2016.1.112\kendo.nova.css" />
+    <Content Include="Content\kendo\2016.1.112\kendo.nova.min.css" />
+    <Content Include="Content\kendo\2016.1.112\kendo.nova.mobile.min.css" />
+    <Content Include="Content\kendo\2016.1.112\Nova\editor.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\imagebrowser.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\indeterminate.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\loading-image.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\loading.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\loading_2x.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\markers.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\markers_2x.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\slider-h.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\slider-v.gif" />
+    <Content Include="Content\kendo\2016.1.112\Nova\sprite.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\sprite_2x.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\sprite_kpi.png" />
+    <Content Include="Content\kendo\2016.1.112\Nova\sprite_kpi_2x.png" />
+    <Content Include="Content\product-list.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Deploy\WebDeploySession.ps1" />
+    <Content Include="favicon2X.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\icon-check.png" />
+    <Content Include="img\icon-cross.png" />
+    <Content Include="img\icon-flag.png" />
+    <Content Include="img\icon-info.png" />
+    <Content Include="img\icon-plus.png" />
+    <Content Include="img\icon-preview.png" />
+    <Content Include="img\product.png" />
+    <Content Include="img\red-alert.png" />
+    <Content Include="img\tick-mark.png" />
+    <Content Include="Scripts\angular-breadcrumb.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\blockUI.js" />
+    <Content Include="Scripts\clipboard.min.js" />
+    <Content Include="Scripts\cookies.min.js" />
+    <Content Include="Scripts\V2\jinibulk\controllers\configurationV2Ctrl.js" />
+    <Content Include="Scripts\V2\jinibulk\jiniV2bulk.js" />
+    <Content Include="Scripts\V2\jinibulk\services\jiniV2bulkService.js" />
+    <Content Include="Scripts\V2\jinibulk\templates\ConfigurationV2.html" />
+    <Content Include="Scripts\jinibulk\jinibulk.js" />
+    <Content Include="Scripts\jinibulk\services\jinibulkService.js" />
+    <Content Include="Scripts\jini\Common\config.js" />
+    <Content Include="Scripts\jini\Common\util.js" />
+    <Content Include="Scripts\jini\Common\validation.js" />
+    <Content Include="Scripts\jinibulk\controllers\configurationCtrl.js" />
+    <Content Include="Scripts\jini\Controllers\approve.js" />
+    <Content Include="Scripts\jini\Controllers\config.js" />
+    <Content Include="Scripts\jini\Controllers\create.js" />
+    <Content Include="Scripts\jini\Controllers\dashboard.js" />
+    <Content Include="Scripts\jini\Controllers\history.js" />
+    <Content Include="Scripts\jini\Controllers\published.js" />
+    <Content Include="Scripts\jini\Controllers\trial.js" />
+    <Content Include="Scripts\jini\Controllers\wizard.js" />
+    <Content Include="Scripts\jini\Core\accessformService.js" />
+    <Content Include="Scripts\jini\Core\periodService.js" />
+    <Content Include="Scripts\jini\Core\priceService.js" />
+    <Content Include="Scripts\jini\Core\salesconfiguration.js" />
+    <Content Include="Scripts\jini\Core\salesformService.js" />
+    <Content Include="Scripts\jini\Core\trialLicense.js" />
+    <Content Include="Scripts\jini\Core\validation.js" />
+    <Content Include="Scripts\jini\Directives\GuaRevisionHistory.js" />
+    <Content Include="Scripts\jini\Directives\RevisionHistory.js" />
+    <Content Include="Scripts\jini\Directives\AccessProvider.js" />
+    <Content Include="Scripts\jini\Directives\salesetup.js" />
+    <Content Include="Scripts\jini\Directives\createLink.js" />
+    <Content Include="Scripts\jini\jini.js" />
+    <Content Include="Scripts\jini\Routing\routing.js" />
+    <Content Include="Scripts\jini\Services\dataFactory.js" />
+    <Content Include="Scripts\jini\Services\jiniservice.js" />
+    <Content Include="Content\type\FiraSans-Bold.ttf" />
+    <Content Include="Content\type\FiraSans-Bold.woff" />
+    <Content Include="Content\type\FiraSans-Bold.woff2" />
+    <Content Include="Content\type\FiraSans-Light.ttf" />
+    <Content Include="Content\type\FiraSans-Light.woff" />
+    <Content Include="Content\type\FiraSans-Light.woff2" />
+    <Content Include="Content\type\FiraSans-Medium.ttf" />
+    <Content Include="Content\type\FiraSans-Medium.woff" />
+    <Content Include="Content\type\FiraSans-Medium.woff2" />
+    <Content Include="Content\type\FiraSans-Regular.ttf" />
+    <Content Include="Content\type\FiraSans-Regular.woff" />
+    <Content Include="Content\type\FiraSans-Regular.woff2" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\FiraSans-Bold.ttf" />
+    <Content Include="fonts\FiraSans-Bold.woff" />
+    <Content Include="fonts\FiraSans-Bold.woff2" />
+    <Content Include="fonts\FiraSans-Light.ttf" />
+    <Content Include="fonts\FiraSans-Light.woff" />
+    <Content Include="fonts\FiraSans-Light.woff2" />
+    <Content Include="fonts\FiraSans-Medium.ttf" />
+    <Content Include="fonts\FiraSans-Medium.woff" />
+    <Content Include="fonts\FiraSans-Medium.woff2" />
+    <Content Include="fonts\FiraSans-Regular.ttf" />
+    <Content Include="fonts\FiraSans-Regular.woff" />
+    <Content Include="fonts\FiraSans-Regular.woff2" />
+    <Content Include="Content\kendo\2016.1.112\images\kendoui.ttf" />
+    <Content Include="Content\kendo\2016.1.112\images\kendoui.woff" />
+    <Content Include="Content\kendo\2016.1.112\kendo.common-nova.min.css.map" />
+    <Content Include="Content\kendo\2016.1.112\kendo.mobile.all.min.css.map" />
+    <Content Include="Content\kendo\2016.1.112\kendo.nova.min.css.map" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\kendo\2016.1.112\fonts\glyphs\WebComponentsIcons.woff" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="Scripts\jini\jini-custom.js" />
+    <Content Include="Scripts\jini\jini-kendo-controls.js" />
+    <Content Include="Scripts\jquery-1.9.0.js" />
+    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <Content Include="Scripts\jquery.expander.min.js" />
+    <Content Include="Scripts\kendo.modernizr.custom.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\cultures\kendo.culture.da-DK.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\cultures\kendo.culture.da.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\jquery.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\jszip.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\kendo\2020.3.1021\messages\kendo.messages.da-DK.min.js" />
+    <Content Include="Scripts\svg4everybody.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="Controllers\BulkController.cs" />
+    <Compile Include="Controllers\V2\BulkV2Controller.cs" />
+    <Compile Include="Controllers\V2\JiniV2Controller.cs" />
+    <Compile Include="Controllers\WizardController.cs" />
+    <Compile Include="Facade\JiniFacade.cs" />
+    <Compile Include="Facade\V2\JiniFacadeV2.cs" />
+    <Compile Include="Models\Common\AccessType.cs" />
+    <Compile Include="Models\Common\Period.cs" />
+    <Compile Include="Models\Common\SalesType.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DigitalProductAuthor.cs" />
+    <Compile Include="Models\DigitalTitle.cs" />
+    <Compile Include="Controllers\JiniController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\License\BillingModel.cs" />
+    <Compile Include="Models\License\License.cs" />
+    <Compile Include="Models\MaterialType.cs" />
+    <Compile Include="Models\MediaType.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\kendo\2020.3.1021\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\2020.3.1021\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Views\Jini\Index.cshtml" />
+    <None Include="Deploy\PS\BackupIIS_Site.ps1" />
+    <None Include="Deploy\PS\DeleteBackup_Site.ps1" />
+    <None Include="Deploy\PS\Modules\CopyFilesUtil.psm1" />
+    <None Include="Deploy\PS\Modules\IISUtil.psm1" />
+    <None Include="Deploy\PS\PublishIIS_Site.ps1" />
+    <None Include="Deploy\PS\RemoveIIS_Site.ps1" />
+    <None Include="Deploy\PS\RestoreIIS_Site.ps1" />
+    <Content Include="Views\Shared\_Wizard.cshtml" />
+    <Content Include="Views\Wizard\Shared\WizardActionBar.cshtml" />
+    <Content Include="Views\Wizard\Shared\InfoBar.cshtml" />
+    <Content Include="Views\Wizard\Shared\WizardProgress.cshtml" />
+    <Content Include="Views\Wizard\SalesConfiguration.cshtml" />
+    <Content Include="Views\Wizard\Publish.cshtml" />
+    <Content Include="Scripts\version.json" />
+    <Content Include="Scripts\jquery-1.9.0.min.map" />
+    <Content Include="Views\Wizard\Approve\Approve.cshtml" />
+    <Content Include="Views\Wizard\Approve\ProgressBar.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewClassLicense.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewContactSalesLicense.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewSchoolLicense.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewSingleUserLicense.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewTeacherLicense.cshtml" />
+    <Content Include="Views\Wizard\Approve\Summary.cshtml" />
+    <Content Include="Views\Wizard\Config\ClassLicense.cshtml" />
+    <Content Include="Views\Wizard\Config\Config.cshtml" />
+    <Content Include="Views\Wizard\Config\ContactSalesLicense.cshtml" />
+    <Content Include="Views\Wizard\Config\DefaultText.cshtml" />
+    <Content Include="Views\Wizard\Config\ProgressBar.cshtml" />
+    <Content Include="Views\Wizard\Config\SchoolLicense.cshtml" />
+    <Content Include="Views\Wizard\Config\SingleUserLicense.cshtml" />
+    <Content Include="Views\Wizard\Config\TeacherLicense.cshtml" />
+    <Content Include="Views\Wizard\Product\ProductDashboard.cshtml" />
+    <Content Include="Views\Wizard\Create\DefaultPeriod.cshtml" />
+    <Content Include="Views\Wizard\Create\ProgressBar.cshtml" />
+    <Content Include="Views\Wizard\History\DraftPanel.cshtml" />
+    <Content Include="Views\Wizard\History\History.cshtml" />
+    <Content Include="Views\Wizard\History\NewPanel.cshtml" />
+    <Content Include="Views\Wizard\Trial\Trial.cshtml" />
+    <Content Include="Views\Wizard\Trial\ProgressBar_Trial.cshtml" />
+    <Content Include="Views\Wizard\Approve\ReviewTrialLicense.cshtml" />
+    <Content Include="Views\Wizard\Trial\CreateLink.cshtml" />
+    <Content Include="Views\Wizard\Create\Create.cshtml" />
+    <Content Include="Views\Wizard\Product\AccessProvider.cshtml" />
+    <Content Include="Views\Wizard\Product\SaleSetup.cshtml" />
+    <Content Include="Views\Bulk\index.cshtml" />
+    <Content Include="Scripts\jinibulk\templates\Configuration.html" />
+    <Content Include="Views\Shared\_Bulk.cshtml" />
+    <Content Include="Views\Wizard\History\RevisionHistory.cshtml" />
+    <Content Include="Views\Wizard\History\GuaRevisionHistory.cshtml" />
+    <Content Include="Views\V2\Jini\Index.cshtml" />
+    <Content Include="Views\V2\Bulk\Index.cshtml" />
+    <Content Include="Views\Shared\_BulkV2.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Gyldendal.Jini.Services.Contracts\Gyldendal.Jini.Services.Contracts.csproj">
+      <Project>{2A1A4833-4340-403D-B4EF-4E644817B494}</Project>
+      <Name>Gyldendal.Jini.Services.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5520</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5520/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

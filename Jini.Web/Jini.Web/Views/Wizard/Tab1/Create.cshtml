@@ -1,0 +1,125 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<style>
+    /*Commenting Height of Multiselect due to this multiselect doesn't work properly after adding multiple values'*/
+    /*.k-multiselect-wrap {
+        height: 10px;
+    }*/
+     #select-model   .km-button
+     {
+
+     }
+    /*#10C4B2*/
+    #select-access .km-state-active
+    {
+        background-color: #FFFFFF;   
+        color: #4C5356;
+    }
+
+    #select-access .selected
+    {
+        background-color: #10C4B2 !important;   
+        color: #FFFFFF !important;
+    }
+    #select-access .disabled
+    {
+        background-color: #FCFCFC !important;   
+        color: #B8B8B8 !important;
+    }
+    #select-model .km-state-active
+    {
+        background-color: #FFFFFF;   
+        color: #4C5356;
+    }
+
+    #select-model .selected
+    {
+        background-color: #10C4B2 !important;   
+        color: #FFFFFF !important;
+    }
+
+</style>
+
+
+
+    
+        <header>
+            <h1 class="main-head">Vælg licenstype</h1>
+            <p class="desc">Først og fremmest skal du tage stilling til, hvordan produktet overordnet skal sættes til salg på shoppen — dvs. hvilke licenser der tilbydes for dette produkt.</p>
+        </header>
+
+        <section class="block" ng-hide="AccessForm.length==1 && (searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)">
+            <h1>Skal produktet sælges som abonnement eller leje?</h1>
+            <p ng-show="Validations.indexOf('tab1:salesform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+            <ul id="select-model">
+                <li class="km-button" ng-class="SelectedSalesForm[salesType.Code]" ng-repeat="salesType in LookupSalesTypes" ng-click="setSelectedSales(salesType.DisplayName,salesType.Code)">{{::salesType.DisplayName}}</li>
+            </ul>
+            @*{{SalesForm}}*@
+            
+        </section>
+
+        <section class="block">
+            <h1>Hvilke adgangstyper skal udstilles i shoppen?</h1>
+            <p ng-show="Validations.indexOf('tab1:accessform') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+            <label for="select-access">Vælg en til flere af nedenstående muligheder</label>
+            <ul id="select-access">
+                @*<li class="km-button" ng-class="SelectedAccessForm[access.Code] + disableKendoGroupButton(access.Code)" ng-repeat="access in LookupAccessTypes" id="{{access.Code}}" value="{{access.Code}}" ng-click="setSelectedAccess(access.DisplayName,access.Code)">{{access.DisplayName}}</li>*@
+                <li class="km-button" ng-class="SelectedAccessForm[access.Code]" ng-repeat="access in LookupAccessTypes" id="{{access.Code}}" value="{{access.Code}}" ng-click="setSelectedAccess(access.DisplayName,access.Code)">{{access.DisplayName}}</li>
+            </ul>
+            
+             @*{{AccessForm}}*@ 
+    </section>
+
+    <section class="block" ng-hide="(AccessForm.length == 1 && AccessForm[0].Code == '1005')">
+        <h1>Hvilke perioder skal udstilles i shoppen?</h1>
+        <p ng-show="Validations.indexOf('tab1:periods') != -1" class="jini-msg error std-len"><img src="~/img/icon-cross.png" /> Ups… du mangler at udfylde noget her!</p>
+            <label for="select-period">Vælg en til flere af nedenstående muligheder</label>
+            <select kendo-multi-select=""
+                    id="select-period"
+                    class="std-len"
+                    k-options="selectOptions"
+                    k-data-text-field="'DisplayName'"
+                    k-data-value-field="'DisplayName'"
+                    k-ng-model="Periods"
+                    k-on-open="OnPeriodOpen(kendoEvent)"
+                    k-on-close="OnPeriodClose(kendoEvent)"
+                    k-on-change="OnPeriodChange(kendoEvent)"
+                    k-auto-close="false"
+                    k-data-source="LookupDefaultPeriods"></select>
+
+            <button ng-hide="SalesForm.length==0" id="specify-custom-period" class="specify-custom-period" ng-click="inititalizeCustomPeriods()">Anden periode</button>
+           
+        @*{{LookupDefaultPeriods}}
+            {{Periods}}*@
+            
+    </section>
+
+    @*{{Validations}}*@
+    
+        
+
+<!-- <section class="sidebar">
+    <h1>Some things to keep in mind</h1>
+    <p>Lorem ispsum blah blah. Først og fremmest skal du tage stilling til, hvordan produktet overordnet skal sættes til salg på shoppen—dvs hvilke licenser der tilbydes for dette produkt.</p>
+</section> -->
+
+
+<section class="jini-popup" id="period-warning">
+    <div class="jini-popup-content new-version-warning-popup-content">
+
+        <p>
+            Du skal vælge om produktet skal sælges som abonnement/leje før du kan vælge perioder. 
+        </p>
+
+    </div>
+</section>
+
+
+@Html.Partial("~/Views/Wizard/Tab1/DefaultPeriod.cshtml")

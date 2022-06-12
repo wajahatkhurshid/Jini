@@ -1,0 +1,49 @@
+﻿@using Gyldendal.Jini.Web.Common
+
+@{
+    ViewBag.Title = "Config";
+    Layout = "";
+}
+
+
+
+<header>
+    <h1 class="main-head">Opsæt priser</h1>
+    <p class="desc">Her laver du en opsætning af priser for hver af de valgte adgangstyper. Du skal bl.a. angive hvordan prisen skal beregnes og angive prisen for en enkelt enhed (fx pris pr. elev).</p>
+</header>
+
+<section >
+
+    <div  ng-show="(searchArray(@((int)Enums.EnumAccessForm.School), 'AccessForm').length > 0)">
+        @Html.Partial("~/Views/Wizard/Tab2/SchoolLicense.cshtml")
+    </div>
+
+    <div ng-show="(searchArray(@((int)Enums.EnumAccessForm.Class), 'AccessForm').length > 0)">
+        @Html.Partial("~/Views/Wizard/Tab2/ClassLicense.cshtml")
+    </div>
+
+    <div ng-show="(searchArray(@((int)Enums.EnumAccessForm.Teacher), 'AccessForm').length > 0)">
+        @Html.Partial("~/Views/Wizard/Tab2/TeacherLicense.cshtml")
+    </div>
+
+    <div ng-show="(searchArray(@((int)Enums.EnumAccessForm.SingleUser), 'AccessForm').length > 0)">
+        @Html.Partial("~/Views/Wizard/Tab2/SingleUserLicense.cshtml")
+    </div>
+
+    <div ng-show="(searchArray(@((int)Enums.EnumAccessForm.ContactSales), 'AccessForm').length > 0)">
+        @Html.Partial("~/Views/Wizard/Tab2/ContactSalesLicense.cshtml")
+    </div>
+
+</section>
+@*{{AccessForm}}*@
+
+
+<script>
+    $(document).ready(function () {
+        $(".billing-foundation").kendoDropDownList();
+        $("#wizard-next-button").kendoButton();
+       
+       
+    }());
+    
+</script>
